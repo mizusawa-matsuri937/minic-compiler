@@ -1,6 +1,6 @@
 # mini-C 编译器生成器与编译器成品 AC 完成情况
 
-状态：仅 AC00 已验证（2026-11-10）；AC01–AC22 未执行，对应代码尚未实现。AC 的输入与预期只在 [spec](spec.md) 定义，本文记录验证方法、复核命令和实测情况。
+状态：实施验证进行中；以下逐项记录实际执行结果，AC18 人工目视检查留待用户完成。
 
 所有命令块的工作目录是 `/Users/aqua_night/codex_project/编译原理/minic-compiler`，shell 为 zsh，每个块可以单独复制执行。标“计划，未执行”的命令在实现完成、原样运行之后才能改标“已验证”并填写日期、输出和退出码。测试方法名含 AC 编号，所以 `-k acNN` 只运行该 AC 的用例；测试自己在临时目录中生成分析器，不依赖 `build/`。
 
@@ -44,29 +44,29 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 
 ## AC03 正规式语法
 
-- [ ] 未执行。方法：对 spec 列出的六个正规式逐一断言接受与拒绝的串。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：对 spec 列出的六个正规式逐一断言接受与拒绝的串。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac03 -v
 ```
 
-复核观测：用例 `ok`，退出码 0。实际结果/日期/证据：未执行。
+复核观测：用例 `ok`，退出码 0。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-01 日志](evidence/T1-01.log) 中名字含 `ac03` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC04 Thompson、子集法、等价状态法
 
-- [ ] 未执行。方法：对 `(a|b)*abb` 断言最小 DFA 为 4 个状态，并穷举长度不超过 8 的串比较三种自动机；对 mini-C 规则检查三个状态数。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：对 `(a|b)*abb` 断言最小 DFA 为 4 个状态，并穷举长度不超过 8 的串比较三种自动机；对 mini-C 规则检查三个状态数。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac04 -v
 ```
 
-复核观测：用例 `ok`，退出码 0。实际结果/日期/证据：未执行。
+复核观测：用例 `ok`，退出码 0。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-01 日志](evidence/T1-01.log) 中名字含 `ac04` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC05 mini-C 记号序列
 
-- [ ] 未执行。方法：扫描 `tests/fixtures/lex_ok.mc`，断言记号种别序列、种别码、属性值和位置。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：扫描 `tests/fixtures/lex_ok.mc`，断言记号种别序列、种别码、属性值和位置。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -78,7 +78,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 build/minic/lexer.py tests/fixtures/lex_ok.mc --text
 ```
 
-复核观测：测试 `ok`；手工命令输出 16 行记号，第 2 行为 `(7, integer)`、`IDENT`、`1:5`。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令输出 16 行记号，第 2 行为 `(7, integer)`、`IDENT`、`1:5`。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-01 日志](evidence/T1-01.log) 中名字含 `ac05` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC06 词法错误
 
@@ -334,4 +334,4 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && echo 5 | bas
 
 ## 当前汇总
 
-计划 AC：1/1（AC00，AI 检查，未经用户人工审阅）；实施 AC：0/22。文档检查通过不等于业务通过；AI 验证不等于用户人工复核。依赖 clang 的 AC15、AC16、AC22 必须在有 clang 的机器上实际运行，测试被跳过不算通过。
+计划 AC：1/1（AC00）；实施 AC：3/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。

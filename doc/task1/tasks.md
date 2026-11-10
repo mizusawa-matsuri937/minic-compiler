@@ -1,8 +1,8 @@
 # mini-C 编译器生成器与编译器成品 执行任务
 
-状态：T1-00 已完成（2026-11-10）；T1-01 至 T1-06 未执行。规则与验收见 [spec](spec.md)，实现方法见 [design](design.md)，逐项复核见 [checklist](checklist.md)。
+状态：T1-00 至 T1-01 编码与阶段自动检查已完成（2026-11-10）；AC18 人工目视验收另计。规则与验收见 [spec](spec.md)，实现方法见 [design](design.md)，逐项复核见 [checklist](checklist.md)。
 
-所有命令的工作目录是 `/Users/aqua_night/codex_project/编译原理/minic-compiler`，shell 为 zsh，Python 为本机 `python3`（3.11.15）。标“计划，未执行”的命令对应的代码尚未实现，执行后把实际结果补在该项下。各阶段按顺序进行，后一阶段依赖前一阶段的产物。
+所有命令的工作目录是 `/Users/aqua_night/codex_project/编译原理/minic-compiler`，shell 为 zsh，Python 为临时 PATH 指向的 `python3`（3.11.15；默认系统命令为 3.14.6）。标“计划，未执行”的命令对应的代码尚未实现，执行后把实际结果补在该项下。各阶段按顺序进行，后一阶段依赖前一阶段的产物。
 
 - [x] T1-00 完成四文件与计划检查。规则：全部；关联 AC00。
   - 文件：`doc/task1/` 四文件、`doc/project-config.md`、`README.md`、`.gitignore`。
@@ -15,16 +15,16 @@
 
   实际结果：见 [checklist](checklist.md) 的 AC00。
 
-- [ ] T1-01 实现词法分析器生成器。规则：R04–R08；关联 AC03、AC04、AC05。
+- [x] T1-01 实现词法分析器生成器。规则：R04–R08；关联 AC03、AC04、AC05。
   - 文件：`ccgen/errors.py`、`ccgen/regex.py`、`ccgen/nfa.py`、`ccgen/dfa.py`、`ccgen/lexspec.py`、`ccgen/codegen.py` 与 `ccgen/templates/lexer_template.py`（词法部分）、`rules/minic.lex`、`tests/test_regex.py`、`tests/test_lexgen.py`、`tests/test_lexer_minic.py`、`tests/fixtures/lex_ok.mc`。
-  - 完成情况：未执行。交付正规式解析、Thompson 算法、子集法、等价状态法，以及能独立运行的 `lexer.py`；此阶段用 Python 接口生成并调用词法分析器，并提供 `lexer_tables.json` 内容的构造函数。`python3 -m ccgen` 命令行入口和写盘在 T1-02 补齐。
+  - 完成情况：编码与自动检查已完成。交付正规式解析、Thompson 算法、子集法、等价状态法，以及能独立运行的 `lexer.py`；此阶段用 Python 接口生成并调用词法分析器，并提供 `lexer_tables.json` 内容的构造函数。`python3 -m ccgen` 命令行入口和写盘在 T1-02 补齐。
 
   ```bash
-  # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
+  # 已验证 2026-11-10；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
   cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac03 -k ac04 -k ac05 -v
   ```
 
-  计划观测：名字含 `ac03`、`ac04`、`ac05` 的用例全部 `ok`，退出码 0；用例数量以实际为准。实际结果：未执行。
+  计划观测：名字含 `ac03`、`ac04`、`ac05` 的用例全部 `ok`，退出码 0；用例数量以实际为准。实际结果：2026-11-10：5 个测试全部 OK（0.053s），无失败、错误或跳过；退出码 0。证据：`evidence/T1-01.log`。
 
 - [ ] T1-02 实现语法分析器生成器与生成命令。规则：R01–R03、R09–R11、R26、R29；关联 AC01、AC02、AC07、AC08、AC09。
   - 文件：`ccgen/grammar.py`、`ccgen/lr1.py`、`ccgen/codegen.py` 与 `ccgen/templates/parser_template.py`（语法部分）、`ccgen/__main__.py`、`rules/minic.grammar`、`tests/test_parsegen.py`、`tests/test_ccgen_cli.py`、`tests/fixtures/` 下的 `calc.lex`、`calc.grammar`、`ambiguous.grammar`。

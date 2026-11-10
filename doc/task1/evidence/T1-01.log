@@ -1,0 +1,21 @@
+日期：2026-11-10
+Python：3.11.15
+Shell：/bin/zsh
+PATH 首项：/tmp/minic-task1-python311/bin
+命令：cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac03 -k ac04 -k ac05 -v
+
+STDOUT:
+
+STDERR:
+test_ac05_fixed_and_priority (test_lexer_minic.LexerTests.test_ac05_fixed_and_priority) ... ok
+test_ac05_minic_tokens (test_lexer_minic.LexerTests.test_ac05_minic_tokens) ... ok
+test_ac04_algorithms (test_lexgen.LexgenTests.test_ac04_algorithms) ... ok
+test_ac04_minic_counts (test_lexgen.LexgenTests.test_ac04_minic_counts) ... ok
+test_ac03_acceptance (test_regex.RegexTests.test_ac03_acceptance) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.053s
+
+OK
+
+退出码：0
