@@ -1,0 +1,64 @@
+日期：2026-11-10
+Python：3.14.6（初次检查的 zsh 启动重设 PATH；原自动标记已纠正）
+Shell：/bin/zsh
+PATH 首项：/tmp/minic-task1-python311/bin
+命令：cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m unittest discover -s tests -k ac01 -k ac02 -k ac07 -k ac08 -k ac09 -v
+
+STDOUT:
+build/minic/lexer.py
+build/minic/parser.py
+build/minic/lexer_tables.json
+build/minic/parser_tables.json
+build/minic/report.html
+记号 27；NFA 177；DFA 48；最小 DFA 44；产生式 38；LR(1) 状态 264；已消解冲突 2
+
+STDERR:
+test_ac01_deterministic_standalone_sources (test_ccgen_cli.CLItests.test_ac01_deterministic_standalone_sources) ... ERROR
+test_ac08_reduce_reduce_never_resolved (test_ccgen_cli.CLItests.test_ac08_reduce_reduce_never_resolved) ... ok
+test_ac08_undeclared_conflicts (test_ccgen_cli.CLItests.test_ac08_undeclared_conflicts) ... ok
+test_ac09_invalid_rules_atomic (test_ccgen_cli.CLItests.test_ac09_invalid_rules_atomic) ... ok
+setUpModule (test_parsegen) ... ERROR
+/Users/aqua_night/.local/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/tempfile.py:961: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmprq6ht49f'>
+  _warnings.warn(warn_message, ResourceWarning)
+
+======================================================================
+ERROR: test_ac01_deterministic_standalone_sources (test_ccgen_cli.CLItests.test_ac01_deterministic_standalone_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_ccgen_cli.py", line 20, in test_ac01_deterministic_standalone_sources
+    tree = ast.parse(file.read_text())
+  File "/Users/aqua_night/.local/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/ast.py", line 46, in parse
+    return compile(source, filename, mode, flags,
+                   _feature_version=feature_version, optimize=optimize)
+  File "<unknown>", line 1705
+    +PY    if kind == 'list':
+                            ^
+SyntaxError: invalid syntax
+
+======================================================================
+ERROR: setUpModule (test_parsegen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_parsegen.py", line 10, in setUpModule
+    frontend = Frontend()
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/support.py", line 41, in __init__
+    self.parser = load(self.frontend / 'parser.py', 'test_generated_parser')
+                  ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/support.py", line 27, in load
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmprq6ht49f/frontend/parser.py", line 1705
+    +PY    if kind == 'list':
+                            ^
+SyntaxError: invalid syntax
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.510s
+
+FAILED (errors=2)
+
+退出码：1

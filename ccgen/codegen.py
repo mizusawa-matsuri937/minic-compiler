@@ -16,3 +16,10 @@ def render(name, values):
     header = '# Generated analyzer. Tables and driver are self-contained.\n'
     assignments = '\n'.join(f'{k} = {pformat(v, sort_dicts=False, width=100)}' for k, v in values.items())
     return header + assignments + '\n\n' + template.read_text(encoding='utf-8')
+
+
+def parser_source(tables):
+    return render('parser', dict(PRODUCTIONS=tables['productions'],
+                                ACTION={int(k): v for k, v in tables['action'].items()},
+                                GOTO={int(k): v for k, v in tables['goto'].items()},
+                                TERMINALS=tables['terminals']))

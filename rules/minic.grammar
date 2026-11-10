@@ -1,0 +1,44 @@
+# mini-C 语法规则。产生式编号 1-37 与作业要求附录一致。
+%start S
+%prefer shift else
+
+S -> Program                                    => $1
+Program -> StatementList                        => Program(body=$1)
+StatementList -> Statement StatementList        => [$1, *$2]
+StatementList -> ε                              => []
+
+Statement -> VarDecl                            => $1
+Statement -> AssignStmt                         => $1
+Statement -> IfStmt                             => $1
+Statement -> WhileStmt                          => $1
+Statement -> ReadStmt                           => $1
+Statement -> WriteStmt                          => $1
+Statement -> CompoundStmt                       => $1
+
+VarDecl -> int IDENT ;                          => VarDecl(name=$2)
+VarDecl -> int IDENT = Expr ;                   => VarDecl(name=$2, init=$4)
+AssignStmt -> IDENT = Expr ;                    => Assign(target=$1, value=$3)
+CompoundStmt -> { StatementList }               => Block(body=$2)
+IfStmt -> if ( Expr ) Statement                 => If(cond=$3, then=$5)
+IfStmt -> if ( Expr ) Statement else Statement  => If(cond=$3, then=$5, else=$7)
+WhileStmt -> while ( Expr ) Statement           => While(cond=$3, body=$5)
+ReadStmt -> read ( IDENT ) ;                    => Read(target=$3)
+WriteStmt -> write ( Expr ) ;                   => Write(value=$3)
+
+Expr -> RelExpr                                 => $1
+RelExpr -> AddExpr < AddExpr                    => BinaryOp(op=$2, left=$1, right=$3)
+RelExpr -> AddExpr > AddExpr                    => BinaryOp(op=$2, left=$1, right=$3)
+RelExpr -> AddExpr == AddExpr                   => BinaryOp(op=$2, left=$1, right=$3)
+RelExpr -> AddExpr != AddExpr                   => BinaryOp(op=$2, left=$1, right=$3)
+RelExpr -> AddExpr <= AddExpr                   => BinaryOp(op=$2, left=$1, right=$3)
+RelExpr -> AddExpr >= AddExpr                   => BinaryOp(op=$2, left=$1, right=$3)
+RelExpr -> AddExpr                              => $1
+AddExpr -> AddExpr + Term                       => BinaryOp(op=$2, left=$1, right=$3)
+AddExpr -> AddExpr - Term                       => BinaryOp(op=$2, left=$1, right=$3)
+AddExpr -> Term                                 => $1
+Term -> Term * Factor                           => BinaryOp(op=$2, left=$1, right=$3)
+Term -> Term / Factor                           => BinaryOp(op=$2, left=$1, right=$3)
+Term -> Factor                                  => $1
+Factor -> IDENT                                 => Identifier(name=$1)
+Factor -> NUMBER                                => Number(value=$1)
+Factor -> ( Expr )                              => $2

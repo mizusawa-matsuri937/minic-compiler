@@ -17,7 +17,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 scri
 
 ## AC01 生成分析器且结果确定
 
-- [ ] 未执行。方法：自动化测试在两个临时目录各生成一次并逐字节比较；也可用下面第二条命令手工复核。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：自动化测试在两个临时目录各生成一次并逐字节比较；也可用下面第二条命令手工复核。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -29,18 +29,18 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic2 && diff -r build/minic build/minic2 && echo "两次生成一致" ; grep -nE "^(import|from) (ccgen|minic)" build/minic/lexer.py build/minic/parser.py ; ls build/minic
 ```
 
-复核观测：测试全部 `ok`；手工命令打印“两次生成一致”，`grep` 没有输出，`ls` 列出五个文件。实际结果/日期/证据：未执行。
+复核观测：测试全部 `ok`；手工命令打印“两次生成一致”，`grep` 没有输出，`ls` 列出五个文件。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-02 日志](evidence/T1-02.log) 中名字含 `ac01` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC02 生成器与语言无关
 
-- [ ] 未执行。方法：用四则运算规则生成分析器并分析 `1+2*3`，断言语法树形状。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：用四则运算规则生成分析器并分析 `1+2*3`，断言语法树形状。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac02 -v
 ```
 
-复核观测：用例 `ok`，退出码 0。实际结果/日期/证据：未执行。
+复核观测：用例 `ok`，退出码 0。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-02 日志](evidence/T1-02.log) 中名字含 `ac02` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC03 正规式语法
 
@@ -98,7 +98,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 
 ## AC07 LR(1) 分析表与产生式编号
 
-- [ ] 未执行。方法：读取生成的 `parser_tables.json`，断言产生式、FIRST 集和冲突列表。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：读取生成的 `parser_tables.json`，断言产生式、FIRST 集和冲突列表。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -110,11 +110,11 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -c "import json; t=json.load(open('build/minic/parser_tables.json', encoding='utf-8')); print(len(t['productions']), t['states'], t['first']['Expr'], t['conflicts'])"
 ```
 
-复核观测：测试 `ok`；手工命令先打印 38，再打印状态数，FIRST(Expr) 含 `IDENT`、`NUMBER`、`(` 三项，冲突各项的 `lookahead` 都是 `else`、`resolution` 都是 `shift`。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令先打印 38，再打印状态数，FIRST(Expr) 含 `IDENT`、`NUMBER`、`(` 三项，冲突各项的 `lookahead` 都是 `else`、`resolution` 都是 `shift`。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-02 日志](evidence/T1-02.log) 中名字含 `ac07` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC08 未声明的冲突
 
-- [ ] 未执行。方法：用二义文法和去掉 `%prefer` 声明的 mini-C 文法分别生成，断言失败、错误信息和无输出文件。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：用二义文法和去掉 `%prefer` 声明的 mini-C 文法分别生成，断言失败、错误信息和无输出文件。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -126,18 +126,18 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex tests/fixtures/calc.lex --grammar tests/fixtures/ambiguous.grammar --out out/ambiguous ; echo "退出码 $?" ; ls out/ambiguous 2>/dev/null
 ```
 
-复核观测：测试 `ok`；手工命令在标准错误列出 `+` 上的移进-归约冲突和相关项目，退出码 2，`ls` 没有输出。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令在标准错误列出 `+` 上的移进-归约冲突和相关项目，退出码 2，`ls` 没有输出。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-02 日志](evidence/T1-02.log) 中名字含 `ac08` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC09 规则文件错误
 
-- [ ] 未执行。方法：对四份有错的规则分别生成，断言退出码、文件名与行号、输出目录为空。有错规则由测试在临时目录中写出。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：对四份有错的规则分别生成，断言退出码、文件名与行号、输出目录为空。有错规则由测试在临时目录中写出。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac09 -v
 ```
 
-复核观测：四种情形的用例都 `ok`，退出码 0。实际结果/日期/证据：未执行。
+复核观测：四种情形的用例都 `ok`，退出码 0。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-02 日志](evidence/T1-02.log) 中名字含 `ac09` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC10 表达式的 AST 结构
 
@@ -334,4 +334,4 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && echo 5 | bas
 
 ## 当前汇总
 
-计划 AC：1/1（AC00）；实施 AC：3/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。
+计划 AC：1/1（AC00）；实施 AC：8/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。
