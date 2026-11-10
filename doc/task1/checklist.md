@@ -82,7 +82,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 
 ## AC06 词法错误
 
-- [ ] 未执行。方法：编译 `tests/fixtures/lex_error.mc`，断言退出码、两条诊断和产物文件。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：编译 `tests/fixtures/lex_error.mc`，断言退出码、两条诊断和产物文件。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -94,7 +94,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic tests/fixtures/lex_error.mc --frontend build/minic --out out/lex_error ; echo "退出码 $?" ; ls out/lex_error
 ```
 
-复核观测：测试 `ok`；手工命令在标准错误打印 1:11 和 2:7 两条 `词法错误[L001]`，退出码 1，目录中只有 `tokens.txt`、`tokens.json`。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令在标准错误打印 1:11 和 2:7 两条 `词法错误[L001]`，退出码 1，目录中只有 `tokens.txt`、`tokens.json`。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-03 日志](evidence/T1-03.log) 中名字含 `ac06` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC07 LR(1) 分析表与产生式编号
 
@@ -141,7 +141,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 
 ## AC10 表达式的 AST 结构
 
-- [ ] 未执行。方法：编译 `tests/fixtures/expr.mc`，断言 `ast.json` 的嵌套结构。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：编译 `tests/fixtures/expr.mc`，断言 `ast.json` 的嵌套结构。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -153,22 +153,22 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic tests/fixtures/expr.mc --frontend build/minic --out out/expr --stop-after ast && cat out/expr/ast.json
 ```
 
-复核观测：测试 `ok`；`ast.json` 中第一条语句的 `init` 是 `op` 为 `-` 的 `BinaryOp`，它的 `left` 的 `op` 为 `+`，再下一层 `right` 的 `op` 为 `*`。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；`ast.json` 中第一条语句的 `init` 是 `op` 为 `-` 的 `BinaryOp`，它的 `left` 的 `op` 为 `+`，再下一层 `right` 的 `op` 为 `*`。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-03 日志](evidence/T1-03.log) 中名字含 `ac10` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC11 else 的最近配对
 
-- [ ] 未执行。方法：编译 `tests/fixtures/dangling_else.mc`，断言外层 `If` 无 `else`、内层 `If` 有 `else`。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：编译 `tests/fixtures/dangling_else.mc`，断言外层 `If` 无 `else`、内层 `If` 有 `else`。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac11 -v
 ```
 
-复核观测：用例 `ok`，退出码 0。实际结果/日期/证据：未执行。
+复核观测：用例 `ok`，退出码 0。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-03 日志](evidence/T1-03.log) 中名字含 `ac11` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC12 语法错误
 
-- [ ] 未执行。方法：编译两个语法错误样例，断言退出码、诊断位置、实际记号、期望集合和产物文件。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：编译两个语法错误样例，断言退出码、诊断位置、实际记号、期望集合和产物文件。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -180,11 +180,11 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic tests/fixtures/syntax_chain.mc --frontend build/minic --out out/syntax_chain ; echo "退出码 $?" ; ls out/syntax_chain
 ```
 
-复核观测：测试 `ok`；手工命令打印一条位于 1:15 的 `语法错误[P001]`，期望集合为 `+ - * / ;`，退出码 1，目录中只有 `tokens.txt`、`tokens.json`。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令打印一条位于 1:15 的 `语法错误[P001]`，期望集合为 `+ - * / ;`，退出码 1，目录中只有 `tokens.txt`、`tokens.json`。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-03 日志](evidence/T1-03.log) 中名字含 `ac12` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC13 语义错误
 
-- [ ] 未执行。方法：编译 `tests/fixtures/semantic_error.mc`，断言四条诊断的代码、位置和顺序，以及产物文件。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：编译 `tests/fixtures/semantic_error.mc`，断言四条诊断的代码、位置和顺序，以及产物文件。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -196,7 +196,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic tests/fixtures/semantic_error.mc --frontend build/minic --out out/semantic_error ; echo "退出码 $?" ; ls out/semantic_error
 ```
 
-复核观测：测试 `ok`；手工命令依次打印 2:1 `S002`、3:1 `S001`、4:9 `S003`、6:1 `S001` 四条诊断，退出码 1，目录中有 `tokens.*` 和 `ast.*`，没有 `.ll`。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令依次打印 2:1 `S002`、3:1 `S001`、4:9 `S003`、6:1 `S001` 四条诊断，退出码 1，目录中有 `tokens.*` 和 `ast.*`，没有 `.ll`。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-03 日志](evidence/T1-03.log) 中名字含 `ac13` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC14 LLVM IR 的生成
 
@@ -291,7 +291,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 
 ## AC20 生成的分析器独立运行
 
-- [ ] 未执行。方法：在仓库外的临时目录用 `python3 -I` 依次运行 `lexer.py`、`parser.py`，把结果与 `minic` 的产物逐字节比较。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：在仓库外的临时目录用 `python3 -I` 依次运行 `lexer.py`、`parser.py`，把结果与 `minic` 的产物逐字节比较。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -303,7 +303,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic examples/demo.mc --frontend build/minic --out out/demo_ast --stop-after ast && mkdir -p /tmp/minic-ac20 && cd /tmp/minic-ac20 && python3 -I "/Users/aqua_night/codex_project/编译原理/minic-compiler/build/minic/lexer.py" "/Users/aqua_night/codex_project/编译原理/minic-compiler/examples/demo.mc" -o tokens.json && python3 -I "/Users/aqua_night/codex_project/编译原理/minic-compiler/build/minic/parser.py" tokens.json -o ast.json && cmp tokens.json "/Users/aqua_night/codex_project/编译原理/minic-compiler/out/demo_ast/tokens.json" && cmp ast.json "/Users/aqua_night/codex_project/编译原理/minic-compiler/out/demo_ast/ast.json" && echo "独立运行结果一致"
 ```
 
-复核观测：测试 `ok`；手工命令打印“独立运行结果一致”。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令打印“独立运行结果一致”。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-03 日志](evidence/T1-03.log) 中名字含 `ac20` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC21 全量测试与标准库依赖
 
@@ -334,4 +334,4 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && echo 5 | bas
 
 ## 当前汇总
 
-计划 AC：1/1（AC00）；实施 AC：8/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。
+计划 AC：1/1（AC00）；实施 AC：14/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。

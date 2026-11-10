@@ -1,0 +1,25 @@
+日期：2026-11-10
+Python：Python 3.11.15
+Shell：/bin/zsh
+PATH 首项：/tmp/minic-task1-python311/bin
+命令：cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac06 -k ac10 -k ac11 -k ac12 -k ac13 -k ac20 -v
+
+STDOUT:
+
+STDERR:
+test_ac06_all_lex_errors_and_stale_cleanup (test_minic_frontend.FrontendTests.test_ac06_all_lex_errors_and_stale_cleanup) ... ok
+test_ac10_expression_ast (test_minic_frontend.FrontendTests.test_ac10_expression_ast) ... ok
+test_ac11_nearest_else (test_minic_frontend.FrontendTests.test_ac11_nearest_else) ... ok
+test_ac12_exact_syntax_errors (test_minic_frontend.FrontendTests.test_ac12_exact_syntax_errors) ... ok
+test_ac12_stop_after_tokens_and_missing_frontend (test_minic_frontend.FrontendTests.test_ac12_stop_after_tokens_and_missing_frontend) ... ok
+test_ac13_diagnostics_and_artifacts (test_semantic.SemanticTests.test_ac13_diagnostics_and_artifacts) ... ok
+test_ac13_scopes_initializers_and_range (test_semantic.SemanticTests.test_ac13_scopes_initializers_and_range) ... ok
+test_ac20_isolated_cli_byte_identity (test_standalone.StandaloneTests.test_ac20_isolated_cli_byte_identity) ... ok
+test_ac20_refuses_lexical_errors (test_standalone.StandaloneTests.test_ac20_refuses_lexical_errors) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.419s
+
+OK
+
+退出码：0

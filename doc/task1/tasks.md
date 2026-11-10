@@ -37,16 +37,16 @@
 
   计划观测：生成命令退出码 0，并打印五个文件的路径和一行统计，其中 LR(1) 状态数预计为 264（估算，以实际为准）、已消解冲突数为 2；所列 AC 的用例全部 `ok`。实际结果：2026-11-10：7 个测试全部 OK（0.500s），无失败、错误或跳过；退出码 0。证据：`evidence/T1-02.log`。
 
-- [ ] T1-03 实现编译器驱动的前端与诊断。规则：R12–R15、R21（记号文件与 `ast.json`）、R24、R25；关联 AC06、AC10、AC11、AC12、AC13、AC20。
+- [x] T1-03 实现编译器驱动的前端与诊断。规则：R12–R15、R21（记号文件与 `ast.json`）、R24、R25；关联 AC06、AC10、AC11、AC12、AC13、AC20。
   - 文件：`minic/__main__.py`、`minic/frontend.py`、`minic/diagnostics.py`、`minic/semantic.py`、`examples/demo.mc`、`tests/test_minic_frontend.py`、`tests/test_semantic.py`、`tests/test_standalone.py`、`tests/fixtures/` 下的 `lex_error.mc`、`expr.mc`、`dangling_else.mc`、`syntax_chain.mc`、`syntax_eof.mc`、`semantic_error.mc`。
-  - 完成情况：未执行。交付 `python3 -m minic` 命令的阶段 1 至 3 和 `--stop-after`：加载生成的分析器、写出 `tokens.*` 与 `ast.json`、统一诊断格式、退出码、语义检查；并验证 mini-C 的 AST 结构和分析器的独立运行。
+  - 完成情况：编码与自动检查已完成。交付 `python3 -m minic` 命令的阶段 1 至 3 和 `--stop-after`：加载生成的分析器、写出 `tokens.*` 与 `ast.json`、统一诊断格式、退出码、语义检查；并验证 mini-C 的 AST 结构和分析器的独立运行。
 
   ```bash
-  # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
+  # 已验证 2026-11-10；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
   cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac06 -k ac10 -k ac11 -k ac12 -k ac13 -k ac20 -v
   ```
 
-  计划观测：所列 AC 的用例全部 `ok`，退出码 0。实际结果：未执行。
+  计划观测：所列 AC 的用例全部 `ok`，退出码 0。实际结果：2026-11-10：9 个测试全部 OK（0.419s），无失败、错误或跳过；退出码 0。证据：`evidence/T1-03.log`。
 
 - [ ] T1-04 实现 LLVM IR 生成与 clang 后端。规则：R16–R20；关联 AC14、AC15、AC16、AC17。
   - 文件：`minic/irgen.py`、`minic/backend.py`、`minic/__main__.py`（阶段 4 至 6 与 `-O`、`--clang`、`--run`）、`tests/test_irgen.py`、`tests/test_backend.py`、`tests/fixtures/run/` 下 6 个运行样例。
@@ -87,4 +87,5 @@
 |---|---|
 | T1-00 | 见 `git log` 中说明以 `T1-00` 开头的提交（本文件随该提交入库，无法在自身中预填哈希） |
 | T1-01 | `935e20f` |
-| T1-02 至 T1-06 | 未提交 |
+| T1-02 | `1f39378` |
+| T1-03 至 T1-06 | 未提交 |
