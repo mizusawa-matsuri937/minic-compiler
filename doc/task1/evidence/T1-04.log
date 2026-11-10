@@ -1,0 +1,29 @@
+日期：2026-11-10
+Python：Python 3.11.15
+Shell：/bin/zsh
+PATH 首项：/tmp/minic-task1-python311/bin
+命令：cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac14 -k ac15 -k ac16 -k ac17 -v
+
+STDOUT:
+
+STDERR:
+test_ac15_demo_optimization_equivalence (test_backend.BackendTests.test_ac15_demo_optimization_equivalence) ... ok
+test_ac15_run_forwards_stdio (test_backend.BackendTests.test_ac15_run_forwards_stdio) ... ok
+test_ac17_clang_commands (test_backend.BackendTests.test_ac17_clang_commands) ... ok
+test_ac17_failed_clang_keeps_frontend (test_backend.BackendTests.test_ac17_failed_clang_keeps_frontend) ... ok
+test_ac17_missing_clang_keeps_frontend (test_backend.BackendTests.test_ac17_missing_clang_keeps_frontend) ... ok
+test_ac16_arith (test_backend.RuntimeTests.test_ac16_arith) ... ok
+test_ac16_control (test_backend.RuntimeTests.test_ac16_control) ... ok
+test_ac16_dangling_else (test_backend.RuntimeTests.test_ac16_dangling_else) ... ok
+test_ac16_io (test_backend.RuntimeTests.test_ac16_io) ... ok
+test_ac16_rel (test_backend.RuntimeTests.test_ac16_rel) ... ok
+test_ac16_scope (test_backend.RuntimeTests.test_ac16_scope) ... ok
+test_ac16_wrap (test_backend.RuntimeTests.test_ac16_wrap) ... ok
+test_ac14_ir_features_and_determinism (test_irgen.IRTests.test_ac14_ir_features_and_determinism) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 10.739s
+
+OK
+
+退出码：0

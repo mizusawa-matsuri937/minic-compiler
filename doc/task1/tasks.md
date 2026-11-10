@@ -48,16 +48,16 @@
 
   计划观测：所列 AC 的用例全部 `ok`，退出码 0。实际结果：2026-11-10：9 个测试全部 OK（0.419s），无失败、错误或跳过；退出码 0。证据：`evidence/T1-03.log`。
 
-- [ ] T1-04 实现 LLVM IR 生成与 clang 后端。规则：R16–R20；关联 AC14、AC15、AC16、AC17。
+- [x] T1-04 实现 LLVM IR 生成与 clang 后端。规则：R16–R20；关联 AC14、AC15、AC16、AC17。
   - 文件：`minic/irgen.py`、`minic/backend.py`、`minic/__main__.py`（阶段 4 至 6 与 `-O`、`--clang`、`--run`）、`tests/test_irgen.py`、`tests/test_backend.py`、`tests/fixtures/run/` 下 6 个运行样例。
-  - 完成情况：未执行。交付 IR 生成、三条 clang 命令的调用、可执行文件的运行，以及 clang 缺失时的降级行为。
+  - 完成情况：编码与自动检查已完成。交付 IR 生成、三条 clang 命令的调用、可执行文件的运行，以及 clang 缺失时的降级行为。
 
   ```bash
-  # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh；需要 clang 在 PATH 中
+  # 已验证 2026-11-10；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh；需要 clang 在 PATH 中
   cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac14 -k ac15 -k ac16 -k ac17 -v
   ```
 
-  计划观测：所列 AC 的用例全部 `ok`，没有被跳过的用例（本机有 clang）；退出码 0。实际结果：未执行。
+  计划观测：所列 AC 的用例全部 `ok`，没有被跳过的用例（本机有 clang）；退出码 0。实际结果：2026-11-10：13 个测试全部 OK（10.739s），无失败、错误或跳过；退出码 0。证据：`evidence/T1-04.log`。
 
 - [ ] T1-05 实现 AST 可视化与生成器构造报告。规则：R21（`ast.txt`、`ast.html`、`ast.dot`）、R22、R23；关联 AC18、AC19。
   - 文件：`minic/astviz.py`、`ccgen/report.py`、`tests/test_astviz.py`、`tests/test_report.py`。
@@ -88,4 +88,5 @@
 | T1-00 | 见 `git log` 中说明以 `T1-00` 开头的提交（本文件随该提交入库，无法在自身中预填哈希） |
 | T1-01 | `935e20f` |
 | T1-02 | `1f39378` |
-| T1-03 至 T1-06 | 未提交 |
+| T1-03 | `b25663e` |
+| T1-04 至 T1-06 | 未提交 |

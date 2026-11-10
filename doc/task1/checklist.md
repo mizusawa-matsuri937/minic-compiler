@@ -200,7 +200,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 
 ## AC14 LLVM IR 的生成
 
-- [ ] 未执行。方法：以 `--stop-after ir` 编译演示程序两次，断言 IR 的结构特征和两次产物一致。此项不需要 clang。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：以 `--stop-after ir` 编译演示程序两次，断言 IR 的结构特征和两次产物一致。此项不需要 clang。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -212,11 +212,11 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic examples/demo.mc --frontend build/minic --out out/demo_ir --stop-after ir && cat out/demo_ir/demo.ll && grep -c "alloca i32" out/demo_ir/demo.ll
 ```
 
-复核观测：测试 `ok`；手工命令打印完整 IR，末行计数为 4。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令打印完整 IR，末行计数为 4。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-04 日志](evidence/T1-04.log) 中名字含 `ac14` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC15 优化、机器码与运行结果
 
-- [ ] 未执行。方法：完整编译演示程序（`-O0` 与 `-O2`），运行可执行文件并比较输出。需要 clang；测试被跳过时此项不能勾选。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：完整编译演示程序（`-O0` 与 `-O2`），运行可执行文件并比较输出。需要 clang；测试被跳过时此项不能勾选。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh；需要 clang 在 PATH 中
@@ -228,22 +228,22 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic examples/demo.mc --frontend build/minic --out out/demo && ls out/demo && echo 5 | out/demo/demo && echo 10 | out/demo/demo
 ```
 
-复核观测：测试 `ok` 且没有跳过；手工命令列出包括 `demo.opt.ll`、`demo.s`、`demo` 在内的全部产物，随后输出 `15`、`120`、`1`、`55`、`3628800`、`0` 六行。实际结果/日期/证据：未执行。
+复核观测：测试 `ok` 且没有跳过；手工命令列出包括 `demo.opt.ll`、`demo.s`、`demo` 在内的全部产物，随后输出 `15`、`120`、`1`、`55`、`3628800`、`0` 六行。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-04 日志](evidence/T1-04.log) 中名字含 `ac15` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC16 运行语义
 
-- [ ] 未执行。方法：编译并运行 7 个运行样例，逐个比较标准输出。需要 clang；测试被跳过时此项不能勾选。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：编译并运行 7 个运行样例，逐个比较标准输出。需要 clang；测试被跳过时此项不能勾选。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh；需要 clang 在 PATH 中
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac16 -v
 ```
 
-复核观测：7 个样例各自对应的用例都 `ok`，没有跳过，退出码 0。实际结果/日期/证据：未执行。
+复核观测：7 个样例各自对应的用例都 `ok`，没有跳过，退出码 0。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-04 日志](evidence/T1-04.log) 中名字含 `ac16` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC17 clang 不可用
 
-- [ ] 未执行。方法：以 `--clang /nonexistent/clang` 编译演示程序，断言退出码 3 和保留的产物。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：以 `--clang /nonexistent/clang` 编译演示程序，断言退出码 3 和保留的产物。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -255,7 +255,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic examples/demo.mc --frontend build/minic --out out/demo_noclang --clang /nonexistent/clang ; echo "退出码 $?" ; ls out/demo_noclang
 ```
 
-复核观测：测试 `ok`；手工命令说明无法运行 clang，退出码 3，目录中有 `tokens.*`、`ast.*`、`demo.ll`，没有 `demo.opt.ll`、`demo.s`、`demo`。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；手工命令说明无法运行 clang，退出码 3，目录中有 `tokens.*`、`ast.*`、`demo.ll`，没有 `demo.opt.ll`、`demo.s`、`demo`。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-04 日志](evidence/T1-04.log) 中名字含 `ac17` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC18 AST 可视化
 
@@ -334,4 +334,4 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && echo 5 | bas
 
 ## 当前汇总
 
-计划 AC：1/1（AC00）；实施 AC：14/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。
+计划 AC：1/1（AC00）；实施 AC：18/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。

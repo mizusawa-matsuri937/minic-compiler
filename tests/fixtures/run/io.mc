@@ -1,0 +1,1 @@
+int a; int b; read(a); read(b); write(a - b);

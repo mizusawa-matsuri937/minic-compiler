@@ -535,3 +535,5 @@ SVG 的布局算法：结点标签为类型加标量字段（如 `BinaryOp +`、
 
 
 - 2026-11-10（T1-02 环境复核）：zsh 启动脚本会重设继承的 PATH，阶段日志脚本改为启动后显式 export，再读取实际 `python3 --version`。T1-01 的首次直接测试在 3.11 上通过，日志采集在 3.14 上通过；现重跑 3.11 并修正日志，不改写已有提交。影响 R27 / AC21 的环境证据。
+
+- 2026-11-10（T1-04 参考核对）：查阅 [LLVM LangRef](https://llvm.org/docs/LangRef.html) 的 `call`、`add`、`sdiv`：保持完整可变参数签名、不加 `nsw`、用有符号除法；没有改变翻译方案。检索 LLVM 上游 `llvm/test/CodeGen/Generic/print-arith-int.ll` 对照指令形状，GitHub 页面抓取失败，检索返回的上游镜像可见同类用法；未复制任何外部代码，无新增依赖。后端以产物目录为 cwd、向 clang 传文件名，避免优化 IR 的 ModuleID 含不同临时输出路径。影响 R16–R20、R29 / AC14–AC17。
