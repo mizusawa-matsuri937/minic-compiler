@@ -259,7 +259,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 
 ## AC18 AST 可视化
 
-- [ ] 未执行。方法：自动化测试核对四个 AST 文件存在，`ast.html` 自包含、含 SVG、结点数与 `ast.json` 一致；另需人工在浏览器中离线打开目视检查。两部分都完成才能勾选。此项不需要 clang。
+- [ ] 部分通过（2026-11-10）：阶段自动检查通过，退出码 0。人工目视检查留给用户，未代勾。方法：自动化测试核对四个 AST 文件存在，`ast.html` 自包含、含 SVG、结点数与 `ast.json` 一致；另需人工在浏览器中离线打开目视检查。两部分都完成才能勾选。此项不需要 clang。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -271,11 +271,11 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && python3 -m minic examples/demo.mc --frontend build/minic --out out/demo_ast --stop-after ast && ls out/demo_ast && open out/demo_ast/ast.html
 ```
 
-复核观测：测试 `ok`；`ls` 列出 `ast.json`、`ast.txt`、`ast.html`、`ast.dot` 和两个记号文件；浏览器断网时仍能显示以 `Program` 为根的树，结点不重叠，连线旁有字段名。实际结果/日期/证据：未执行。人工检查：未记录。
+复核观测：测试 `ok`；`ls` 列出 `ast.json`、`ast.txt`、`ast.html`、`ast.dot` 和两个记号文件；浏览器断网时仍能显示以 `Program` 为根的树，结点不重叠，连线旁有字段名。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-05 日志](evidence/T1-05.log) 中名字含 `ac18` 的测试。上面的单项与手工复核命令未单独执行。人工检查：未记录。
 
 ## AC19 生成器构造报告
 
-- [ ] 未执行。方法：自动化测试核对 `report.html` 的九节内容、与表文件一致的数字和自包含；建议人工打开浏览一遍。
+- [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：自动化测试核对 `report.html` 的九节内容、与表文件一致的数字和自包含；建议人工打开浏览一遍。
 
 ```bash
 # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
@@ -287,7 +287,7 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m u
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && open build/minic/report.html
 ```
 
-复核观测：测试 `ok`；页面依次有正规式、三个状态数、最小 DFA 转换表、产生式、FIRST 集、项目集数量、ACTION/GOTO 表、冲突与消解。实际结果/日期/证据：未执行。
+复核观测：测试 `ok`；页面依次有正规式、三个状态数、最小 DFA 转换表、产生式、FIRST 集、项目集数量、ACTION/GOTO 表、冲突与消解。实际结果/日期/证据：2026-11-10，阶段测试 OK，无跳过，退出码 0；详见 [T1-05 日志](evidence/T1-05.log) 中名字含 `ac19` 的测试。上面的单项与手工复核命令未单独执行。
 
 ## AC20 生成的分析器独立运行
 
@@ -334,4 +334,4 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && echo 5 | bas
 
 ## 当前汇总
 
-计划 AC：1/1（AC00）；实施 AC：18/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。
+计划 AC：1/1（AC00）；实施 AC：19/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。

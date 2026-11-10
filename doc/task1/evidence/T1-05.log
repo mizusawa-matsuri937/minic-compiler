@@ -1,0 +1,19 @@
+日期：2026-11-10
+Python：Python 3.11.15
+Shell：/bin/zsh
+PATH 首项：/tmp/minic-task1-python311/bin
+命令：cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac18 -k ac19 -v
+
+STDOUT:
+
+STDERR:
+test_ac18_html_escaping (test_astviz.VisualizationTests.test_ac18_html_escaping) ... ok
+test_ac18_offline_svg_and_artifacts (test_astviz.VisualizationTests.test_ac18_offline_svg_and_artifacts) ... ok
+test_ac19_complete_consistent_report (test_report.ReportTests.test_ac19_complete_consistent_report) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.207s
+
+OK
+
+退出码：0

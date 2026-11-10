@@ -8,6 +8,7 @@ from .lexspec import build_tables as lex_tables
 from .grammar import read_grammar
 from .lr1 import build_tables as parse_tables
 from .codegen import lexer_source, parser_source
+from .report import generate as render_report
 
 
 def generate(lex_path, grammar_path, out):
@@ -18,7 +19,7 @@ def generate(lex_path, grammar_path, out):
         'parser.py': parser_source(parser),
         'lexer_tables.json': json.dumps(lex, ensure_ascii=False, indent=2) + '\n',
         'parser_tables.json': json.dumps(parser, ensure_ascii=False, indent=2) + '\n',
-        'report.html': '<!doctype html>\n<html lang="zh"><meta charset="utf-8"><title>构造报告</title><h1>构造报告</h1></html>\n',
+        'report.html': render_report(lex, parser),
     }
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)

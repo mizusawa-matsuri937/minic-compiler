@@ -59,16 +59,16 @@
 
   计划观测：所列 AC 的用例全部 `ok`，没有被跳过的用例（本机有 clang）；退出码 0。实际结果：2026-11-10：13 个测试全部 OK（10.739s），无失败、错误或跳过；退出码 0。证据：`evidence/T1-04.log`。
 
-- [ ] T1-05 实现 AST 可视化与生成器构造报告。规则：R21（`ast.txt`、`ast.html`、`ast.dot`）、R22、R23；关联 AC18、AC19。
+- [x] T1-05 实现 AST 可视化与生成器构造报告。规则：R21（`ast.txt`、`ast.html`、`ast.dot`）、R22、R23；关联 AC18、AC19。
   - 文件：`minic/astviz.py`、`ccgen/report.py`、`tests/test_astviz.py`、`tests/test_report.py`。
-  - 完成情况：未执行。交付三种 AST 展示文件和九节内容的 `report.html`。
+  - 完成情况：编码与自动检查已完成。交付三种 AST 展示文件和九节内容的 `report.html`。
 
   ```bash
-  # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
+  # 已验证 2026-11-10；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh
   cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac18 -k ac19 -v
   ```
 
-  计划观测：所列 AC 的用例全部 `ok`，退出码 0。另需人工按 checklist 中 AC18、AC19 的手工命令在浏览器中离线打开 `ast.html` 和 `report.html` 目视检查，结果记入 checklist 的 AC18。实际结果：未执行。
+  计划观测：所列 AC 的用例全部 `ok`，退出码 0。另需人工按 checklist 中 AC18、AC19 的手工命令在浏览器中离线打开 `ast.html` 和 `report.html` 目视检查，结果记入 checklist 的 AC18。实际结果：2026-11-10：3 个测试全部 OK（0.207s），无失败、错误或跳过；退出码 0。证据：`evidence/T1-05.log`。
 
 - [ ] T1-06 完成演示脚本、全量回归与交接。规则：R27、R28；关联 AC21、AC22，并核对 AC01–AC20 的证据仍然有效。
   - 文件：`scripts/demo.sh`、`tests/test_project.py`、`README.md`、`doc/task1/checklist.md`、`doc/handoffs/` 下新增的交接文件。
@@ -89,4 +89,5 @@
 | T1-01 | `935e20f` |
 | T1-02 | `1f39378` |
 | T1-03 | `b25663e` |
-| T1-04 至 T1-06 | 未提交 |
+| T1-04 | `ffbb486` |
+| T1-05 至 T1-06 | 未提交 |
