@@ -1,0 +1,12 @@
+# 编辑器与系统
+.idea/
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 生成物：生成器输出与编译输出，可由命令重新生成
+build/
+out/
