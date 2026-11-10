@@ -1,0 +1,14 @@
+examples/demo.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/dangling_else.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/expr.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/lex_ok.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/run/arith.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/run/control.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/run/io.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/run/rel.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/run/scope.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/run/wrap.mc semantic diagnostics/slots/text identical IR identical
+tests/fixtures/semantic_error.mc semantic diagnostics/slots/text identical (semantic errors)
+{'valid_syntax': 11, 'valid_semantics': 10}
+
+EXIT_CODE=0

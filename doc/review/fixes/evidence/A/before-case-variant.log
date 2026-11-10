@@ -1,0 +1,18 @@
+command: PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -p test_review_paths.py -k case_variant -v
+test_ac06_ac14_rv04_case_variant_repeated_cleanup (test_review_paths.ReviewPathTests.test_ac06_ac14_rv04_case_variant_repeated_cleanup) ... FAIL
+
+======================================================================
+FAIL: test_ac06_ac14_rv04_case_variant_repeated_cleanup (test_review_paths.ReviewPathTests.test_ac06_ac14_rv04_case_variant_repeated_cleanup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_review_paths.py", line 121, in test_ac06_ac14_rv04_case_variant_repeated_cleanup
+    self.assertEqual(result.returncode, 0, f'attempt={attempt}: {result.stderr}')
+AssertionError: 2 != 0 : attempt=1: 路径冲突：输出 /var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpwxz1ddq5/outputs/AST.JSON 与 /var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpwxz1ddq5/outputs/ast.json 不能共存
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.153s
+
+FAILED (failures=1)
+
+exit_code: 1

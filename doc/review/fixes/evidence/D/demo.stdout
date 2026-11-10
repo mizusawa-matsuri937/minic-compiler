@@ -1,0 +1,19 @@
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/lexer.py
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/parser.py
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/lexer_tables.json
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/parser_tables.json
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/report.html
+记号 27；NFA 177；DFA 48；最小 DFA 44；产生式 38；LR(1) 状态 264；已消解冲突 2
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/tokens.txt
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/tokens.json
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.json
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.txt
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.html
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.dot
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.ll
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.opt.ll
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.s
+/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo
+15
+120
+1

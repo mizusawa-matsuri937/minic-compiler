@@ -1,0 +1,10 @@
+test_ac14_ir_features_and_determinism (test_irgen.IRTests.test_ac14_ir_features_and_determinism) ... ok
+test_ac14_rv07_ir_expression_without_semantic_gate (test_review_ast.ReviewAstTests.test_ac14_rv07_ir_expression_without_semantic_gate) ... ok
+test_ac14_rv07_ir_statement_without_semantic_gate (test_review_ast.ReviewAstTests.test_ac14_rv07_ir_statement_without_semantic_gate) ... ok
+test_ac06_ac14_rv04_case_variant_repeated_cleanup (test_review_paths.ReviewPathTests.test_ac06_ac14_rv04_case_variant_repeated_cleanup) ... ok
+test_ac14_ac15_rv05_option_like_names_and_determinism (test_review_paths.ReviewPathTests.test_ac14_ac15_rv05_option_like_names_and_determinism) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 3.126s
+
+OK

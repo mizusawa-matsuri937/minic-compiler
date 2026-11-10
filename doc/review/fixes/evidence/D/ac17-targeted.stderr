@@ -1,0 +1,8 @@
+test_ac17_clang_commands (test_backend.BackendTests.test_ac17_clang_commands) ... ok
+test_ac17_failed_clang_keeps_frontend (test_backend.BackendTests.test_ac17_failed_clang_keeps_frontend) ... ok
+test_ac17_missing_clang_keeps_frontend (test_backend.BackendTests.test_ac17_missing_clang_keeps_frontend) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.634s
+
+OK

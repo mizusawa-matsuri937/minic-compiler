@@ -1,4 +1,5 @@
 from pathlib import Path
+import shlex
 import shutil
 import subprocess
 import sys
@@ -65,8 +66,13 @@ class BackendTests(unittest.TestCase):
 
     def test_ac17_failed_clang_keeps_frontend(self):
         tool = self.root / 'failing-clang'
-        tool.write_text(f'#!{sys.executable}\nimport sys\nprint("test clang diagnostic", file=sys.stderr)\nsys.exit(7)\n')
+        payload = 'import sys; print("test clang diagnostic", file=sys.stderr); sys.exit(7)'
+        tool.write_text(f'#!/bin/sh\nexec {shlex.quote(sys.executable)} -c {shlex.quote(payload)}\n')
         tool.chmod(0o755)
+        failure = run(tool)
+        self.assertEqual(failure.returncode, 7)
+        self.assertEqual(failure.stdout, '')
+        self.assertEqual(failure.stderr, 'test clang diagnostic\n')
         out = self.root / 'compiled'
         result = frontend.compile('examples/demo.mc', out, '--clang', str(tool))
         self.assertEqual(result.returncode, 3, result.stderr)
@@ -74,6 +80,8 @@ class BackendTests(unittest.TestCase):
         self.assertIn('退出码 7', result.stderr)
         self.assertTrue((out / 'demo.ll').is_file())
         self.assertFalse((out / 'demo').exists())
+        self.assertEqual({p.name for p in out.iterdir()},
+                         {'tokens.txt', 'tokens.json', 'ast.json', 'ast.txt', 'ast.html', 'ast.dot', 'demo.ll'})
 
     def test_ac17_clang_commands(self):
         ir = self.root / 'source.ll'
@@ -81,9 +89,9 @@ class BackendTests(unittest.TestCase):
         with patch('minic.backend.subprocess.run', return_value=subprocess.CompletedProcess([], 0, '', '')) as mocked:
             backend.build(ir, 1, 'clang')
         self.assertEqual([c.args[0] for c in mocked.call_args_list], [
-            ['clang', '-Wno-override-module', '-O1', '-S', '-emit-llvm', 'source.ll', '-o', 'source.opt.ll'],
-            ['clang', '-Wno-override-module', '-O1', '-S', 'source.ll', '-o', 'source.s'],
-            ['clang', '-Wno-override-module', '-O1', 'source.ll', '-o', 'source'],
+            ['clang', '-Wno-override-module', '-O1', '-S', '-emit-llvm', './source.ll', '-o', './source.opt.ll'],
+            ['clang', '-Wno-override-module', '-O1', '-S', './source.ll', '-o', './source.s'],
+            ['clang', '-Wno-override-module', '-O1', './source.ll', '-o', './source'],
         ])
 
 

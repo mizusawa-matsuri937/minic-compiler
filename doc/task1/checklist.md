@@ -342,3 +342,15 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && echo 5 | bas
 ## 当前汇总
 
 计划 AC：1/1（AC00）；实施 AC：21/22。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。
+
+2026-11-11 修复轮补充实测（保留上文 2026-11-10 历史结果及全部复选状态）：RV01～RV11 的修前失败与修后通过见 [修复汇总](../review/fix-summary.md)。D 逐项运行 AC02、AC05、AC06、AC10、AC13～AC22 的 14 组筛选及全部新增回归（26 tests），均退出 0、无失败/错误/跳过；随后 Python 3.11.15 全量 **67 tests / 21.386s，0 失败、0 错误、0 跳过，退出 0**，见 [full-regression.json](../review/fixes/evidence/D/full-regression.json)。源码在定向和全量验证前后摘要一致；真实 Apple clang 21.0.0 后端实际执行。
+
+```bash
+# 已验证 2026-11-11；shell zsh；Python 3.11.15；所有测试产物在临时目录
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler"
+PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -v
+```
+
+演示实测设置 `MINIC_PYTHON=/Users/aqua_night/.local/bin/python3.11`、`MINIC_BUILD_DIR` 和 `MINIC_OUT_DIR` 指向带空格临时目录，然后执行 `echo 5 | bash scripts/demo.sh`，退出 0，最后三行 `15`、`120`、`1`；五个生成器文件与十个编译产物齐全非空。实际路径、环境、完整 stdout/stderr 及退出码见 [demo.json](../review/fixes/evidence/D/demo.json)，可复制复核入口见 [D 报告](../review/fixes/agent-D.md)。
+
+AC18 技术补充：D 在 Safari 26.5 以本地文件打开长标识符与 demo 图，实际文字越框、节点文字/字段标签重叠、文字超出 SVG 均为 0；[浏览器记录](../review/fixes/evidence/D/browser-observations.txt) 含修前/修后真实测量及目视观察。这不等于用户亲自离线目视，AC18 保持未勾选。Python 3.14、其他系统/浏览器、clang 15 最低版本与答辩机器未在本轮验证。

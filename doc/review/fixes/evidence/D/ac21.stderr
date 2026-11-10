@@ -1,0 +1,8 @@
+test_ac21_exact_rule_and_sample_sources (test_project.ProjectTests.test_ac21_exact_rule_and_sample_sources) ... ok
+test_ac21_standard_library_only (test_project.ProjectTests.test_ac21_standard_library_only) ... ok
+test_ac17_ac21_rv11_failed_clang_under_spaced_python (test_review_portability.PortabilityReviewTests.test_ac17_ac21_rv11_failed_clang_under_spaced_python) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.653s
+
+OK

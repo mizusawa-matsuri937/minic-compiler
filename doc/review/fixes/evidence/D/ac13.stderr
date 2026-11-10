@@ -1,0 +1,10 @@
+test_ac13_rv07_deep_control_scope (test_review_ast.ReviewAstTests.test_ac13_rv07_deep_control_scope) ... ok
+test_ac13_rv07_deep_expression_semantics (test_review_ast.ReviewAstTests.test_ac13_rv07_deep_expression_semantics) ... ok
+test_ac13_ac20_rv06_cr_positions_match_api (test_review_paths.ReviewPathTests.test_ac13_ac20_rv06_cr_positions_match_api) ... ok
+test_ac13_diagnostics_and_artifacts (test_semantic.SemanticTests.test_ac13_diagnostics_and_artifacts) ... ok
+test_ac13_scopes_initializers_and_range (test_semantic.SemanticTests.test_ac13_scopes_initializers_and_range) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.305s
+
+OK

@@ -1,0 +1,31 @@
+test_ac13_rv07_deep_control_scope (test_review_ast.ReviewAstTests.test_ac13_rv07_deep_control_scope) ... ok
+test_ac13_rv07_deep_expression_semantics (test_review_ast.ReviewAstTests.test_ac13_rv07_deep_expression_semantics) ... ok
+test_ac14_rv07_ir_expression_without_semantic_gate (test_review_ast.ReviewAstTests.test_ac14_rv07_ir_expression_without_semantic_gate) ... ok
+test_ac14_rv07_ir_statement_without_semantic_gate (test_review_ast.ReviewAstTests.test_ac14_rv07_ir_statement_without_semantic_gate) ... ok
+test_ac16_rv07_long_expression_and_nested_control_execution (test_review_ast.ReviewAstTests.test_ac16_rv07_long_expression_and_nested_control_execution) ... ok
+test_ac18_rv07_all_deep_renderers (test_review_ast.ReviewAstTests.test_ac18_rv07_all_deep_renderers) ... ok
+test_ac18_rv08_actual_glyph_measurement_and_full_labels (test_review_ast.ReviewAstTests.test_ac18_rv08_actual_glyph_measurement_and_full_labels) ... ok
+test_ac19_rv10_visible_space_preserves_dfa_groups (test_review_ast.ReviewAstTests.test_ac19_rv10_visible_space_preserves_dfa_groups) ... ok
+test_ac20_rv07_long_pipeline_and_standalone_json (test_review_ast.ReviewAstTests.test_ac20_rv07_long_pipeline_and_standalone_json) ... ok
+test_ac02_ac20_rv03_ast_token_field_collision (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv03_ast_token_field_collision) ... ok
+test_ac02_ac20_rv07_deep_standalone_json (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv07_deep_standalone_json) ... ok
+test_ac05_ac20_rv06_raw_cr_crlf_lf (test_review_generated.GeneratedReviewTests.test_ac05_ac20_rv06_raw_cr_crlf_lf) ... ok
+test_ac05_ac20_rv09_text_escapes_control_characters (test_review_generated.GeneratedReviewTests.test_ac05_ac20_rv09_text_escapes_control_characters) ... ok
+test_ac10_ac20_rv07_json_format_compatibility (test_review_generated.GeneratedReviewTests.test_ac10_ac20_rv07_json_format_compatibility) ... ok
+test_ac20_rv02_same_second_same_size_pyc_ignored (test_review_generated.GeneratedReviewTests.test_ac20_rv02_same_second_same_size_pyc_ignored) ... ok
+test_ac06_ac14_rv04_case_variant_repeated_cleanup (test_review_paths.ReviewPathTests.test_ac06_ac14_rv04_case_variant_repeated_cleanup) ... ok
+test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise (test_review_paths.ReviewPathTests.test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise) ... ok
+test_ac06_rv01_output_parent_conflict_precedes_cleanup (test_review_paths.ReviewPathTests.test_ac06_rv01_output_parent_conflict_precedes_cleanup) ... ok
+test_ac06_rv01_source_in_output_is_preserved (test_review_paths.ReviewPathTests.test_ac06_rv01_source_in_output_is_preserved) ... ok
+test_ac13_ac20_rv06_cr_positions_match_api (test_review_paths.ReviewPathTests.test_ac13_ac20_rv06_cr_positions_match_api) ... ok
+test_ac14_ac15_rv05_option_like_names_and_determinism (test_review_paths.ReviewPathTests.test_ac14_ac15_rv05_option_like_names_and_determinism) ... ok
+test_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts (test_review_paths.ReviewPathTests.test_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts) ... ok
+test_ac18_rv01_output_aliases_rejected_before_cleanup (test_review_paths.ReviewPathTests.test_ac18_rv01_output_aliases_rejected_before_cleanup) ... ok
+test_ac20_rv01_analyzer_alias_is_preserved (test_review_paths.ReviewPathTests.test_ac20_rv01_analyzer_alias_is_preserved) ... ok
+test_ac20_rv01_selected_analyzers_are_preserved (test_review_paths.ReviewPathTests.test_ac20_rv01_selected_analyzers_are_preserved) ... ok
+test_ac17_ac21_rv11_failed_clang_under_spaced_python (test_review_portability.PortabilityReviewTests.test_ac17_ac21_rv11_failed_clang_under_spaced_python) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 9.002s
+
+OK

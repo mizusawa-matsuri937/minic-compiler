@@ -1,0 +1,7 @@
+test_ac10_expression_ast (test_minic_frontend.FrontendTests.test_ac10_expression_ast) ... ok
+test_ac10_ac20_rv07_json_format_compatibility (test_review_generated.GeneratedReviewTests.test_ac10_ac20_rv07_json_format_compatibility) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.142s
+
+OK

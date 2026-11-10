@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac18",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 3.4721734170016134,
+  "counts": {
+    "tests": 6,
+    "reported_seconds": 3.415,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac18_html_escaping (test_astviz.VisualizationTests.test_ac18_html_escaping) ... ok\ntest_ac18_offline_svg_and_artifacts (test_astviz.VisualizationTests.test_ac18_offline_svg_and_artifacts) ... ok\ntest_ac18_rv07_all_deep_renderers (test_review_ast.ReviewAstTests.test_ac18_rv07_all_deep_renderers) ... ok\ntest_ac18_rv08_actual_glyph_measurement_and_full_labels (test_review_ast.ReviewAstTests.test_ac18_rv08_actual_glyph_measurement_and_full_labels) ... ok\ntest_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts (test_review_paths.ReviewPathTests.test_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts) ... ok\ntest_ac18_rv01_output_aliases_rejected_before_cleanup (test_review_paths.ReviewPathTests.test_ac18_rv01_output_aliases_rejected_before_cleanup) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 3.415s\n\nOK\n"
+}

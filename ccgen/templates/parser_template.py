@@ -16,11 +16,50 @@ class ParseError(Exception):
 
 
 def json_text(value):
-    return json.dumps(value, ensure_ascii=False, indent=2) + '\n'
+    """Serialize the AST without Python recursion, using the usual JSON layout."""
+    parts, active = [], set()
+    pending = [('value', value, 0)]
+    while pending:
+        event, item, depth = pending.pop()
+        if event == 'text':
+            parts.append(item)
+        elif event == 'close':
+            active.remove(id(item))
+            parts.append('\n' + '  ' * depth + ('}' if isinstance(item, dict) else ']'))
+        elif isinstance(item, (dict, list)):
+            opening, closing = ('{', '}') if isinstance(item, dict) else ('[', ']')
+            if not item:
+                parts.append(opening + closing)
+                continue
+            if id(item) in active:
+                raise ValueError('Circular reference detected')
+            active.add(id(item))
+            parts.append(opening + '\n')
+            pending.append(('close', item, depth))
+            entries = list(item.items()) if isinstance(item, dict) else list(enumerate(item))
+            for index in range(len(entries) - 1, -1, -1):
+                key, child = entries[index]
+                if index < len(entries) - 1:
+                    pending.append(('text', ',\n', depth))
+                pending.append(('value', child, depth + 1))
+                prefix = '  ' * (depth + 1)
+                if isinstance(item, dict):
+                    # AST keys are strings, as are keys in the public JSON data.
+                    if not isinstance(key, str):
+                        raise TypeError('AST JSON object keys must be strings')
+                    prefix += json.dumps(key, ensure_ascii=False) + ': '
+                pending.append(('text', prefix, depth))
+        else:
+            parts.append(json.dumps(item, ensure_ascii=False))
+    return ''.join(parts) + '\n'
+
+
+class _Token(dict):
+    """Private value-stack tag; user AST fields never determine token identity."""
 
 
 def is_token(value):
-    return isinstance(value, dict) and 'kind' in value and 'lexeme' in value
+    return isinstance(value, _Token)
 
 
 def scalar(value):
@@ -76,7 +115,7 @@ def parse(tokens):
         kind, argument = action
         if kind == 'shift':
             states.append(argument)
-            values.append(token)
+            values.append(_Token(token))
             positions.append((token['line'], token['col']))
             cursor += 1
         elif kind == 'reduce':

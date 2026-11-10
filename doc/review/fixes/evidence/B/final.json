@@ -1,0 +1,553 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B doc/review/fixes/evidence/B/run_targeted.py final",
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "python": "3.11.15 (main, Jun 23 2026, 15:46:51) [Clang 22.1.3 ]",
+  "exit_code": 0,
+  "tests_run": 6,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "stdout": "",
+  "stderr": "test_ac02_ac20_rv03_ast_token_field_collision (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv03_ast_token_field_collision) ... ok\ntest_ac02_ac20_rv07_deep_standalone_json (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv07_deep_standalone_json) ... ok\ntest_ac05_ac20_rv06_raw_cr_crlf_lf (test_review_generated.GeneratedReviewTests.test_ac05_ac20_rv06_raw_cr_crlf_lf) ... ok\ntest_ac05_ac20_rv09_text_escapes_control_characters (test_review_generated.GeneratedReviewTests.test_ac05_ac20_rv09_text_escapes_control_characters) ... ok\ntest_ac10_ac20_rv07_json_format_compatibility (test_review_generated.GeneratedReviewTests.test_ac10_ac20_rv07_json_format_compatibility) ... ok\ntest_ac20_rv02_same_second_same_size_pyc_ignored (test_review_generated.GeneratedReviewTests.test_ac20_rv02_same_second_same_size_pyc_ignored) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.910s\n\nOK\n",
+  "children": [
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated0"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated0/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated0/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated0/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated0/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated0/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 2；LR(1) 状态 3；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime0/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime0/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"type\": \"Node\",\n  \"line\": 1,\n  \"col\": 1,\n  \"kind\": \"x\",\n  \"lexeme\": \"x\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated1"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated1/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated1/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated1/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated1/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated1/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 3；LR(1) 状态 4；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime1/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime1/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"type\": \"Root\",\n  \"line\": 1,\n  \"col\": 1,\n  \"value\": {\n    \"type\": \"Node\",\n    \"line\": 1,\n    \"col\": 1,\n    \"kind\": \"x\",\n    \"lexeme\": \"x\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated2"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated2/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated2/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated2/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated2/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated2/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 3；LR(1) 状态 4；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime2/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime2/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "[\n  {\n    \"type\": \"Node\",\n    \"line\": 1,\n    \"col\": 1,\n    \"kind\": \"x\",\n    \"lexeme\": \"x\"\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated3"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated3/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated3/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated3/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated3/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated3/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 3；LR(1) 状态 4；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime3/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime3/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"type\": \"S\",\n  \"line\": 1,\n  \"col\": 1,\n  \"children\": [\n    {\n      \"type\": \"Node\",\n      \"line\": 1,\n      \"col\": 1,\n      \"kind\": \"x\",\n      \"lexeme\": \"x\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated4"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated4/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated4/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated4/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated4/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated4/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 3；LR(1) 状态 4；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime4/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime4/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"type\": \"Node\",\n  \"line\": 1,\n  \"col\": 1,\n  \"kind\": \"x\",\n  \"lexeme\": \"x\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated5"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated5/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated5/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated5/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated5/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated5/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 2；LR(1) 状态 3；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime5/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime5/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "\"x\"\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated6"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated6/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated6/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated6/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated6/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/generated6/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 2；LR(1) 状态 3；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime6/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/runtime6/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp09v9lvx7",
+      "exit_code": 0,
+      "stdout": "{\n  \"type\": \"S\",\n  \"line\": 1,\n  \"col\": 1,\n  \"children\": [\n    {\n      \"type\": \"X\",\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "tests/fixtures/calc.lex",
+        "--grammar",
+        "tests/fixtures/calc.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/generated"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/generated/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/generated/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/generated/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/generated/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/generated/report.html\n记号 6；NFA 41；DFA 9；最小 DFA 7；产生式 7；LR(1) 状态 22；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/isolated/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/source.txt",
+        "-o",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/isolated/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/tokens.json",
+        "-o",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/ast.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "-c",
+        "import json, pathlib, sys\nsys.setrecursionlimit(10000)\ntree = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding='utf-8'))\npending, leaves = [tree], []\nwhile pending:\n    node = pending.pop()\n    if 'lexeme' in node:\n        leaves.append(node['lexeme'])\n    else:\n        pending.extend(reversed(node['children']))\nprint(json.dumps({'type': tree['type'], 'source': ''.join(leaves)}))\n",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u/ast.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpeplnka2u",
+      "exit_code": 0,
+      "stdout": "{\"type\": \"E\", \"source\": \"1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/generated"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/generated/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/generated/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/generated/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/generated/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/generated/report.html\n记号 3；NFA 13；DFA 4；最小 DFA 4；产生式 2；LR(1) 状态 3；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/isolated/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"CR\",\n      \"attr\": null,\n      \"lexeme\": \"\\r\",\n      \"line\": 1,\n      \"col\": 1\n    },\n    {\n      \"code\": 3,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 1,\n      \"col\": 2\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/isolated/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"CR\",\n      \"attr\": null,\n      \"lexeme\": \"\\r\",\n      \"line\": 1,\n      \"col\": 1\n    },\n    {\n      \"code\": 2,\n      \"kind\": \"LF\",\n      \"attr\": null,\n      \"lexeme\": \"\\n\",\n      \"line\": 1,\n      \"col\": 2\n    },\n    {\n      \"code\": 3,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 2,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/isolated/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpc7ct4ujv",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 2,\n      \"kind\": \"LF\",\n      \"attr\": null,\n      \"lexeme\": \"\\n\",\n      \"line\": 1,\n      \"col\": 1\n    },\n    {\n      \"code\": 3,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"x\",\n      \"line\": 2,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/generated"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/generated/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/generated/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/generated/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/generated/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/generated/report.html\n记号 1；NFA 13；DFA 3；最小 DFA 2；产生式 2；LR(1) 状态 3；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/isolated/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/source.txt",
+        "--text"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka",
+      "exit_code": 0,
+      "stdout": "1\t(1, a\\n\\t\\r\\b\\f\\v\\x00\\x1f\\x7f\\\\n中文\\x85\\u2028)\tT\t1:1\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/isolated/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpr9a_znka",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"T\",\n      \"attr\": \"a\\n\\t\\r\\b\\f\\u000b\\u0000\\u001f\\\\n中文 \",\n      \"lexeme\": \"a\\n\\t\\r\\b\\f\\u000b\\u0000\\u001f\\\\n中文 \",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpogsfe4nm/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpogsfe4nm/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpogsfe4nm/generated"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpogsfe4nm/generated/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpogsfe4nm/generated/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpogsfe4nm/generated/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpogsfe4nm/generated/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpogsfe4nm/generated/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 2；LR(1) 状态 3；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 2；LR(1) 状态 3；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/input.lex",
+        "--grammar",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/input.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/report.html\n记号 1；NFA 5；DFA 2；最小 DFA 2；产生式 2；LR(1) 状态 3；已消解冲突 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/lexer.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/source.txt"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk",
+      "exit_code": 0,
+      "stdout": "{\n  \"tokens\": [\n    {\n      \"code\": 1,\n      \"kind\": \"X\",\n      \"attr\": null,\n      \"lexeme\": \"y\",\n      \"line\": 1,\n      \"col\": 1\n    }\n  ],\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-I",
+        "-B",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/generated/parser.py",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk/tokens.json"
+      ],
+      "cwd": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpbrmrp8jk",
+      "exit_code": 0,
+      "stdout": "{\n  \"type\": \"Next\",\n  \"line\": 1,\n  \"col\": 1,\n  \"value\": \"y\"\n}\n",
+      "stderr": ""
+    }
+  ]
+}

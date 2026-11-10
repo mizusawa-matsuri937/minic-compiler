@@ -1,0 +1,7 @@
+test_ac19_complete_consistent_report (test_report.ReportTests.test_ac19_complete_consistent_report) ... ok
+test_ac19_rv10_visible_space_preserves_dfa_groups (test_review_ast.ReviewAstTests.test_ac19_rv10_visible_space_preserves_dfa_groups) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.180s
+
+OK

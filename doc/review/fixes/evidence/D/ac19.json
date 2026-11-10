@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac19",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 0.23479445800330723,
+  "counts": {
+    "tests": 2,
+    "reported_seconds": 0.18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac19_complete_consistent_report (test_report.ReportTests.test_ac19_complete_consistent_report) ... ok\ntest_ac19_rv10_visible_space_preserves_dfa_groups (test_review_ast.ReviewAstTests.test_ac19_rv10_visible_space_preserves_dfa_groups) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.180s\n\nOK\n"
+}

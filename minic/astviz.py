@@ -23,40 +23,123 @@ def label(node):
 
 def text_tree(tree):
     lines = [label(tree)]
-    def walk(node, prefix):
+    pending = [(tree, '', None)]
+    while pending:
+        node, prefix, entry = pending.pop()
+        if entry is not None:
+            field, last = entry
+            lines.append(prefix + ('└── ' if last else '├── ') + field + ': ' + label(node))
+            prefix += '    ' if last else '│   '
         entries = list(children(node))
-        for i, (field, child) in enumerate(entries):
-            last = i == len(entries) - 1
-            lines.append(prefix + ('└── ' if last else '├── ') + field + ': ' + label(child))
-            walk(child, prefix + ('    ' if last else '│   '))
-    walk(tree, '')
+        pending.extend((child, prefix, (field, i == len(entries) - 1))
+                       for i, (field, child) in reversed(list(enumerate(entries))))
     return '\n'.join(lines) + '\n'
 
 
 def layout(tree):
-    """Subtrees occupy disjoint horizontal intervals at every depth."""
+    """Iterative subtree layout; HTML refines estimates with actual glyph bounds."""
     nodes, edges = [], []
-    def measure(node, depth):
+    pending = [(tree, 0, None, None)]
+    while pending:
+        node, depth, parent, field = pending.pop()
         text = label(node)
-        width = max(110, 24 + sum(8 if ord(c) < 128 else 16 for c in text))
+        width = max(110, 24 + sum(10 if ord(c) < 128 else 18 for c in text))
         item = dict(id=len(nodes), text=text, width=width, y=30 + depth * 100, children=[])
         nodes.append(item)
-        for field, child in children(node):
-            desc = measure(child, depth + 1)
-            item['children'].append(desc)
-            edges.append((item['id'], desc['id'], field))
-        item['span'] = max(width, sum(c['span'] for c in item['children']) + max(0, len(item['children']) - 1) * 24)
-        return item
-    root = measure(tree, 0)
-    def position(item, left):
+        if parent is not None:
+            parent['children'].append(item)
+            edges.append((parent['id'], item['id'], field))
+        pending.extend((child, depth + 1, item, name)
+                       for name, child in reversed(list(children(node))))
+    for item in reversed(nodes):
+        occupied = sum(c['span'] for c in item['children']) + max(0, len(item['children']) - 1) * 24
+        item['span'] = max(item['width'], occupied)
+    pending = [(nodes[0], 20)]
+    while pending:
+        item, left = pending.pop()
         item['x'] = left + item['span'] / 2
         occupied = sum(c['span'] for c in item['children']) + max(0, len(item['children']) - 1) * 24
         cursor = left + (item['span'] - occupied) / 2
         for child in item['children']:
-            position(child, cursor)
+            pending.append((child, cursor))
             cursor += child['span'] + 24
-    position(root, 20)
-    return nodes, edges, root['span'] + 40, max(n['y'] for n in nodes) + 80
+    return nodes, edges, nodes[0]['span'] + 40, max(n['y'] for n in nodes) + 80
+
+
+# Only local SVG/DOM APIs are used. Measuring the rendered glyphs also handles
+# a platform choosing a different monospace font; no font/network dependency.
+_REFLOW = r"""
+<script>
+(() => {
+  const svg = document.querySelector('svg');
+  function reflow() {
+    const nodes = Array.from(svg.querySelectorAll('.ast-node'), group => {
+      const text = group.querySelector('text'), rect = group.querySelector('rect');
+      text.setAttribute('x', 0); text.setAttribute('y', 0);
+      const box = text.getBBox();
+      return {text, rect, box, width: Math.max(110, box.width + 24),
+              height: Math.max(36, box.height + 16), children: [], depth: 0};
+    });
+    const edges = Array.from(svg.querySelectorAll('line'), line => {
+      const source = Number(line.dataset.source), target = Number(line.dataset.target);
+      const text = line.nextElementSibling;
+      text.setAttribute('x', 0); text.setAttribute('y', 0);
+      const box = text.getBBox();
+      nodes[source].children.push(target);
+      // A midpoint label has half the separation of the child centers.
+      nodes[target].width = Math.max(nodes[target].width, box.width * 2 + 24);
+      return {line, text, box, source, target};
+    });
+    const heights = [];
+    for (const node of nodes) {
+      heights[node.depth] = Math.max(heights[node.depth] || 0, node.height);
+      for (const child of node.children) nodes[child].depth = node.depth + 1;
+    }
+    const gap = edges.reduce((value, edge) => Math.max(value, edge.box.height + 32), 64);
+    const rows = [30];
+    for (let depth = 1; depth < heights.length; depth++)
+      rows[depth] = rows[depth - 1] + heights[depth - 1] + gap;
+    for (let i = nodes.length - 1; i >= 0; i--) {
+      const node = nodes[i];
+      node.occupied = node.children.reduce((sum, child) => sum + nodes[child].span, 0)
+                      + Math.max(0, node.children.length - 1) * 24;
+      node.span = Math.max(node.width, node.occupied);
+    }
+    nodes[0].left = 20;
+    for (const node of nodes) {
+      node.x = node.left + node.span / 2;
+      node.y = rows[node.depth];
+      let cursor = node.left + (node.span - node.occupied) / 2;
+      for (const child of node.children) {
+        nodes[child].left = cursor;
+        cursor += nodes[child].span + 24;
+      }
+      node.rect.setAttribute('x', node.x - node.width / 2);
+      node.rect.setAttribute('y', node.y);
+      node.rect.setAttribute('width', node.width);
+      node.rect.setAttribute('height', node.height);
+      node.text.setAttribute('x', node.x - node.box.x - node.box.width / 2);
+      node.text.setAttribute('y', node.y + node.height / 2 - node.box.y - node.box.height / 2);
+    }
+    for (const edge of edges) {
+      const a = nodes[edge.source], b = nodes[edge.target];
+      const top = a.y + a.height, bottom = b.y;
+      edge.line.setAttribute('x1', a.x); edge.line.setAttribute('y1', top);
+      edge.line.setAttribute('x2', b.x); edge.line.setAttribute('y2', bottom);
+      edge.text.setAttribute('x', (a.x + b.x) / 2 - edge.box.x - edge.box.width / 2);
+      edge.text.setAttribute('y', (top + bottom) / 2 - edge.box.y - edge.box.height / 2);
+    }
+    const width = nodes[0].span + 40;
+    const height = rows[rows.length - 1] + heights[heights.length - 1] + 30;
+    svg.setAttribute('width', width); svg.setAttribute('height', height);
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.dataset.layout = 'measured';
+  }
+  reflow();
+  if (document.fonts) document.fonts.ready.then(reflow);
+})();
+</script>
+"""
 
 
 def html_tree(tree):
@@ -65,7 +148,7 @@ def html_tree(tree):
                f'viewBox="0 0 {width} {height}" role="img" aria-label="AST">']
     for source, target, field in edges:
         a, b = nodes[source], nodes[target]
-        content.append(f'<line x1="{a["x"]}" y1="{a["y"] + 36}" x2="{b["x"]}" y2="{b["y"]}" stroke="#64748b"/>')
+        content.append(f'<line data-source="{source}" data-target="{target}" x1="{a["x"]}" y1="{a["y"] + 36}" x2="{b["x"]}" y2="{b["y"]}" stroke="#64748b"/>')
         content.append(f'<text x="{(a["x"] + b["x"]) / 2}" y="{(a["y"] + b["y"]) / 2 + 12}" '
                        f'class="edge-label">{html.escape(field)}</text>')
     for node in nodes:
@@ -80,7 +163,7 @@ def html_tree(tree):
             'text{text-anchor:middle;font-size:14px;fill:#152d49}rect{fill:#eef4fb;stroke:#2563eb}'
             '.edge-label{font-size:12px;paint-order:stroke;stroke:white;stroke-width:4px;stroke-linejoin:round}'
             '</style></head><body><h1>AST · Program</h1><div class="tree">'
-            + '\n'.join(content) + '</div></body></html>\n')
+            + '\n'.join(content) + '</div>' + _REFLOW + '</body></html>\n')
 
 
 def dot_tree(tree):

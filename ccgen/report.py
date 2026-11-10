@@ -23,7 +23,7 @@ def alphabet_groups(lex):
 
 
 def character(code):
-    return repr(chr(code))[1:-1]
+    return 'SPACE (U+0020)' if code == 32 else repr(chr(code))[1:-1]
 
 
 def generate(lex, parser):

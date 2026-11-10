@@ -1,0 +1,18 @@
+command: PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -p test_review_paths.py -v
+test_ac06_ac14_rv04_case_variant_repeated_cleanup (test_review_paths.ReviewPathTests.test_ac06_ac14_rv04_case_variant_repeated_cleanup) ... ok
+test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise (test_review_paths.ReviewPathTests.test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise) ... ok
+test_ac06_rv01_output_parent_conflict_precedes_cleanup (test_review_paths.ReviewPathTests.test_ac06_rv01_output_parent_conflict_precedes_cleanup) ... ok
+test_ac06_rv01_source_in_output_is_preserved (test_review_paths.ReviewPathTests.test_ac06_rv01_source_in_output_is_preserved) ... ok
+test_ac13_ac20_rv06_cr_positions_match_api (test_review_paths.ReviewPathTests.test_ac13_ac20_rv06_cr_positions_match_api) ... ok
+test_ac14_ac15_rv05_option_like_names_and_determinism (test_review_paths.ReviewPathTests.test_ac14_ac15_rv05_option_like_names_and_determinism) ... ok
+test_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts (test_review_paths.ReviewPathTests.test_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts) ... ok
+test_ac18_rv01_output_aliases_rejected_before_cleanup (test_review_paths.ReviewPathTests.test_ac18_rv01_output_aliases_rejected_before_cleanup) ... ok
+test_ac20_rv01_analyzer_alias_is_preserved (test_review_paths.ReviewPathTests.test_ac20_rv01_analyzer_alias_is_preserved) ... ok
+test_ac20_rv01_selected_analyzers_are_preserved (test_review_paths.ReviewPathTests.test_ac20_rv01_selected_analyzers_are_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 6.257s
+
+OK
+
+exit_code: 0

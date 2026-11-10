@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac13",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 0.35784129200328607,
+  "counts": {
+    "tests": 5,
+    "reported_seconds": 0.305,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac13_rv07_deep_control_scope (test_review_ast.ReviewAstTests.test_ac13_rv07_deep_control_scope) ... ok\ntest_ac13_rv07_deep_expression_semantics (test_review_ast.ReviewAstTests.test_ac13_rv07_deep_expression_semantics) ... ok\ntest_ac13_ac20_rv06_cr_positions_match_api (test_review_paths.ReviewPathTests.test_ac13_ac20_rv06_cr_positions_match_api) ... ok\ntest_ac13_diagnostics_and_artifacts (test_semantic.SemanticTests.test_ac13_diagnostics_and_artifacts) ... ok\ntest_ac13_scopes_initializers_and_range (test_semantic.SemanticTests.test_ac13_scopes_initializers_and_range) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.305s\n\nOK\n"
+}

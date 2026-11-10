@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac06",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 0.5664454579964513,
+  "counts": {
+    "tests": 5,
+    "reported_seconds": 0.515,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac06_all_lex_errors_and_stale_cleanup (test_minic_frontend.FrontendTests.test_ac06_all_lex_errors_and_stale_cleanup) ... ok\ntest_ac06_ac14_rv04_case_variant_repeated_cleanup (test_review_paths.ReviewPathTests.test_ac06_ac14_rv04_case_variant_repeated_cleanup) ... ok\ntest_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise (test_review_paths.ReviewPathTests.test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise) ... ok\ntest_ac06_rv01_output_parent_conflict_precedes_cleanup (test_review_paths.ReviewPathTests.test_ac06_rv01_output_parent_conflict_precedes_cleanup) ... ok\ntest_ac06_rv01_source_in_output_is_preserved (test_review_paths.ReviewPathTests.test_ac06_rv01_source_in_output_is_preserved) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.515s\n\nOK\n"
+}

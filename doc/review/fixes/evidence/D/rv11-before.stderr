@@ -1,0 +1,28 @@
+test_ac17_ac21_rv11_failed_clang_under_spaced_python (test_review_portability.PortabilityReviewTests.test_ac17_ac21_rv11_failed_clang_under_spaced_python) ... FAIL
+
+======================================================================
+FAIL: test_ac17_ac21_rv11_failed_clang_under_spaced_python (test_review_portability.PortabilityReviewTests.test_ac17_ac21_rv11_failed_clang_under_spaced_python)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_review_portability.py", line 27, in test_ac17_ac21_rv11_failed_clang_under_spaced_python
+    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+AssertionError: 1 != 0 : test_ac17_failed_clang_keeps_frontend (test_backend.BackendTests.test_ac17_failed_clang_keeps_frontend) ... FAIL
+
+======================================================================
+FAIL: test_ac17_failed_clang_keeps_frontend (test_backend.BackendTests.test_ac17_failed_clang_keeps_frontend)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_backend.py", line 73, in test_ac17_failed_clang_keeps_frontend
+    self.assertIn('test clang diagnostic', result.stderr)
+AssertionError: 'test clang diagnostic' not found in "后端错误: 无法运行 clang：[Errno 2] No such file or directory: '/private/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmp_k4iz3ay/failing-clang'\n"
+
+----------------------------------------------------------------------
+Ran 1 test in 0.107s
+
+FAILED (failures=1)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.167s
+
+FAILED (failures=1)

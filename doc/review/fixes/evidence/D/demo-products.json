@@ -1,0 +1,21 @@
+{
+  "generated": {
+    "parser_tables.json": 448400,
+    "lexer_tables.json": 29076,
+    "parser.py": 55363,
+    "lexer.py": 30275,
+    "report.html": 161063
+  },
+  "outputs": {
+    "demo": 33464,
+    "ast.html": 17342,
+    "demo.s": 4961,
+    "tokens.txt": 1675,
+    "demo.ll": 1805,
+    "ast.txt": 1702,
+    "demo.opt.ll": 8791,
+    "ast.dot": 2614,
+    "tokens.json": 10866,
+    "ast.json": 5581
+  }
+}

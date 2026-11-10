@@ -1,0 +1,42 @@
+RV08 technical browser verification (2026-11-10 UTC / 2026-11-11 Asia/Taipei; reviewer D)
+Host: macOS 26.5.1 arm64. Actual browser: Safari 26.5.
+Observed user agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15
+Observed font: 14px monospace. User-agent compatibility string is not host architecture.
+
+Method:
+C generated baseline and fixed original HTML in /tmp/minic-rv08-D-{baseline,fixed}/{long_identifier,demo}/ast.html.
+D independently appended geometry.js before </body> to create geometry.html. It waits for document.fonts.ready and two animation frames, reads real SVG getBBox(), and prepends visible JSON text. It does not change original SVG or CSS. The script is preserved beside this record. Original HTML SHA256 is recorded in browser-{baseline,fixed}-sha256.json.
+Safari loaded canonical file:///private/tmp/... paths. Native file chooser confirmation was accepted through CUA. No dependencies were installed; no browser security settings changed; the network was not disconnected. Exactly one new browser tab was opened and closed at completion (4 original tabs remained).
+Original HTML was visually inspected using CUA screenshots. Screenshots were not exported as files, so this record does not claim downloadable image evidence. Geometry below was actually read from Safari's accessibility output, not inferred from Python rectangles.
+
+Baseline long_identifier/geometry.html:
+MEASUREMENT {"font":"14px monospace","viewBox":{"x":0,"y":0,"width":5200,"height":410},"nodeCount":6,"fieldCount":5,"overflow":["node-1","node-4","node-5"],"outside":["node-1","node-5"],"nodeOverlaps":[["node-4","node-5"]],"fieldOverlaps":[]}
+node-1 VarDecl + 200 a: text {"x":-12.59375,"y":140,"width":1753.1875,"height":16.3125}; rect {"x":20,"y":130,"width":1688,"height":36}
+node-4 Identifier + 200 a: text {"x":1698.765625,"y":340,"width":1778.46875,"height":16.3125}; rect {"x":1732,"y":330,"width":1712,"height":36}
+node-5 Identifier + 200 a: text {"x":3434.765625,"y":340,"width":1778.46875,"height":16.3125}; rect {"x":3468,"y":330,"width":1712,"height":36}
+Calculated overlap: 1698.765625+1778.46875-3434.765625 = 42.46875 CSS pixels.
+Original ast.html screenshot: leading letters of VarDecl are clipped at SVG left edge; the text extends outside its node rectangle.
+
+Fixed long_identifier/geometry.html:
+MEASUREMENT {"font":"14px monospace","viewBox":{"x":0,"y":0,"width":5470.125,"height":396},"layout":"measured","nodeCount":6,"fieldCount":5,"overflow":[],"outside":[],"nodeOverlaps":[],"fieldOverlaps":[]}
+node-0 Program: text {"x":2705.546875,"y":39.84375,"width":59.03125,"height":16.3125}; rect {"x":2680.0625,"y":30,"width":110,"height":36}
+node-1 VarDecl + 200 a: text {"x":32,"y":139.84375,"width":1753.1875,"height":16.3125}; rect {"x":20,"y":130,"width":1777.1875,"height":36}
+node-2 Write: text {"x":3614.578125,"y":139.84375,"width":42.15625,"height":16.3125}; rect {"x":3573.0625,"y":130,"width":125.1875,"height":36}
+node-3 BinaryOp +: text {"x":3593.5,"y":239.84375,"width":84.3125,"height":16.3125}; rect {"x":3580.65625,"y":230,"width":110,"height":36}
+node-4 Identifier + 200 a: text {"x":1833.1875,"y":339.84375,"width":1778.46875,"height":16.3125}; rect {"x":1821.1875,"y":330,"width":1802.46875,"height":36}
+node-5 Identifier + 200 a: text {"x":3659.65625,"y":339.84375,"width":1778.46875,"height":16.3125}; rect {"x":3647.65625,"y":330,"width":1802.46875,"height":36}
+field-0 body[0]: {"x":1796.53125,"y":91,"width":50.59375,"height":13.984375}
+field-1 body[1]: {"x":3160.0625,"y":91,"width":50.59375,"height":13.984375}
+field-2 value: {"x":3617.59375,"y":191,"width":36.125,"height":13.984375}
+field-3 left: {"x":3164.578125,"y":291,"width":28.921875,"height":13.984375}
+field-4 right: {"x":4074.203125,"y":291,"width":36.140625,"height":13.984375}
+The three long labels were read in full from the DOM; original SVG labels are also asserted exactly against the full 200-character identifier in test_review_ast.py. No ellipsis is substituted by the product.
+Calculated gap between Identifier texts = 3659.65625-(1833.1875+1778.46875) = 48 CSS pixels.
+Original ast.html screenshot: VarDecl begins inside its rectangle and is no longer clipped at left edge. The graph is wider than the browser and requires horizontal scrolling; the screenshot shows the left part, not the whole wide graph. Full bounds and neighbor checks use the measured DOM data, not a claim that the screenshot contains every node.
+
+Fixed demo/geometry.html:
+MEASUREMENT {"font":"14px monospace","viewBox":{"x":0,"y":0,"width":3321.34375,"height":696},"layout":"measured","nodeCount":46,"fieldCount":45,"overflow":[],"outside":[],"nodeOverlaps":[],"fieldOverlaps":[]}
+All 46 node and 45 field boxes were emitted by the measurement page and read through CUA. Representative root text: {"x":1631.15625,"y":39.84375,"width":59.03125,"height":16.3125}; rect {"x":1605.671875,"y":30,"width":110,"height":36}.
+Original ast.html screenshot: visible declarations, while, child expressions and field labels are readable and separated. Root edges remain shallow/dense, as in the known simple layout; no crossing-label defect was observed in measured text boxes. Screenshot covers only the current visible part of the horizontally wide tree.
+
+Conclusion limited to these samples and Safari environment. Geometry uses tolerance 0.1 CSS pixel. No other browsers, disabled-JS setup, projector, or answer-defense computer was tested. This is independent technical verification only; user AC18 offline manual acceptance remains unperformed and unchecked.

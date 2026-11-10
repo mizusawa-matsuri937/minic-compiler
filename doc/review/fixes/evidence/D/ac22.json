@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac22",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 0.6160920420006732,
+  "counts": {
+    "tests": 1,
+    "reported_seconds": 0.56,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac22_demo_script_and_statement_coverage (test_project.ProjectTests.test_ac22_demo_script_and_statement_coverage) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.560s\n\nOK\n"
+}

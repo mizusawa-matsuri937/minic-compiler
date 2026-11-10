@@ -1,0 +1,56 @@
+{
+  "records": [
+    {
+      "command": [
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/failing-clang"
+      ],
+      "exit_code": 7,
+      "stdout": "",
+      "stderr": "test clang diagnostic\n"
+    },
+    {
+      "command": [
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/python3.11",
+        "-B",
+        "-m",
+        "ccgen",
+        "--lex",
+        "rules/minic.lex",
+        "--grammar",
+        "rules/minic.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/frontend"
+      ],
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/frontend/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/frontend/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/frontend/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/frontend/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/frontend/report.html\n记号 27；NFA 177；DFA 48；最小 DFA 44；产生式 38；LR(1) 状态 264；已消解冲突 2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/python3.11",
+        "-B",
+        "-m",
+        "minic",
+        "examples/demo.mc",
+        "--frontend",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/frontend",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/compiled",
+        "--clang",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic Python's path lwwofave/failing-clang"
+      ],
+      "exit_code": 3,
+      "stdout": "",
+      "stderr": "后端错误: test clang diagnostic\nclang 执行失败，退出码 7\n"
+    }
+  ],
+  "products": [
+    "ast.dot",
+    "ast.html",
+    "ast.json",
+    "ast.txt",
+    "demo.ll",
+    "tokens.json",
+    "tokens.txt"
+  ]
+}

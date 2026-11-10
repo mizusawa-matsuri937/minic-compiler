@@ -1,0 +1,19 @@
+command: PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -p test_review_paths.py -k parent_conflict -v
+test_ac06_rv01_output_parent_conflict_precedes_cleanup (test_review_paths.ReviewPathTests.test_ac06_rv01_output_parent_conflict_precedes_cleanup) ... FAIL
+
+======================================================================
+FAIL: test_ac06_rv01_output_parent_conflict_precedes_cleanup (test_review_paths.ReviewPathTests.test_ac06_rv01_output_parent_conflict_precedes_cleanup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_review_paths.py", line 113, in test_ac06_rv01_output_parent_conflict_precedes_cleanup
+    self.assert_rejected_unchanged(source, out, [source, sentinel])
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_review_paths.py", line 36, in assert_rejected_unchanged
+    self.assertEqual(result.returncode, 2,
+AssertionError: 0 != 2 : expected conflict rejection; got 0; stderr=''; protected_after={'/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpevs33qqi/outputs/ast.json/input.mc': 'unchanged', '/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpevs33qqi/outputs/tokens.txt': 'changed'}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.096s
+
+FAILED (failures=1)
+
+exit_code: 1

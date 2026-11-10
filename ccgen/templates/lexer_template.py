@@ -10,8 +10,25 @@ def json_text(value):
 
 
 def tokens_text(tokens):
-    return ''.join(f"{i}\t({t['code']}, {t['attr'] if t['attr'] is not None else '-'})"
+    return ''.join(f"{i}\t({t['code']}, {escape_attr(t['attr']) if t['attr'] is not None else '-'})"
                    f"\t{t['kind']}\t{t['line']}:{t['col']}\n" for i, t in enumerate(tokens, 1))
+
+
+def escape_attr(value):
+    """Keep each token on one line with exactly four tab-separated columns."""
+    escapes = {'\\': r'\\', '\n': r'\n', '\r': r'\r', '\t': r'\t',
+               '\b': r'\b', '\f': r'\f', '\v': r'\v'}
+    parts = []
+    for char in value:
+        if char in escapes:
+            parts.append(escapes[char])
+        elif char.isprintable():
+            parts.append(char)
+        else:
+            code = ord(char)
+            parts.append(f'\\x{code:02x}' if code <= 0xff else
+                         f'\\u{code:04x}' if code <= 0xffff else f'\\U{code:08x}')
+    return ''.join(parts)
 
 
 def tokenize(text):
@@ -56,7 +73,8 @@ def main():
     ap.add_argument('--text', action='store_true')
     args = ap.parse_args()
     try:
-        tokens, errors = tokenize(Path(args.source).read_text(encoding='utf-8'))
+        with Path(args.source).open(encoding='utf-8', newline='') as source:
+            tokens, errors = tokenize(source.read())
         output = tokens_text(tokens) if args.text else json_text(dict(tokens=tokens, errors=errors))
         if args.output:
             Path(args.output).write_text(output, encoding='utf-8')

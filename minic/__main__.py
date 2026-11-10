@@ -11,24 +11,77 @@ def json_text(value):
     return json.dumps(value, ensure_ascii=False, indent=2) + '\n'
 
 
-def clean_outputs(out, stem):
-    for name in ['tokens.txt', 'tokens.json', 'ast.json', 'ast.txt', 'ast.html', 'ast.dot',
-                 stem + '.ll', stem + '.opt.ll', stem + '.s', stem, stem + '.exe']:
-        path = out / name
+def plan_outputs(out, stem):
+    """Reserve fixed stage names, then select one stable backend basename."""
+    paths = {name: out / name for name in
+             ('tokens.txt', 'tokens.json', 'ast.json', 'ast.txt', 'ast.html', 'ast.dot')}
+    reserved = {name.casefold() for name in paths}
+    original_stem = stem
+    while True:
+        ir = out / (stem + '.ll')
+        generated = dict(ir=ir, **backend.output_paths(ir))
+        # Include both executable spellings in cleanup, as in earlier releases.
+        cleanup = list(dict.fromkeys([*generated.values(), out / stem, out / (stem + '.exe')]))
+        if not any(path.name.casefold() in reserved for path in cleanup):
+            break
+        stem += '.program'
+    paths.update(generated)
+    # Remove previous-release filenames too, after the same input/alias checks.
+    legacy_ir = out / (original_stem + '.ll')
+    legacy = [legacy_ir, *backend.output_paths(legacy_ir).values(),
+              out / original_stem, out / (original_stem + '.exe')]
+    return paths, list(dict.fromkeys([*paths.values(), *cleanup, *legacy]))
+
+
+def same_path(left, right):
+    """Resolve lexical/symlink aliases and compare existing hard-link identities."""
+    if left.resolve() == right.resolve():
+        return True
+    try:
+        return left.samefile(right)
+    except FileNotFoundError:
+        return False
+
+
+def validate_outputs(outputs, inputs, *, distinct=True):
+    """Reject the whole operation before loading, removing or writing any files."""
+    for index, path in enumerate(outputs):
+        if path.exists() and not path.is_file():
+            raise ValueError(f'路径冲突：输出 {path} 不是普通文件')
+        for parent in path.parents:
+            if parent.exists() and not parent.is_dir():
+                raise ValueError(f'路径冲突：输出目录 {parent} 不是目录')
+        resolved = path.resolve()
+        for other in [*inputs, *(outputs[:index] if distinct else [])]:
+            other_resolved = other.resolve()
+            if (same_path(path, other) or resolved in other_resolved.parents
+                    or other_resolved in resolved.parents):
+                raise ValueError(f'路径冲突：输出 {path} 与 {other} 不能共存')
+
+
+def clean_outputs(outputs):
+    for path in outputs:
         if path.is_file() or path.is_symlink():
             path.unlink()
 
 
 def compile_source(args):
     source = Path(args.source)
-    text = source.read_text(encoding='utf-8')
-    lexer, parser = frontend.load(args.frontend)
     out = Path(args.out or Path('out') / source.stem)
+    paths, cleanup = plan_outputs(out, source.stem)
+    inputs = [source, *(Path(args.frontend) / name for name in ('lexer.py', 'parser.py'))]
+    validate_outputs(list(paths.values()), inputs)
+    # Historical cleanup spellings may alias a current output on a case-insensitive
+    # filesystem. They are not distinct stage outputs, but still protect all inputs.
+    validate_outputs(cleanup, inputs, distinct=False)
+    with source.open(encoding='utf-8', newline='') as stream:
+        text = stream.read()
+    lexer, parser = frontend.load(args.frontend)
     out.mkdir(parents=True, exist_ok=True)
-    clean_outputs(out, source.stem)
+    clean_outputs(cleanup)
     tokens, errors = lexer.tokenize(text)
-    (out / 'tokens.json').write_text(json_text(dict(tokens=tokens, errors=errors)), encoding='utf-8')
-    (out / 'tokens.txt').write_text(lexer.tokens_text(tokens), encoding='utf-8')
+    paths['tokens.json'].write_text(json_text(dict(tokens=tokens, errors=errors)), encoding='utf-8')
+    paths['tokens.txt'].write_text(lexer.tokens_text(tokens), encoding='utf-8')
     if errors:
         emit(args.source, errors)
         return 1
@@ -39,7 +92,7 @@ def compile_source(args):
     except parser.ParseError as error:
         emit(args.source, [parse_diagnostic(error)])
         return 1
-    (out / 'ast.json').write_text(json_text(tree), encoding='utf-8')
+    paths['ast.json'].write_text(parser.json_text(tree), encoding='utf-8')
     astviz.write(tree, out)
     if args.stop_after == 'ast':
         return 0
@@ -47,7 +100,7 @@ def compile_source(args):
     if errors:
         emit(args.source, errors)
         return 1
-    ir = out / (source.stem + '.ll')
+    ir = paths['ir']
     ir.write_text(irgen.generate(tree, source.name), encoding='utf-8')
     if args.stop_after == 'ir':
         return 0

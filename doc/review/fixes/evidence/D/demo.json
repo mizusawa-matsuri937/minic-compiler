@@ -1,0 +1,19 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "bash",
+    "-c",
+    "echo 5 | bash scripts/demo.sh"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "MINIC_PYTHON": "/Users/aqua_night/.local/bin/python3.11",
+    "MINIC_BUILD_DIR": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend",
+    "MINIC_OUT_DIR": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 0.5523690000045463,
+  "counts": null,
+  "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/frontend/report.html\n记号 27；NFA 177；DFA 48；最小 DFA 44；产生式 38；LR(1) 状态 264；已消解冲突 2\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/tokens.txt\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/tokens.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.txt\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.html\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.dot\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.ll\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.opt.ll\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.s\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo\n15\n120\n1\n",
+  "stderr": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.dot\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.html\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/ast.txt\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.ll\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.opt.ll\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/demo.s\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/tokens.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic D final o9b4wgus/out/tokens.txt\n"
+}

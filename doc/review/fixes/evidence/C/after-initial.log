@@ -1,0 +1,21 @@
+test_ac13_rv07_deep_control_scope (test_review_ast.ReviewAstTests.test_ac13_rv07_deep_control_scope) ... ok
+test_ac13_rv07_deep_expression_semantics (test_review_ast.ReviewAstTests.test_ac13_rv07_deep_expression_semantics) ... ok
+test_ac14_rv07_ir_expression_without_semantic_gate (test_review_ast.ReviewAstTests.test_ac14_rv07_ir_expression_without_semantic_gate) ... ok
+test_ac14_rv07_ir_statement_without_semantic_gate (test_review_ast.ReviewAstTests.test_ac14_rv07_ir_statement_without_semantic_gate) ... ok
+test_ac16_rv07_long_expression_and_nested_control_execution (test_review_ast.ReviewAstTests.test_ac16_rv07_long_expression_and_nested_control_execution) ... ok
+test_ac18_rv07_all_deep_renderers (test_review_ast.ReviewAstTests.test_ac18_rv07_all_deep_renderers) ... ok
+test_ac18_rv08_actual_glyph_measurement_and_full_labels (test_review_ast.ReviewAstTests.test_ac18_rv08_actual_glyph_measurement_and_full_labels) ... ok
+test_ac19_rv10_visible_space_preserves_dfa_groups (test_review_ast.ReviewAstTests.test_ac19_rv10_visible_space_preserves_dfa_groups) ... ok
+test_ac20_rv07_long_pipeline_and_standalone_json (test_review_ast.ReviewAstTests.test_ac20_rv07_long_pipeline_and_standalone_json) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.013s
+
+OK
+
+EXIT_CODE=0
+
+CWD=/Users/aqua_night/codex_project/编译原理/minic-compiler
+SHELL=zsh
+PYTHON=3.11.15
+COMMAND=PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -p test_review_ast.py -v

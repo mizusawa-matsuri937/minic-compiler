@@ -2,7 +2,7 @@
 
 编译原理期末项目：语言无关的词法/规范 LR(1) 分析器生成器，以及使用生成物的 mini-C 编译器。仅依赖 Python 标准库，后端调用 clang。
 
-当前状态（2026-11-10）：T1-01 至 T1-06 编码与自动检查完成。Python 3.11.15 和 3.14.6 下均为 **41 个测试通过、0 失败、0 错误、0 跳过**；最终演示退出码 0。实施 AC 为 **21/22**，AC18 的自动检查通过，人工离线目视检查留给用户，未勾选。
+当前状态（2026-11-11）：T1-01 至 T1-06 已实现，审查发现 RV01～RV11 已修复。Python 3.11.15 下 **67 个测试通过（新增 26 个）、0 失败、0 错误、0 跳过**；真实 clang 演示退出 0，输出 `15 / 120 / 1`。修前反例、修后结果和独立验证见[修复汇总](doc/review/fix-summary.md)。实施 AC 仍为 **21/22**：AC18 自动检查和 Safari 技术复核通过，用户人工离线目视尚未完成、未勾选。
 
 ## 运行
 
@@ -35,6 +35,10 @@ python3 -m minic examples/demo.mc --frontend build/minic --out out/demo --stop-a
 
 `--stop-after` 支持 `tokens`、`ast`、`ir`；`-O` 支持 0–3（默认 2）；`--clang` 可指定后端路径。`--run` 标准输入输出直接交给程序，编译过程信息和诊断写入标准错误。退出码：0 成功、1 源程序错误、2 用法或规则错误、3 后端错误。
 
+编译前会统一检查输入源文件、所选 `lexer.py` / `parser.py` 与阶段产物的路径关系；冲突时在清理或写入前退出 2，保留原文件。源文件主名与固定阶段产物重名时，后端主名自动追加 `.program`：例如 `tokens.json.mc` 生成 `tokens.json.program.ll`、`.opt.ll`、`.s` 和可执行文件 `tokens.json.program`，原 `tokens.json` 仍是记号数据。普通文件名和旧产物清理方式保持原用法。
+
+更新本项目后，请重新运行 `ccgen` 更新已有独立分析器。集成驱动直接加载当前生成源码；独立与集成读取均保留 CR/LF，仅 LF 增加行号。记号文本表转义控制字符和反斜杠，JSON 保留原词素。
+
 ## 产物与算法
 
 | 位置 | 内容 |
@@ -64,11 +68,11 @@ python3 -m unittest discover -s tests -k ac03 -v
 
 ## 文档与接手
 
-- [最新交接：实现完成，交给评审](doc/handoffs/2026-11-10-task1-impl-to-review.md)
+- [最新交接：RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
 - [协作约定](AGENTS.md)与[项目配置](doc/project-config.md)
 - [spec](doc/task1/spec.md)、[design](doc/task1/design.md)、[tasks](doc/task1/tasks.md)、[checklist](doc/task1/checklist.md)
 
-本轮不改 spec 的规则或 AC；计划文档的原始“未实施”状态、项目配置的历史环境信息由计划维护者接手更新。当前事实以本 README、tasks/checklist 的实测记录及最新交接为准。
+本轮不改 spec 的规则或 AC；必要实施调整追加到 design，tasks/checklist 只补充验证事实。计划文档的原始“未实施”状态、项目配置的历史环境信息由计划维护者接手更新。Python 3.14 的 41 项结果属于上一轮记录，本轮未复验该版本。
 
 ## 限制
 

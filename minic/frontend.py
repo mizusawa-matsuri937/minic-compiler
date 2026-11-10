@@ -11,6 +11,9 @@ def load(directory):
             raise ValueError(f'缺少 {path}；请先运行 python3 -m ccgen 生成分析器')
         spec = importlib.util.spec_from_file_location('generated_' + name, path)
         module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
+        # Regeneration may preserve both size and integer-second mtime. Compile
+        # the current source directly rather than trusting a timestamp .pyc.
+        code = compile(path.read_bytes(), str(path), 'exec')
+        exec(code, module.__dict__)
         modules.append(module)
     return tuple(modules)

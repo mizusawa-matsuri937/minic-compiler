@@ -1,0 +1,34 @@
+command: PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -p test_minic_frontend.py -v
+test_ac06_all_lex_errors_and_stale_cleanup (test_minic_frontend.FrontendTests.test_ac06_all_lex_errors_and_stale_cleanup) ... ok
+test_ac10_expression_ast (test_minic_frontend.FrontendTests.test_ac10_expression_ast) ... ok
+test_ac11_nearest_else (test_minic_frontend.FrontendTests.test_ac11_nearest_else) ... ok
+test_ac12_exact_syntax_errors (test_minic_frontend.FrontendTests.test_ac12_exact_syntax_errors) ... ok
+test_ac12_stop_after_tokens_and_missing_frontend (test_minic_frontend.FrontendTests.test_ac12_stop_after_tokens_and_missing_frontend) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.319s
+
+OK
+
+exit_code: 0
+
+command: PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -p test_standalone.py -v
+test_ac20_isolated_cli_byte_identity (test_standalone.StandaloneTests.test_ac20_isolated_cli_byte_identity) ... ok
+test_ac20_refuses_lexical_errors (test_standalone.StandaloneTests.test_ac20_refuses_lexical_errors) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.181s
+
+OK
+
+exit_code: 0
+
+command: PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -p test_irgen.py -v
+test_ac14_ir_features_and_determinism (test_irgen.IRTests.test_ac14_ir_features_and_determinism) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.143s
+
+OK
+
+exit_code: 0

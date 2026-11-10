@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac16",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 9.611533457995392,
+  "counts": {
+    "tests": 8,
+    "reported_seconds": 9.55,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac16_arith (test_backend.RuntimeTests.test_ac16_arith) ... ok\ntest_ac16_control (test_backend.RuntimeTests.test_ac16_control) ... ok\ntest_ac16_dangling_else (test_backend.RuntimeTests.test_ac16_dangling_else) ... ok\ntest_ac16_io (test_backend.RuntimeTests.test_ac16_io) ... ok\ntest_ac16_rel (test_backend.RuntimeTests.test_ac16_rel) ... ok\ntest_ac16_scope (test_backend.RuntimeTests.test_ac16_scope) ... ok\ntest_ac16_wrap (test_backend.RuntimeTests.test_ac16_wrap) ... ok\ntest_ac16_rv07_long_expression_and_nested_control_execution (test_review_ast.ReviewAstTests.test_ac16_rv07_long_expression_and_nested_control_execution) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 9.550s\n\nOK\n"
+}

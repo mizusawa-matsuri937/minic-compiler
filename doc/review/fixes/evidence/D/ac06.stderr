@@ -1,0 +1,10 @@
+test_ac06_all_lex_errors_and_stale_cleanup (test_minic_frontend.FrontendTests.test_ac06_all_lex_errors_and_stale_cleanup) ... ok
+test_ac06_ac14_rv04_case_variant_repeated_cleanup (test_review_paths.ReviewPathTests.test_ac06_ac14_rv04_case_variant_repeated_cleanup) ... ok
+test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise (test_review_paths.ReviewPathTests.test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise) ... ok
+test_ac06_rv01_output_parent_conflict_precedes_cleanup (test_review_paths.ReviewPathTests.test_ac06_rv01_output_parent_conflict_precedes_cleanup) ... ok
+test_ac06_rv01_source_in_output_is_preserved (test_review_paths.ReviewPathTests.test_ac06_rv01_source_in_output_is_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.515s
+
+OK

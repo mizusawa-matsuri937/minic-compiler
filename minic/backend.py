@@ -8,16 +8,26 @@ class BackendError(Exception):
     pass
 
 
+def output_paths(ir):
+    """Name all backend artifacts without inspecting or changing the filesystem."""
+    ir = Path(ir)
+    return dict(optimized=ir.with_suffix('.opt.ll'), assembly=ir.with_suffix('.s'),
+                executable=ir.with_suffix('.exe' if os.name == 'nt' else ''))
+
+
 def build(ir, optimization=2, clang='clang'):
     ir = Path(ir).resolve()
     # Relative explicit tool paths are relative to the caller, not the output dir.
     if os.path.dirname(clang):
         clang = str(Path(clang).resolve())
-    executable = ir.with_suffix('.exe' if os.name == 'nt' else '')
+    outputs = output_paths(ir)
+    executable = outputs['executable']
+    # Explicit relative paths cannot be interpreted as options or response files.
+    input_name = './' + ir.name
     commands = [
-        ['-S', '-emit-llvm', ir.name, '-o', ir.with_suffix('.opt.ll').name],
-        ['-S', ir.name, '-o', ir.with_suffix('.s').name],
-        [ir.name, '-o', executable.name],
+        ['-S', '-emit-llvm', input_name, '-o', './' + outputs['optimized'].name],
+        ['-S', input_name, '-o', './' + outputs['assembly'].name],
+        [input_name, '-o', './' + executable.name],
     ]
     for arguments in commands:
         command = [clang, '-Wno-override-module', f'-O{optimization}'] + arguments

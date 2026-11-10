@@ -1,0 +1,1 @@
+tool exit 7, exact diagnostic; compiler exit 3; all seven frontend/IR artifacts preserved

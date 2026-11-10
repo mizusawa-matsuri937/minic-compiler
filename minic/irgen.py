@@ -25,70 +25,84 @@ class Generator:
         self.instructions.append(name + ':')
 
     def expression(self, node):
-        kind = node['type']
-        if kind == 'Number':
-            return node['value'].lstrip('0') or '0'
-        if kind == 'Identifier':
-            return self.value(f"load i32, ptr %{node['_slot']}")
-        left = self.expression(node['left'])
-        right = self.expression(node['right'])
+        pending, values = [(node, False)], []
         arithmetic = {'+': 'add', '-': 'sub', '*': 'mul', '/': 'sdiv'}
-        op = node['op']
-        if op in arithmetic:
-            return self.value(f'{arithmetic[op]} i32 {left}, {right}')
-        predicate = {'<': 'slt', '>': 'sgt', '==': 'eq', '!=': 'ne', '<=': 'sle', '>=': 'sge'}[op]
-        comparison = self.value(f'icmp {predicate} i32 {left}, {right}')
-        return self.value(f'zext i1 {comparison} to i32')
+        predicates = {'<': 'slt', '>': 'sgt', '==': 'eq', '!=': 'ne', '<=': 'sle', '>=': 'sge'}
+        while pending:
+            current, ready = pending.pop()
+            kind = current['type']
+            if kind == 'Number':
+                values.append(current['value'].lstrip('0') or '0')
+            elif kind == 'Identifier':
+                values.append(self.value(f"load i32, ptr %{current['_slot']}"))
+            elif not ready:
+                pending.extend([(current, True), (current['right'], False),
+                                (current['left'], False)])
+            else:
+                right, left = values.pop(), values.pop()
+                op = current['op']
+                if op in arithmetic:
+                    values.append(self.value(f'{arithmetic[op]} i32 {left}, {right}'))
+                else:
+                    comparison = self.value(f'icmp {predicates[op]} i32 {left}, {right}')
+                    values.append(self.value(f'zext i1 {comparison} to i32'))
+        return values[0]
 
     def condition(self, node):
         value = self.expression(node)
         return self.value(f'icmp ne i32 {value}, 0')
 
     def statement(self, node):
-        kind = node['type']
-        if kind in ('Program', 'Block'):
-            for child in node['body']:
-                self.statement(child)
-        elif kind in ('VarDecl', 'Assign'):
-            if kind == 'VarDecl':
-                self.allocas.append(f"  %{node['_slot']} = alloca i32")
-                value = self.expression(node['init']) if 'init' in node else '0'
+        # Deferred label/branch events keep source order and the original DFS
+        # numbering, including continuations after arbitrarily nested bodies.
+        pending = [('statement', node)]
+        while pending:
+            action, current = pending.pop()
+            if action == 'label':
+                self.label(current)
+                continue
+            if action == 'emit':
+                self.emit(current)
+                continue
+            kind = current['type']
+            if kind in ('Program', 'Block'):
+                pending.extend(('statement', child) for child in reversed(current['body']))
+            elif kind in ('VarDecl', 'Assign'):
+                if kind == 'VarDecl':
+                    self.allocas.append(f"  %{current['_slot']} = alloca i32")
+                    value = self.expression(current['init']) if 'init' in current else '0'
+                else:
+                    value = self.expression(current['value'])
+                self.emit(f"store i32 {value}, ptr %{current['_slot']}")
+            elif kind == 'Read':
+                self.emit(f"call i32 (ptr, ...) @scanf(ptr @.fmt.read, ptr %{current['_slot']})")
+            elif kind == 'Write':
+                value = self.expression(current['value'])
+                self.emit(f'call i32 (ptr, ...) @printf(ptr @.fmt.write, i32 {value})')
+            elif kind == 'If':
+                self.control += 1
+                then, otherwise, end = [f'if.{part}.{self.control}' for part in ('then', 'else', 'end')]
+                condition = self.condition(current['cond'])
+                self.emit(f'br i1 {condition}, label %{then}, label %{otherwise if "else" in current else end}')
+                self.label(then)
+                continuation = [('statement', current['then']), ('emit', f'br label %{end}')]
+                if 'else' in current:
+                    continuation.extend([('label', otherwise), ('statement', current['else']),
+                                         ('emit', f'br label %{end}')])
+                continuation.append(('label', end))
+                pending.extend(reversed(continuation))
+            elif kind == 'While':
+                self.control += 1
+                cond, body, end = [f'while.{part}.{self.control}' for part in ('cond', 'body', 'end')]
+                self.emit(f'br label %{cond}')
+                self.label(cond)
+                condition = self.condition(current['cond'])
+                self.emit(f'br i1 {condition}, label %{body}, label %{end}')
+                self.label(body)
+                pending.extend([('label', end), ('emit', f'br label %{cond}'),
+                                ('statement', current['body'])])
             else:
-                value = self.expression(node['value'])
-            self.emit(f"store i32 {value}, ptr %{node['_slot']}")
-        elif kind == 'Read':
-            self.emit(f"call i32 (ptr, ...) @scanf(ptr @.fmt.read, ptr %{node['_slot']})")
-        elif kind == 'Write':
-            value = self.expression(node['value'])
-            self.emit(f'call i32 (ptr, ...) @printf(ptr @.fmt.write, i32 {value})')
-        elif kind == 'If':
-            self.control += 1
-            number = self.control
-            then, otherwise, end = [f'if.{part}.{number}' for part in ('then', 'else', 'end')]
-            condition = self.condition(node['cond'])
-            self.emit(f'br i1 {condition}, label %{then}, label %{otherwise if "else" in node else end}')
-            self.label(then)
-            self.statement(node['then'])
-            self.emit(f'br label %{end}')
-            if 'else' in node:
-                self.label(otherwise)
-                self.statement(node['else'])
-                self.emit(f'br label %{end}')
-            self.label(end)
-        elif kind == 'While':
-            self.control += 1
-            number = self.control
-            cond, body, end = [f'while.{part}.{number}' for part in ('cond', 'body', 'end')]
-            self.emit(f'br label %{cond}')
-            self.label(cond)
-            condition = self.condition(node['cond'])
-            self.emit(f'br i1 {condition}, label %{body}, label %{end}')
-            self.label(body)
-            self.statement(node['body'])
-            self.emit(f'br label %{cond}')
-            self.label(end)
-        else:
-            raise ValueError(f'未知语句 {kind}')
+                raise ValueError(f'未知语句 {kind}')
 
 
 def generate(tree, source_name):

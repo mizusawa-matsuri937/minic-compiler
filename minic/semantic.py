@@ -14,24 +14,19 @@ def check(tree):
                 return
         error(node, 'S001', f'变量 {name!r} 未声明')
 
-    def scoped(node):
-        scopes.append({})
-        visit(node)
-        scopes.pop()
-
-    def visit(node):
-        kind = node['type']
-        if kind == 'Program':
-            for child in node['body']:
-                visit(child)
-        elif kind == 'Block':
-            scopes.append({})
-            for child in node['body']:
-                visit(child)
+    # Continuations preserve initializer-before-declaration and scope lifetimes
+    # without tying valid source nesting to the Python call stack.
+    pending = [('visit', tree)]
+    while pending:
+        action, node = pending.pop()
+        if action == 'leave':
             scopes.pop()
-        elif kind == 'VarDecl':
-            if 'init' in node:
-                visit(node['init'])
+            continue
+        if action == 'scoped':
+            scopes.append({})
+            pending.extend([('leave', None), ('visit', node)])
+            continue
+        if action == 'declare':
             name = node['name']
             if name in scopes[-1]:
                 error(node, 'S002', f'变量 {name!r} 重复声明')
@@ -40,31 +35,38 @@ def check(tree):
                 slot = name + '.addr' + (f'.{count}' if count else '')
                 counts[name] = count + 1
                 scopes[-1][name] = node['_slot'] = slot
+            continue
+        kind = node['type']
+        if kind in ('Program', 'Block'):
+            if kind == 'Block':
+                scopes.append({})
+                pending.append(('leave', None))
+            pending.extend(('visit', child) for child in reversed(node['body']))
+        elif kind == 'VarDecl':
+            pending.append(('declare', node))
+            if 'init' in node:
+                pending.append(('visit', node['init']))
         elif kind == 'Identifier':
             lookup(node, node['name'])
         elif kind in ('Assign', 'Read'):
             lookup(node, node['target'])
             if kind == 'Assign':
-                visit(node['value'])
+                pending.append(('visit', node['value']))
         elif kind == 'Number':
             normalized = node['value'].lstrip('0') or '0'
             if len(normalized) > 10 or (len(normalized) == 10 and normalized > '2147483647'):
                 error(node, 'S003', '整型常数超过 2147483647')
         elif kind == 'BinaryOp':
-            visit(node['left'])
-            visit(node['right'])
+            pending.extend([('visit', node['right']), ('visit', node['left'])])
         elif kind == 'Write':
-            visit(node['value'])
+            pending.append(('visit', node['value']))
         elif kind == 'If':
-            visit(node['cond'])
-            scoped(node['then'])
             if 'else' in node:
-                scoped(node['else'])
+                pending.append(('scoped', node['else']))
+            pending.extend([('scoped', node['then']), ('visit', node['cond'])])
         elif kind == 'While':
-            visit(node['cond'])
-            scoped(node['body'])
+            pending.extend([('scoped', node['body']), ('visit', node['cond'])])
         else:
             raise ValueError(f'未知 AST 结点 {kind}')
 
-    visit(tree)
     return sorted(errors, key=lambda e: (e['line'], e['col']))

@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac02",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 0.788287291994493,
+  "counts": {
+    "tests": 3,
+    "reported_seconds": 0.734,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac02_language_independent (test_parsegen.ParsegenTests.test_ac02_language_independent) ... ok\ntest_ac02_ac20_rv03_ast_token_field_collision (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv03_ast_token_field_collision) ... ok\ntest_ac02_ac20_rv07_deep_standalone_json (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv07_deep_standalone_json) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.734s\n\nOK\n"
+}

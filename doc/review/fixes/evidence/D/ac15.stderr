@@ -1,0 +1,9 @@
+test_ac15_demo_optimization_equivalence (test_backend.BackendTests.test_ac15_demo_optimization_equivalence) ... ok
+test_ac15_run_forwards_stdio (test_backend.BackendTests.test_ac15_run_forwards_stdio) ... ok
+test_ac14_ac15_rv05_option_like_names_and_determinism (test_review_paths.ReviewPathTests.test_ac14_ac15_rv05_option_like_names_and_determinism) ... ok
+test_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts (test_review_paths.ReviewPathTests.test_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.030s
+
+OK

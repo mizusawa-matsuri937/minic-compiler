@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac21",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 0.704884333004884,
+  "counts": {
+    "tests": 3,
+    "reported_seconds": 0.653,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac21_exact_rule_and_sample_sources (test_project.ProjectTests.test_ac21_exact_rule_and_sample_sources) ... ok\ntest_ac21_standard_library_only (test_project.ProjectTests.test_ac21_standard_library_only) ... ok\ntest_ac17_ac21_rv11_failed_clang_under_spaced_python (test_review_portability.PortabilityReviewTests.test_ac17_ac21_rv11_failed_clang_under_spaced_python) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.653s\n\nOK\n"
+}

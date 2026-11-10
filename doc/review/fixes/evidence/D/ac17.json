@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac17",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 1.405801375003648,
+  "counts": {
+    "tests": 5,
+    "reported_seconds": 1.341,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac17_clang_commands (test_backend.BackendTests.test_ac17_clang_commands) ... ok\ntest_ac17_failed_clang_keeps_frontend (test_backend.BackendTests.test_ac17_failed_clang_keeps_frontend) ... ok\ntest_ac17_missing_clang_keeps_frontend (test_backend.BackendTests.test_ac17_missing_clang_keeps_frontend) ... ok\ntest_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise (test_review_paths.ReviewPathTests.test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise) ... ok\ntest_ac17_ac21_rv11_failed_clang_under_spaced_python (test_review_portability.PortabilityReviewTests.test_ac17_ac21_rv11_failed_clang_under_spaced_python) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 1.341s\n\nOK\n"
+}

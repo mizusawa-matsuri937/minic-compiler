@@ -1,0 +1,95 @@
+{
+  "python": "3.11.15 (main, Jun 23 2026, 15:46:51) [Clang 22.1.3 ]",
+  "commands": [
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_parsegen.py",
+        "-v"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_ac02_language_independent (test_parsegen.ParsegenTests.test_ac02_language_independent) ... ok\ntest_ac07_nullable_start (test_parsegen.ParsegenTests.test_ac07_nullable_start) ... ok\ntest_ac07_productions_first_conflicts (test_parsegen.ParsegenTests.test_ac07_productions_first_conflicts) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.136s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_lexer_minic.py",
+        "-v"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_ac05_fixed_and_priority (test_lexer_minic.LexerTests.test_ac05_fixed_and_priority) ... ok\ntest_ac05_minic_tokens (test_lexer_minic.LexerTests.test_ac05_minic_tokens) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.034s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_standalone.py",
+        "-v"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_ac20_isolated_cli_byte_identity (test_standalone.StandaloneTests.test_ac20_isolated_cli_byte_identity) ... ok\ntest_ac20_refuses_lexical_errors (test_standalone.StandaloneTests.test_ac20_refuses_lexical_errors) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.205s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_ccgen_cli.py",
+        "-v"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_ac01_deterministic_standalone_sources (test_ccgen_cli.CLItests.test_ac01_deterministic_standalone_sources) ... ok\ntest_ac08_reduce_reduce_never_resolved (test_ccgen_cli.CLItests.test_ac08_reduce_reduce_never_resolved) ... ok\ntest_ac08_undeclared_conflicts (test_ccgen_cli.CLItests.test_ac08_undeclared_conflicts) ... ok\ntest_ac09_directive_location (test_ccgen_cli.CLItests.test_ac09_directive_location) ... ok\ntest_ac09_invalid_rules_atomic (test_ccgen_cli.CLItests.test_ac09_invalid_rules_atomic) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.513s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_minic_frontend.py",
+        "-v"
+      ],
+      "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_ac06_all_lex_errors_and_stale_cleanup (test_minic_frontend.FrontendTests.test_ac06_all_lex_errors_and_stale_cleanup) ... ok\ntest_ac10_expression_ast (test_minic_frontend.FrontendTests.test_ac10_expression_ast) ... ok\ntest_ac11_nearest_else (test_minic_frontend.FrontendTests.test_ac11_nearest_else) ... ok\ntest_ac12_exact_syntax_errors (test_minic_frontend.FrontendTests.test_ac12_exact_syntax_errors) ... ok\ntest_ac12_stop_after_tokens_and_missing_frontend (test_minic_frontend.FrontendTests.test_ac12_stop_after_tokens_and_missing_frontend) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.355s\n\nOK\n"
+    }
+  ]
+}

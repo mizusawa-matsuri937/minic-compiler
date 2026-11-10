@@ -1,0 +1,17 @@
+test_ac20_rv07_long_pipeline_and_standalone_json (test_review_ast.ReviewAstTests.test_ac20_rv07_long_pipeline_and_standalone_json) ... ok
+test_ac02_ac20_rv03_ast_token_field_collision (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv03_ast_token_field_collision) ... ok
+test_ac02_ac20_rv07_deep_standalone_json (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv07_deep_standalone_json) ... ok
+test_ac05_ac20_rv06_raw_cr_crlf_lf (test_review_generated.GeneratedReviewTests.test_ac05_ac20_rv06_raw_cr_crlf_lf) ... ok
+test_ac05_ac20_rv09_text_escapes_control_characters (test_review_generated.GeneratedReviewTests.test_ac05_ac20_rv09_text_escapes_control_characters) ... ok
+test_ac10_ac20_rv07_json_format_compatibility (test_review_generated.GeneratedReviewTests.test_ac10_ac20_rv07_json_format_compatibility) ... ok
+test_ac20_rv02_same_second_same_size_pyc_ignored (test_review_generated.GeneratedReviewTests.test_ac20_rv02_same_second_same_size_pyc_ignored) ... ok
+test_ac13_ac20_rv06_cr_positions_match_api (test_review_paths.ReviewPathTests.test_ac13_ac20_rv06_cr_positions_match_api) ... ok
+test_ac20_rv01_analyzer_alias_is_preserved (test_review_paths.ReviewPathTests.test_ac20_rv01_analyzer_alias_is_preserved) ... ok
+test_ac20_rv01_selected_analyzers_are_preserved (test_review_paths.ReviewPathTests.test_ac20_rv01_selected_analyzers_are_preserved) ... ok
+test_ac20_isolated_cli_byte_identity (test_standalone.StandaloneTests.test_ac20_isolated_cli_byte_identity) ... ok
+test_ac20_refuses_lexical_errors (test_standalone.StandaloneTests.test_ac20_refuses_lexical_errors) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.558s
+
+OK

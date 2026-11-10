@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac15",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 7.093927584006451,
+  "counts": {
+    "tests": 4,
+    "reported_seconds": 7.03,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac15_demo_optimization_equivalence (test_backend.BackendTests.test_ac15_demo_optimization_equivalence) ... ok\ntest_ac15_run_forwards_stdio (test_backend.BackendTests.test_ac15_run_forwards_stdio) ... ok\ntest_ac14_ac15_rv05_option_like_names_and_determinism (test_review_paths.ReviewPathTests.test_ac14_ac15_rv05_option_like_names_and_determinism) ... ok\ntest_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts (test_review_paths.ReviewPathTests.test_ac15_ac18_rv04_reserved_stems_preserve_all_artifacts) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 7.030s\n\nOK\n"
+}

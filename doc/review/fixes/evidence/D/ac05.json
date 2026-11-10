@@ -1,0 +1,29 @@
+{
+  "cwd": "/Users/aqua_night/codex_project/编译原理/minic-compiler",
+  "command": [
+    "/Users/aqua_night/.local/bin/python3.11",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-k",
+    "ac05",
+    "-v"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 0.23670549999951618,
+  "counts": {
+    "tests": 4,
+    "reported_seconds": 0.185,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "stdout": "",
+  "stderr": "test_ac05_fixed_and_priority (test_lexer_minic.LexerTests.test_ac05_fixed_and_priority) ... ok\ntest_ac05_minic_tokens (test_lexer_minic.LexerTests.test_ac05_minic_tokens) ... ok\ntest_ac05_ac20_rv06_raw_cr_crlf_lf (test_review_generated.GeneratedReviewTests.test_ac05_ac20_rv06_raw_cr_crlf_lf) ... ok\ntest_ac05_ac20_rv09_text_escapes_control_characters (test_review_generated.GeneratedReviewTests.test_ac05_ac20_rv09_text_escapes_control_characters) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.185s\n\nOK\n"
+}

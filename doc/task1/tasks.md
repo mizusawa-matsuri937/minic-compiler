@@ -99,3 +99,11 @@
 | T1-04 | `ffbb486` |
 | T1-05 | `7480057` |
 | T1-06 | 随本文件提交；用 `git log -1 --format=%h --grep="^T1-06 "` 读取 |
+
+修复轮验证补充（2026-11-11，以上阶段与历史结果不重写）：RV01～RV11 完成修复，新增 26 个含 AC 编号的回归方法。D 独立执行相关 14 个 AC 筛选、新增回归和最终全量；Python 3.11.15 全量 67 tests / 21.386s，0 失败、0 错误、0 跳过，退出 0。Apple clang 21.0.0 实际后端及临时目录演示均通过，输出 `15 / 120 / 1`。逐项证据见 [fix-summary](../review/fix-summary.md) 与 [D 报告](../review/fixes/agent-D.md)；AC18 用户人工目视仍未完成。
+
+```bash
+# 已验证 2026-11-11；shell zsh；Python 3.11.15；本机 clang 可用
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler"
+PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -v
+```

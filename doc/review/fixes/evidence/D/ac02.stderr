@@ -1,0 +1,8 @@
+test_ac02_language_independent (test_parsegen.ParsegenTests.test_ac02_language_independent) ... ok
+test_ac02_ac20_rv03_ast_token_field_collision (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv03_ast_token_field_collision) ... ok
+test_ac02_ac20_rv07_deep_standalone_json (test_review_generated.GeneratedReviewTests.test_ac02_ac20_rv07_deep_standalone_json) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.734s
+
+OK

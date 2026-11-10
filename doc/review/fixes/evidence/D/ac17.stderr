@@ -1,0 +1,10 @@
+test_ac17_clang_commands (test_backend.BackendTests.test_ac17_clang_commands) ... ok
+test_ac17_failed_clang_keeps_frontend (test_backend.BackendTests.test_ac17_failed_clang_keeps_frontend) ... ok
+test_ac17_missing_clang_keeps_frontend (test_backend.BackendTests.test_ac17_missing_clang_keeps_frontend) ... ok
+test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise (test_review_paths.ReviewPathTests.test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise) ... ok
+test_ac17_ac21_rv11_failed_clang_under_spaced_python (test_review_portability.PortabilityReviewTests.test_ac17_ac21_rv11_failed_clang_under_spaced_python) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.341s
+
+OK
