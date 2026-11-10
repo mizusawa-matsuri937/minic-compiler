@@ -1,0 +1,18 @@
+日期：2026-11-10
+环境：Python 3.11.15 / zsh / Apple clang 21.0.0
+命令：
+export PATH="/Users/aqua_night/.local/share/uv/python/cpython-3.11-macos-aarch64-none/bin:$PATH"
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac12 -v
+
+STDOUT:
+
+STDERR:
+test_ac12_exact_syntax_errors (test_minic_frontend.FrontendTests.test_ac12_exact_syntax_errors) ... ok
+test_ac12_stop_after_tokens_and_missing_frontend (test_minic_frontend.FrontendTests.test_ac12_stop_after_tokens_and_missing_frontend) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.138s
+
+OK
+
+退出码：0

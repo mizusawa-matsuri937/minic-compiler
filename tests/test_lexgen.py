@@ -10,6 +10,13 @@ class LexgenTests(unittest.TestCase):
     def test_ac04_algorithms(self):
         nfa = NFA()
         nfa.add(parse('(a|b)*abb'), 0)
+        nfa.canonicalize()
+        discovered = [nfa.start]
+        for state in discovered:
+            for _, target in nfa.edges[state]:
+                if target not in discovered:
+                    discovered.append(target)
+        self.assertEqual(discovered, list(range(len(nfa.edges))))
         dfa = determinize(nfa)
         minimal = minimize(dfa)
         self.assertEqual(len(minimal.trans), 4)

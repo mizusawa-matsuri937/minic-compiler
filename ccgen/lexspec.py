@@ -37,6 +37,7 @@ def build_tables(path):
             code += 1
         tokens.append(dict(code=None if skip else code, name=name, regex=regex,
                            skip=skip, fixed=singleton(tree) is not None))
+    nfa.canonicalize()
     for state in sorted(nfa.closure([nfa.start])):
         if state in nfa.accept:
             name, _, _, line = rules[nfa.accept[state]]

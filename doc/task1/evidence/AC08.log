@@ -1,0 +1,18 @@
+日期：2026-11-10
+环境：Python 3.11.15 / zsh / Apple clang 21.0.0
+命令：
+export PATH="/Users/aqua_night/.local/share/uv/python/cpython-3.11-macos-aarch64-none/bin:$PATH"
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac08 -v
+
+STDOUT:
+
+STDERR:
+test_ac08_reduce_reduce_never_resolved (test_ccgen_cli.CLItests.test_ac08_reduce_reduce_never_resolved) ... ok
+test_ac08_undeclared_conflicts (test_ccgen_cli.CLItests.test_ac08_undeclared_conflicts) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.081s
+
+OK
+
+退出码：0

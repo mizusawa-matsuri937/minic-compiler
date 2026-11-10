@@ -55,6 +55,23 @@ class NFA:
         self.edge(self.start, start)
         self.accept[end] = rule
 
+    def canonicalize(self):
+        """Renumber reachable states in BFS order, epsilon before characters."""
+        def ordered(edges):
+            return sorted(edges, key=lambda edge: (
+                () if edge[0] is None else tuple(sorted(edge[0])), edge[1]))
+
+        order, ids = [self.start], {self.start: 0}
+        for source in order:
+            for _, target in ordered(self.edges[source]):
+                if target not in ids:
+                    ids[target] = len(order)
+                    order.append(target)
+        self.edges = [[(chars, ids[target]) for chars, target in ordered(self.edges[source])]
+                      for source in order]
+        self.accept = {ids[state]: rule for state, rule in sorted(self.accept.items())}
+        self.start = 0
+
     def closure(self, states):
         found, todo = set(states), list(states)
         while todo:

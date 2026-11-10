@@ -83,3 +83,14 @@ class CLItests(unittest.TestCase):
                 result = generate(out, root / 'bad.lex', root / 'bad.grammar')
                 self.assertEqual(result.returncode, 2)
                 self.assertEqual(sentinel.read_bytes(), b'previous valid result\n')
+
+    def test_ac09_directive_location(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            grammar = root / 'bad-prefer.grammar'
+            grammar.write_text('# header\n%prefer shift missing\nS -> num\n')
+            result = generate(root / 'generated', 'tests/fixtures/calc.lex', grammar)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn(f'{grammar}:2:', result.stderr)
+            self.assertIn('missing', result.stderr)
+            self.assertFalse((root / 'generated').exists())

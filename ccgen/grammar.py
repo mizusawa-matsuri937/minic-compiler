@@ -45,6 +45,7 @@ def action_parse(text, arity, path, line):
 def read_grammar(path, tokens):
     path = Path(path)
     productions, nonterminals, symbols, prefer = [], [], [], set()
+    prefer_lines = {}
     start, start_line = None, 1
     for line, raw in enumerate(path.read_text(encoding='utf-8').splitlines(), 1):
         text = raw.strip()
@@ -56,6 +57,7 @@ def read_grammar(path, tokens):
                 start, start_line = parts[1], line
             elif parts[:2] == ['%prefer', 'shift'] and len(parts) >= 3:
                 prefer.update(parts[2:])
+                prefer_lines.update({name: line for name in parts[2:]})
             else:
                 raise RuleError(path, line, '非法或重复的文法指令')
             continue
@@ -88,8 +90,8 @@ def read_grammar(path, tokens):
         for symbol in production['rhs']:
             if symbol not in nonterminals and symbol not in terminals:
                 raise RuleError(path, production['line'], f'未定义的终结符 {symbol}')
-    if prefer - set(terminals):
-        raise RuleError(path, 1, f'冲突声明引用了未定义的终结符 {sorted(prefer - set(terminals))}')
+    for name in sorted(prefer - set(terminals)):
+        raise RuleError(path, prefer_lines[name], f'冲突声明引用了未定义的终结符 {name}')
     augmented = "S'"
     while augmented in symbols or augmented in terminals:
         augmented += "'"

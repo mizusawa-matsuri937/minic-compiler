@@ -1,0 +1,17 @@
+日期：2026-11-10
+环境：Python 3.11.15 / zsh / Apple clang 21.0.0
+命令：
+export PATH="/Users/aqua_night/.local/share/uv/python/cpython-3.11-macos-aarch64-none/bin:$PATH"
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac14 -v
+
+STDOUT:
+
+STDERR:
+test_ac14_ir_features_and_determinism (test_irgen.IRTests.test_ac14_ir_features_and_determinism) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.102s
+
+OK
+
+退出码：0

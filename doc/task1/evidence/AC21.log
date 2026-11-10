@@ -1,0 +1,18 @@
+日期：2026-11-10
+环境：Python 3.11.15 / zsh / Apple clang 21.0.0
+命令：
+export PATH="/Users/aqua_night/.local/share/uv/python/cpython-3.11-macos-aarch64-none/bin:$PATH"
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m unittest discover -s tests -k ac21 -v
+
+STDOUT:
+
+STDERR:
+test_ac21_exact_rule_and_sample_sources (test_project.ProjectTests.test_ac21_exact_rule_and_sample_sources) ... ok
+test_ac21_standard_library_only (test_project.ProjectTests.test_ac21_standard_library_only) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.024s
+
+OK
+
+退出码：0
