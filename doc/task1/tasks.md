@@ -1,6 +1,6 @@
 # mini-C 编译器生成器与编译器成品 执行任务
 
-状态：T1-00 至 T1-06 编码与阶段自动检查已完成（2026-11-10）；AC18 人工目视验收另计。规则与验收见 [spec](spec.md)，实现方法见 [design](design.md)，逐项复核见 [checklist](checklist.md)。
+状态：T1-00 至 T1-06 编码与阶段自动检查已完成（2026-11-10）；AC18 人工目视验收另计。T1-07（评审发现 CR01、CR02，2026-11-11 新增）未执行。规则与验收见 [spec](spec.md)，实现方法见 [design](design.md)，逐项复核见 [checklist](checklist.md)。
 
 所有命令的工作目录是 `/Users/aqua_night/codex_project/编译原理/minic-compiler`，shell 为 zsh，各阶段实测使用 Python 3.11.15（通过 PATH 选择）；默认 `python3` 3.14.6 另有完整回归日志。以下代码块可独立复核，显式设置当前机器已存在的 3.11 路径；原始执行环境也记录在日志中。各阶段按顺序进行，后一阶段依赖前一阶段的产物。
 
@@ -88,6 +88,22 @@
 
   计划观测：全部测试 `OK`，没有失败、错误和跳过；演示脚本退出码 0，标准输出最后三行为 `15`、`120`、`1`。实际结果：2026-11-10：41 个测试全部 OK（24.045s），无失败、错误或跳过；退出码 0。证据：`evidence/T1-06.log`（41 tests / 24.045s）；演示最后三行 `15`、`120`、`1`。默认 Python 回归为 41 tests / 24.529s，见 `evidence/python314-full.log`。三套检查并行运行，这些耗时不是单独性能基准。
 
+- [ ] T1-07 处理验收评审发现 CR01、CR02。规则：R30、R31；关联 AC23、AC24，并随全量回归重新确认 AC05、AC06、AC14、AC18、AC20。
+  - 文件：`ccgen/templates/lexer_template.py`（命令行入口的读文件）、`minic/__main__.py`（读文件一处）、`minic/astviz.py`（页面模板与内嵌脚本）、`tests/test_review_cr.py`（新增）、`README.md`、`doc/task1/checklist.md`、`doc/handoffs/` 下新增的交接文件。
+  - 完成情况：未执行；让两个入口忽略文件开头的 BOM，给 `ast.html` 加上根结点定位和“适应宽度 / 原始大小”切换，做法见 design 5.2、第 7 节和 10.1。不改规则文件、样例和已有测试的断言。
+
+  ```bash
+  # 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh；Python 3.11.15
+  cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests -k ac23 -k ac24 -v
+  ```
+
+  ```bash
+  # 计划，未执行；全量回归；需要 clang 在 PATH 中
+  cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests 2>&1 | tail -4
+  ```
+
+  计划观测：第一条中名字含 `ac23`、`ac24` 的用例全部 `ok`；第二条末尾为 `OK`，没有失败、错误和跳过，测试总数多于 67（新增数量以实际为准）。另需按 checklist 的 AC24 用真实浏览器实测并记录数值。实际结果：未执行。
+
 阶段本地提交：遵循 [项目配置](../project-config.md)，每个阶段检查通过后提交一次，提交说明以阶段编号开头（如 `T1-01 词法分析器生成器`）。
 
 | 阶段 | 提交标识 |
@@ -99,6 +115,7 @@
 | T1-04 | `ffbb486` |
 | T1-05 | `7480057` |
 | T1-06 | 随本文件提交；用 `git log -1 --format=%h --grep="^T1-06 "` 读取 |
+| T1-07 | 未提交 |
 
 修复轮验证补充（2026-11-11，以上阶段与历史结果不重写）：RV01～RV11 完成修复，新增 26 个含 AC 编号的回归方法。D 独立执行相关 14 个 AC 筛选、新增回归和最终全量；Python 3.11.15 全量 67 tests / 21.386s，0 失败、0 错误、0 跳过，退出 0。Apple clang 21.0.0 实际后端及临时目录演示均通过，输出 `15 / 120 / 1`。逐项证据见 [fix-summary](../review/fix-summary.md) 与 [D 报告](../review/fixes/agent-D.md)；AC18 用户人工目视仍未完成。
 
