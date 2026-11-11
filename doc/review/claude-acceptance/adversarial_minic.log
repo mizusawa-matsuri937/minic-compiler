@@ -1,0 +1,54 @@
+PASS 运行: 空文件 
+PASS 运行: 只有空白和注释 
+PASS 运行: 注释在文件末尾且无换行 
+PASS 运行: CRLF 行结束 
+PASS 运行: 制表符缩进 
+PASS 运行: 前导零不是八进制 
+PASS 运行: 最大整数与多前导零 
+PASS 运行: 变量名与内部名字相近 
+PASS 运行: 关键字前缀的标识符 
+PASS 运行: 紧凑无空格 
+PASS 运行: a/ /b 不是注释 
+PASS 运行: 关系结果参与运算 
+PASS 运行: 乘法回绕 
+PASS 运行: 减法回绕 
+PASS 运行: 负数除法向零截断 
+PASS 运行: 循环体内声明每次置 0 
+PASS 运行: else 分支独立作用域 
+PASS 运行: 多层遮蔽 
+PASS 运行: 块后同名再声明 
+PASS 运行: else-if 链 
+PASS 运行: 嵌套循环 
+PASS 运行: 200 层括号 
+PASS 运行: 空块与空 if 体 
+PASS read: 多行输入与边界值 
+PASS --run 的标准输出只有程序输出 
+PASS 诊断: 数字紧跟字母 
+PASS 诊断: 逗号进入语法分析被拒 
+PASS 诊断: 关键字不能作变量名 
+PASS 诊断: else 无 if 
+PASS 诊断: 缺右括号 
+PASS 诊断: 一元负号不支持 
+PASS 诊断: === 被切成 == 与 = 
+PASS 诊断: 赋值不是表达式 
+PASS 诊断: 未闭合的块 
+PASS 诊断: 初值引用自身 
+PASS 诊断: 块外使用块内变量 
+PASS 诊断: if 体内声明不外泄 
+PASS 诊断: 同一块内重复声明 
+PASS 诊断: 2147483648 越界而 2147483647 合法 
+PASS 诊断: 非 ASCII 标识符 
+PASS 诊断: 词法错误后不再报语法错误 
+PASS 诊断: 单独的 ! 非法 
+PASS --stop-after tokens 只产生记号文件 
+PASS tokens.txt 每行四列、二元式格式 
+PASS 源文件不存在 → 退出 2 且不建目录 
+PASS 分析器目录不存在 → 退出 2 并提示运行 ccgen 
+PASS 非 UTF-8 源文件 → 退出 2 
+INFO 带 BOM 的源文件：退出码 1 | <临时目录>…
+PASS 缺少参数 → 退出 2 
+PASS -O1 可用 
+PASS -O3 可用 
+PASS 出错后旧的 AST/IR/可执行文件被清除 
+PASS 60 个随机程序（-O0 与 -O2）与参考解释器输出一致，共比对 198 行输出 
+PASS 120 个随机程序（-O0 与 -O2）与参考解释器输出一致，共比对 501 行输出（种子 77，另一次运行）

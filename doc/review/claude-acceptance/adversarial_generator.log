@@ -1,0 +1,27 @@
+PASS R29 生成结果在哈希种子 0/1/12345 与 Python 3.14 下逐字节相同 
+PASS 400 个随机正规式 × 369 个串：NFA/DFA/最小DFA 与 Python re 一致 
+PASS 最小 DFA 状态数等于独立填表法求得的等价类数（即确实最小） 
+PASS 正规式语法边界（非法式报 RuleError，合法式可构造） 
+PASS [a\-z] 中转义的 - 是字面字符 
+PASS [a-] 末尾的 - 是字面字符 
+PASS LR(1) 但非 LALR(1) 的文法生成成功（证明是规范 LR(1) 而非 LALR/SLR） 
+PASS 该文法接受 aea/beb/aeb/bea，拒绝 aee/ae/eea/空 
+PASS 归约-归约冲突被拒绝并说明类型 
+PASS %prefer shift 不能消解归约-归约冲突 
+PASS 含 ε 产生式与可空链的文法：接受 空/a/b/aabbb，拒绝 ba 
+PASS FIRST(S)={a,b,ε}, FIRST(A)={a,ε} 
+PASS 列表动作 [$1, *$3] 得到 ['1','2','3'] 
+PASS 语法规则错误 e1: 'S -> a => Node(x=$1, x=$1)' 被拒绝 
+PASS 语法规则错误 e2: 'S -> a => Node(type=$1)' 被拒绝 
+PASS 语法规则错误 e3: 'S -> a => $0' 被拒绝 
+PASS 语法规则错误 e4: 'S -> a => [$1' 被拒绝 
+PASS 语法规则错误 e5: 'S -> a b' 被拒绝 
+PASS 语法规则错误 e6: 'S -> a =>' 被拒绝 
+PASS 语法规则错误 e7: 'S a' 被拒绝 
+PASS 语法规则错误 e8: '%start X\nS -> a' 被拒绝 
+PASS 语法规则错误 e9: 'S -> a\na -> a' 被拒绝 
+PASS 词法规则错误 l1: 'a a\na b' 被拒绝 
+PASS 词法规则错误 l2: '%skip Z\na a' 被拒绝 
+PASS 词法规则错误 l3: '$ a' 被拒绝 
+PASS 词法规则错误 l4: 'a' 被拒绝 
+PASS 词法规则错误 l5: '' 被拒绝 

@@ -1,6 +1,6 @@
 # 交接目录
 
-与当前任务相关的最新交接：[2026-11-10 task1 实现完成，交给评审](2026-11-10-task1-impl-to-review.md)。
+与当前任务相关的最新交接：[2026-11-11 task1 验收评审](2026-11-11-task1-acceptance-review.md)。
 
 新增记录时使用 [交接模板](../templates/handoff.md)。
 

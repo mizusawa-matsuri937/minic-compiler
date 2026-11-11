@@ -68,7 +68,7 @@ python3 -m unittest discover -s tests -k ac03 -v
 
 ## 文档与接手
 
-- [最新交接：RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
+- [最新交接：验收评审结论与待办](doc/handoffs/2026-11-11-task1-acceptance-review.md)；上一份为 [RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
 - [协作约定](AGENTS.md)与[项目配置](doc/project-config.md)
 - [spec](doc/task1/spec.md)、[design](doc/task1/design.md)、[tasks](doc/task1/tasks.md)、[checklist](doc/task1/checklist.md)
 

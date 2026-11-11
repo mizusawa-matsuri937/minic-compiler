@@ -1,0 +1,23 @@
+# 变异测试结果（2026-11-11，Python 3.11.15）。副本不含 doc/，所以每个变异体都另有一个与缺陷无关的
+# test_ac21_exact_rule_and_sample_sources 报错（errors=1）；判定“发现”只看其余的失败。
+[0] 发现  最小化不做细分  -> FAILED (failures=44, errors=16)  test_ac03_acceptance, test_ac04_algorithms, test_ac05_fixed_and_priority, test_ac05_minic_tokens …
+[1] 发现  规则优先级取反  -> FAILED (failures=36, errors=16)  test_ac05_fixed_and_priority, test_ac05_minic_tokens, test_ac06_ac14_rv04_case_variant_repeated_cleanup, test_ac10_expression_ast …
+[2] 发现  取消最长匹配  -> FAILED (failures=38, errors=16)  test_ac05_ac20_rv09_text_escapes_control_characters, test_ac05_fixed_and_priority, test_ac05_minic_tokens, test_ac06_ac14_rv04_case_variant_repeated_cleanup …
+[3] 发现  词法错误不跳过整字符而停止  -> FAILED (failures=3, errors=1)  test_ac06_ac17_rv01_rv04_stale_cleanup_remains_precise, test_ac06_all_lex_errors_and_stale_cleanup, test_ac20_refuses_lexical_errors, test_ac21_exact_rule_and_sample_sources
+[4] 发现  else 冲突改取归约  -> FAILED (failures=3, errors=1)  test_ac11_nearest_else, test_ac14_rv07_ir_statement_without_semantic_gate, test_ac16_dangling_else, test_ac21_exact_rule_and_sample_sources
+[5] 发现  闭包忽略向前看传播  -> FAILED (failures=37, errors=17)  test_ac02_ac20_rv07_deep_standalone_json, test_ac02_language_independent, test_ac06_ac14_rv04_case_variant_repeated_cleanup, test_ac07_productions_first_conflicts …
+[6] 发现  FIRST 不处理可空符号  -> FAILED (failures=1, errors=1)  test_ac07_nullable_start, test_ac21_exact_rule_and_sample_sources
+[7] 发现  期望集合取全部终结符  -> FAILED (failures=1, errors=1)  test_ac12_exact_syntax_errors, test_ac21_exact_rule_and_sample_sources
+[8] 发现  结点位置取最后一个记号  -> FAILED (failures=1, errors=1)  test_ac13_diagnostics_and_artifacts, test_ac21_exact_rule_and_sample_sources
+[9] 发现  块不建立作用域  -> FAILED (failures=4, errors=1)  test_ac13_diagnostics_and_artifacts, test_ac13_scopes_initializers_and_range, test_ac16_scope, test_ac21_exact_rule_and_sample_sources
+[10] 发现  先声明后查初值  -> FAILED (failures=3, errors=1)  test_ac13_rv07_deep_control_scope, test_ac13_scopes_initializers_and_range, test_ac16_rv07_long_expression_and_nested_control_execution, test_ac21_exact_rule_and_sample_sources
+[11] 发现  越界判断差一  -> FAILED (failures=1, errors=1)  test_ac13_diagnostics_and_artifacts, test_ac21_exact_rule_and_sample_sources
+[12] 发现  除法改无符号  -> FAILED (failures=2, errors=1)  test_ac14_ir_features_and_determinism, test_ac16_arith, test_ac21_exact_rule_and_sample_sources
+[13] 发现  减法操作数颠倒  -> FAILED (failures=4, errors=1)  test_ac14_rv07_ir_expression_without_semantic_gate, test_ac15_demo_optimization_equivalence, test_ac16_arith, test_ac16_io …
+[14] 发现  <= 误作 <  -> FAILED (failures=5, errors=1)  test_ac14_ir_features_and_determinism, test_ac15_demo_optimization_equivalence, test_ac15_run_forwards_stdio, test_ac16_rel …
+[15] 发现  未初始化不置 0  -> FAILED (failures=1, errors=1)  test_ac16_scope, test_ac21_exact_rule_and_sample_sources
+[16] 发现  加法带 nsw  -> FAILED (failures=2, errors=1)  test_ac14_ir_features_and_determinism, test_ac14_rv07_ir_expression_without_semantic_gate, test_ac21_exact_rule_and_sample_sources
+[17] 发现  clang 失败仍返回成功  -> FAILED (failures=3, errors=1)  test_ac17_ac21_rv11_failed_clang_under_spaced_python, test_ac17_failed_clang_keeps_frontend, test_ac17_missing_clang_keeps_frontend, test_ac21_exact_rule_and_sample_sources
+[18] 发现  语法错误仍写 AST  -> FAILED (failures=2, errors=1)  test_ac12_exact_syntax_errors, test_ac21_exact_rule_and_sample_sources
+[19] 发现  规则出错仍写文件  -> FAILED (failures=9, errors=1)  test_ac08_reduce_reduce_never_resolved, test_ac08_undeclared_conflicts, test_ac09_directive_location, test_ac09_invalid_rules_atomic …
+[exited with code 0]

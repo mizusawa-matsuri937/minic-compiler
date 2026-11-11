@@ -1,0 +1,89 @@
+PASS AC01 两次退出码 0 
+PASS AC01 五个文件 
+PASS AC01 逐字节相同 
+PASS AC01 无 ccgen/minic import 
+   统计: 记号 27；NFA 177；DFA 48；最小 DFA 44；产生式 38；LR(1) 状态 264；已消解冲突 2
+PASS AC02 calc 生成与分析成功 
+PASS AC02 根 E，孩子 E + T 
+PASS AC02 右 T 的孩子 T * F 
+PASS AC02 叶子词素 
+PASS AC03 (a|b)*abb 
+PASS AC03 [0-9]+ 
+PASS AC03 [a-zA-Z_][a-zA-Z0-9_]* 
+PASS AC03 a?b+ 
+PASS AC03 //[^\n]* 
+PASS AC03 \+\* 
+PASS AC04 最小 DFA 4 状态 
+PASS AC04 DFA 状态数 >= 4 
+PASS AC04 长度<=8 穷举 511 串三者一致 
+   (a|b)*abb: NFA 21, DFA 5, minDFA 4
+PASS AC04 mini-C 三个状态数且 min<=dfa 
+   mini-C: {'nfa_states': 177, 'dfa_states': 48, 'min_dfa_states': 44}
+PASS AC05 16 个记号与种别序列 
+PASS AC05 前四个二元式 
+PASS AC05 位置 1:5 与 2:13 
+PASS AC05 种别码 1..25 与附录顺序一致 
+PASS AC06 退出码 1 
+PASS AC06 恰两条诊断及位置字符 
+PASS AC06 只有 tokens 文件 
+PASS AC07 38 条且 1-37 与附录一致 
+PASS AC07 16 个 FIRST，FIRST(Expr) 
+PASS AC07 冲突全为 else/归约16/移进 
+   LR(1) 状态数: 264 冲突: 2
+PASS AC08 (a) 退出 2、无输出、指出 + 冲突 
+PASS AC08 (b) 退出 2、无输出、指出 else 冲突 
+PASS AC09 (a) 退出 2、文件名行号、无输出 
+PASS AC09 (b) 退出 2、文件名行号、无输出 
+PASS AC09 (c) 退出 2、文件名行号、无输出 
+PASS AC09 (d) 退出 2、文件名行号、无输出 
+PASS AC10 Program 三项 
+PASS AC10 三个表达式结构 
+PASS AC11 外层 If 无 else，内层有 else 
+PASS AC12 chain: 退出1、1:15、实际 <、期望恰为 + - * / ; 
+PASS AC12 chain: 只有 tokens 
+PASS AC12 eof: 退出1、1:10、输入结束、期望含 ; 
+PASS AC12 eof: 只有 tokens 
+PASS AC13 四条诊断顺序/位置/代码 
+PASS AC13 有 tokens.* ast.*，无 .ll 
+PASS AC14 退出 0，define main，ret 
+PASS AC14 4 条 alloca 且在首个 br 前 
+PASS AC14 指令种类 
+PASS AC14 1 scanf 调用 4 printf 调用 
+PASS AC14 while/if 标号与条件跳转 
+PASS AC14 四个文件两次相同 
+PASS AC14 无可执行文件 
+PASS AC15 -O0 编译退出 0 且产物齐全 
+PASS AC15 -O2 编译退出 0 且产物齐全 
+PASS AC15 输入 5 → 15 120 1 
+PASS AC15 输入 10 → 55 3628800 0 
+PASS AC15 -O0 与 -O2 输出相同 
+PASS AC16 arith.mc -O0 
+PASS AC16 arith.mc -O2 
+PASS AC16 rel.mc -O0 
+PASS AC16 rel.mc -O2 
+PASS AC16 scope.mc -O0 
+PASS AC16 scope.mc -O2 
+PASS AC16 control.mc -O0 
+PASS AC16 control.mc -O2 
+PASS AC16 wrap.mc -O0 
+PASS AC16 wrap.mc -O2 
+PASS AC16 io.mc -O0 
+PASS AC16 io.mc -O2 
+PASS AC16 dangling_else.mc -O0 
+PASS AC16 dangling_else.mc -O2 
+PASS AC17 退出 3、说明 clang、保留前端产物 
+PASS AC18 四个 AST 文件 
+PASS AC18 自包含且含 svg 
+PASS AC18 ast-node 数 = 结点数 
+PASS AC19 自包含 
+   报告小节: ['1. 记号与正规式', '2. 三个状态数', '3. 最小 DFA 转换表', '4. 编号产生式', '5. FIRST 集', '6. LR(1) 项目集数量', '7. ACTION 表', '8. GOTO 表', '9. 冲突与消解']
+PASS AC19 九项内容依次出现 
+PASS AC19 状态数与表一致 
+PASS AC19 产生式 38 行、ACTION/GOTO 行数=状态数 
+PASS AC19 冲突节写明 else 移进 
+PASS AC20 独立运行退出 0 
+PASS AC20 与 minic 产物逐字节相同 
+PASS AC22 六种语句结点 
+PASS AC22 演示脚本退出 0，末三行 15 120 1，之前列出产物 
+
+合计 82 项断言，失败 0 项
