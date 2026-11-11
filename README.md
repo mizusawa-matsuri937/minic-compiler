@@ -6,12 +6,11 @@
 
 ## 运行
 
-需要 Python 3.11+；优化 IR、汇编、链接和运行另需 clang 15+。不需要 pip、Graphviz、opt 或 llc。以下命令在项目根目录执行。
+需要 Python 3.11+；优化 IR、汇编、链接和运行另需 clang 15+。不需要 pip、Graphviz、opt 或 llc。以下命令都在仓库根目录执行（克隆后先 `cd` 进入仓库）。
 
 一条命令生成分析器、编译并运行：
 
 ```bash
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler"
 echo 5 | bash scripts/demo.sh
 ```
 
@@ -20,7 +19,6 @@ echo 5 | bash scripts/demo.sh
 分别执行：
 
 ```bash
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler"
 python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic
 python3 -m minic examples/demo.mc --frontend build/minic --out out/demo -O2 --run
 ```
@@ -28,7 +26,6 @@ python3 -m minic examples/demo.mc --frontend build/minic --out out/demo -O2 --ru
 没有 clang 时，仍可生成前端和 IR：
 
 ```bash
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler"
 python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic
 python3 -m minic examples/demo.mc --frontend build/minic --out out/demo --stop-after ir
 ```
@@ -57,20 +54,18 @@ AST 页面新增“适应宽度 / 原始大小”按钮，默认原始大小并�
 ## 测试与证据
 
 ```bash
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler"
 python3 -m unittest discover -s tests -v
 ```
 
 ```bash
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler"
 python3 -m unittest discover -s tests -k ac03 -v
 ```
 
-所有测试方法名含 AC 编号；测试在临时目录生成分析器和编译产物，不读写 `build/`、`out/`。没有 clang 时相关测试明确跳过，跳过不代表验收通过。全量结果、逐项命令和退出码见 [checklist](doc/task1/checklist.md) 与 [证据目录](doc/task1/evidence/)。本机默认 `python3` 为 3.14.6；3.11 的精确环境与命令也已记录。
+所有测试方法名含 AC 编号；测试在临时目录生成分析器和编译产物，不读写 `build/`、`out/`。没有 clang 时相关测试明确跳过，跳过不代表验收通过。全量结果、逐项命令和退出码见 [checklist](doc/task1/checklist.md) 与 [证据目录](doc/task1/evidence/)。开发机上 `python3` 因 shell 而异（3.11.15 或 3.14.6），两个版本都跑过全量测试；checklist 中的命令写的是开发机的绝对路径，换机器时改成自己的仓库路径。
 
 ## 文档与接手
 
-- [最新交接：用户人工验收完成](doc/handoffs/2026-11-11-task1-human-acceptance.md)；[T1-07 评审结论](doc/handoffs/2026-11-11-task1-t107-review.md)；评审对象是 [T1-07 实现交接](doc/handoffs/2026-11-11-task1-t107-impl-to-review.md)，更早的依据是[验收评审结论](doc/handoffs/2026-11-11-task1-acceptance-review.md)；上一份为 [RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
+- [最新交接：提交前终检](doc/handoffs/2026-11-11-task1-final-check.md)；此前为[用户人工验收完成](doc/handoffs/2026-11-11-task1-human-acceptance.md)、[T1-07 评审结论](doc/handoffs/2026-11-11-task1-t107-review.md)；评审对象是 [T1-07 实现交接](doc/handoffs/2026-11-11-task1-t107-impl-to-review.md)，更早的依据是[验收评审结论](doc/handoffs/2026-11-11-task1-acceptance-review.md)；上一份为 [RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
 - [协作约定](AGENTS.md)与[项目配置](doc/project-config.md)
 - [spec](doc/task1/spec.md)、[design](doc/task1/design.md)、[tasks](doc/task1/tasks.md)、[checklist](doc/task1/checklist.md)
 

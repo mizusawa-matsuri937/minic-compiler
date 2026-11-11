@@ -1,0 +1,42 @@
+提交前终检记录（评审者 Claude，2026-11-11）
+检查对象：b04771f。环境：macOS arm64，zsh，Apple clang 21.0.0。
+做法：把仓库 git clone 到系统临时目录，在克隆里执行，证明成品不依赖开发目录里未入库的文件。
+
+1. 全新克隆下的自带测试
+   /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests   Ran 71 tests in 23.327s  OK  退出码 0，无 skip
+   /Users/aqua_night/.local/bin/python3.14 -m unittest discover -s tests   Ran 71 tests in 22.637s  OK  退出码 0，无 skip
+   测试结束后克隆的工作区无变化（git status 为空）。
+
+2. 全新克隆下按 README 逐条执行（python3 为 3.11.15；不执行 README 里原有的 cd 绝对路径行）
+   echo 5 | bash scripts/demo.sh                      退出码 0；末三行 15 / 120 / 1
+   python3 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic
+                                                      记号 27；NFA 177；DFA 48；最小 DFA 44；产生式 38；LR(1) 状态 264；已消解冲突 2
+   echo 6 | python3 -m minic examples/demo.mc --frontend build/minic --out out/demo -O2 --run
+                                                      退出码 0；输出 21 / 720 / 0；产物 10 个（记号 2、AST 4、demo.ll、demo.opt.ll、demo.s、demo）
+   python3 -m minic examples/demo.mc --frontend build/minic --out out/ir --stop-after ir
+                                                      退出码 0；产物 7 个，到 demo.ll 为止
+   错误样例：lex_error.mc 两条 L001、退出 1；syntax_chain.mc 与 syntax_eof.mc 各一条 P001、退出 1；
+            semantic_error.mc 报 S002 与 S001、退出 1；其余样例退出 0。
+
+3. 对照作业要求（../作业要求/6749484.pdf，重读全文）
+   任务（1）生成器输入词法规则与语法规则、输出词法与语法分析器        ccgen；rules/minic.lex、rules/minic.grammar
+           词法分析器输出单词内部表达；语法分析器输出 AST；报错         tokens.txt / tokens.json；ast.json；L001 / P001 / S00x
+           保存输出：单词符号、可视化 AST                              tokens.*；ast.html（另有 ast.txt、ast.dot）
+           算法：Thompson、子集法、等价状态法；LL 或 LR                 ccgen/nfa.py、dfa.py；规范 LR(1)（ccgen/lr1.py）；report.html 展示各步结果
+   任务（2）中间代码：LLVM IR                                          demo.ll
+   任务（3）可选：调用 LLVM 做优化与机器码                             demo.opt.ll、demo.s、可执行文件（clang）
+   附录词法表：6 个关键字、IDENT、NUMBER、4 个算术、6 个关系、7 个赋值与界符   rules/minic.lex 逐项对应，另加空白与 // 注释两条跳过规则
+   附录文法：37 条产生式及编号                                         rules/minic.grammar 逐条、按序对应
+   备注：不支持连续比较；else 就近匹配                                 a < b < c 报 P001；%prefer shift else，dangling_else 用例通过
+   答辩源程序须含声明、赋值、条件、循环、输入输出                      examples/demo.mc 五类语句齐全（int、=、if/else、while、read、write）
+
+4. 仓库内容检查（已跟踪文件 249 个）
+   个人邮箱、口令、密钥字样            未发现；提交作者全部是 GitHub noreply 地址
+   build/、out/、__pycache__            已被 .gitignore 排除，未入库
+   最大的已跟踪文件                    doc/review/fixes/evidence/B/before.json，约 388 KB；没有二进制产物
+   代码里的 TODO / FIXME               无
+   计划结构检查 scripts/check_plan.py   31 条规则、25 项 AC、8 个阶段，AC00–AC24 全部勾选，“结构检查通过”
+
+5. 本次改动
+   README 的五个命令块原先以 cd "/Users/aqua_night/…" 开头，只在开发机上有效。已去掉这五行，
+   改为说明“在仓库根目录执行”。tasks、checklist 的命令按 AGENTS.md 的要求保留真实路径，没有改。
