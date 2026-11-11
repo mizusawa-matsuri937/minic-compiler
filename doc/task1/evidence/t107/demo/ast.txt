@@ -1,0 +1,46 @@
+Program
+├── body[0]: VarDecl n
+├── body[1]: VarDecl i
+│   └── init: Number 1
+├── body[2]: VarDecl sum
+│   └── init: Number 0
+├── body[3]: VarDecl fact
+│   └── init: Number 1
+├── body[4]: Read n
+├── body[5]: While
+│   ├── cond: BinaryOp <=
+│   │   ├── left: Identifier i
+│   │   └── right: Identifier n
+│   └── body: Block
+│       ├── body[0]: Assign sum
+│       │   └── value: BinaryOp +
+│       │       ├── left: Identifier sum
+│       │       └── right: Identifier i
+│       ├── body[1]: Assign fact
+│       │   └── value: BinaryOp *
+│       │       ├── left: Identifier fact
+│       │       └── right: Identifier i
+│       └── body[2]: Assign i
+│           └── value: BinaryOp +
+│               ├── left: Identifier i
+│               └── right: Number 1
+├── body[6]: Write
+│   └── value: Identifier sum
+├── body[7]: Write
+│   └── value: Identifier fact
+└── body[8]: If
+    ├── cond: BinaryOp ==
+    │   ├── left: BinaryOp -
+    │   │   ├── left: Identifier n
+    │   │   └── right: BinaryOp *
+    │   │       ├── left: BinaryOp /
+    │   │       │   ├── left: Identifier n
+    │   │       │   └── right: Number 2
+    │   │       └── right: Number 2
+    │   └── right: Number 0
+    ├── then: Block
+    │   └── body[0]: Write
+    │       └── value: Number 0
+    └── else: Block
+        └── body[0]: Write
+            └── value: Number 1

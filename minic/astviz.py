@@ -72,6 +72,27 @@ _REFLOW = r"""
 <script>
 (() => {
   const svg = document.querySelector('svg');
+  const container = document.getElementById('ast-tree');
+  const fit = document.getElementById('ast-fit'), actual = document.getElementById('ast-actual');
+  let mode = 'actual';
+  function applyView() {
+    const natural = svg.viewBox.baseVal;
+    const width = mode === 'fit' ? container.clientWidth : natural.width;
+    svg.setAttribute('width', width);
+    svg.setAttribute('height', natural.height * width / natural.width);
+    if (mode === 'fit') {
+      container.scrollLeft = 0;
+    } else {
+      const root = svg.querySelector('.ast-node rect');
+      const center = Number(root.getAttribute('x')) + Number(root.getAttribute('width')) / 2;
+      container.scrollLeft = Math.max(0, Math.min(center - container.clientWidth / 2,
+                                                container.scrollWidth - container.clientWidth));
+    }
+    fit.setAttribute('aria-pressed', String(mode === 'fit'));
+    actual.setAttribute('aria-pressed', String(mode === 'actual'));
+  }
+  fit.addEventListener('click', () => { mode = 'fit'; applyView(); });
+  actual.addEventListener('click', () => { mode = 'actual'; applyView(); });
   function reflow() {
     const nodes = Array.from(svg.querySelectorAll('.ast-node'), group => {
       const text = group.querySelector('text'), rect = group.querySelector('rect');
@@ -134,6 +155,7 @@ _REFLOW = r"""
     svg.setAttribute('width', width); svg.setAttribute('height', height);
     svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
     svg.dataset.layout = 'measured';
+    applyView();
   }
   reflow();
   if (document.fonts) document.fonts.ready.then(reflow);
@@ -160,9 +182,16 @@ def html_tree(tree):
     return ('<!doctype html>\n<html lang="zh"><head><meta charset="utf-8"><title>AST 树形图</title>'
             '<style>body{font-family:monospace;margin:24px;background:#f8fafc;color:#152d49}'
             '.tree{overflow:auto;background:white;border:1px solid #cbd5e1}'
+            '.tree svg{display:block;margin:0 auto}'
+            '.toolbar{display:flex;gap:8px;margin-bottom:12px}'
+            'button{font:inherit;padding:6px 12px;border:1px solid #cbd5e1;border-radius:5px;cursor:pointer}'
+            'button[aria-pressed="true"]{background:#152d49;color:white}'
             'text{text-anchor:middle;font-size:14px;fill:#152d49}rect{fill:#eef4fb;stroke:#2563eb}'
             '.edge-label{font-size:12px;paint-order:stroke;stroke:white;stroke-width:4px;stroke-linejoin:round}'
-            '</style></head><body><h1>AST · Program</h1><div class="tree">'
+            '</style></head><body><h1>AST · Program</h1><div class="toolbar" role="group" aria-label="树形图显示方式">'
+            '<button type="button" id="ast-fit" aria-pressed="false">适应宽度</button>'
+            '<button type="button" id="ast-actual" aria-pressed="true">原始大小</button>'
+            '</div><div class="tree" id="ast-tree">'
             + '\n'.join(content) + '</div>' + _REFLOW + '</body></html>\n')
 
 

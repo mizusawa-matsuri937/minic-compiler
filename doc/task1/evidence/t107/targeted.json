@@ -1,0 +1,7 @@
+{
+  "command": "cd \"/Users/aqua_night/codex_project/编译原理/minic-compiler\" && /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests -k ac23 -k ac24 -v",
+  "shell": "/bin/zsh",
+  "python": "3.11.15 (main, Jun 23 2026, 15:46:51) [Clang 22.1.3 ]",
+  "exit_code": 0,
+  "seconds": 0.41128899999603163
+}

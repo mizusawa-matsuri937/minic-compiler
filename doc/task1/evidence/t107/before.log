@@ -1,0 +1,45 @@
+test_ac23_interior_bom_remains_a_lexical_error (test_review_cr.ReviewCRTests.test_ac23_interior_bom_remains_a_lexical_error) ... ok
+test_ac23_leading_bom_is_ignored_by_both_file_entries (test_review_cr.ReviewCRTests.test_ac23_leading_bom_is_ignored_by_both_file_entries) ... FAIL
+test_ac23_only_one_initial_bom_is_removed (test_review_cr.ReviewCRTests.test_ac23_only_one_initial_bom_is_removed) ... FAIL
+test_ac24_controls_offline_nodes_and_deterministic_html (test_review_cr.ReviewCRTests.test_ac24_controls_offline_nodes_and_deterministic_html) ... FAIL
+
+======================================================================
+FAIL: test_ac23_leading_bom_is_ignored_by_both_file_entries (test_review_cr.ReviewCRTests.test_ac23_leading_bom_is_ignored_by_both_file_entries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_review_cr.py", line 56, in test_ac23_leading_bom_is_ignored_by_both_file_entries
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 1 != 0 : /var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpu9p43uuh/leading.mc:1:1: 词法错误[L001]: 非法字符 '\ufeff'
+
+
+======================================================================
+FAIL: test_ac23_only_one_initial_bom_is_removed (test_review_cr.ReviewCRTests.test_ac23_only_one_initial_bom_is_removed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_review_cr.py", line 89, in test_ac23_only_one_initial_bom_is_removed
+    self.check_illegal_bom(b'\xef\xbb\xbf\xef\xbb\xbfint a = 1;\nwrite(a);\n', 1, 1)
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_review_cr.py", line 77, in check_illegal_bom
+    self.assertEqual(result.stderr.splitlines(),
+AssertionError: Lists differ: ["/va[96 chars]eff'", "/var/folders/g0/3p79xvf13v3f5ygyy64xm3[62 chars]ff'"] != ["/va[96 chars]eff'"]
+
+First list contains 1 additional elements.
+First extra element 1:
+"/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpa0r3mg9y/illegal.mc:1:2: 词法错误[L001]: 非法字符 '\\ufeff'"
+
+  ['/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpa0r3mg9y/illegal.mc:1:1: '
+-  "词法错误[L001]: 非法字符 '\\ufeff'",
+-  '/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/tmpa0r3mg9y/illegal.mc:1:2: '
+   "词法错误[L001]: 非法字符 '\\ufeff'"]
+
+======================================================================
+FAIL: test_ac24_controls_offline_nodes_and_deterministic_html (test_review_cr.ReviewCRTests.test_ac24_controls_offline_nodes_and_deterministic_html)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/aqua_night/codex_project/编译原理/minic-compiler/tests/test_review_cr.py", line 101, in test_ac24_controls_offline_nodes_and_deterministic_html
+    self.assertIn('ast-tree', page.ids)
+AssertionError: 'ast-tree' not found in {'node-0': [('g', {'class': 'ast-node', 'id': 'node-0'})], 'node-1': [('g', {'class': 'ast-node', 'id': 'node-1'})], 'node-2': [('g', {'class': 'ast-node', 'id': 'node-2'})], 'node-3': [('g', {'class': 'ast-node', 'id': 'node-3'})], 'node-4': [('g', {'class': 'ast-node', 'id': 'node-4'})], 'node-5': [('g', {'class': 'ast-node', 'id': 'node-5'})], 'node-6': [('g', {'class': 'ast-node', 'id': 'node-6'})], 'node-7': [('g', {'class': 'ast-node', 'id': 'node-7'})], 'node-8': [('g', {'class': 'ast-node', 'id': 'node-8'})], 'node-9': [('g', {'class': 'ast-node', 'id': 'node-9'})], 'node-10': [('g', {'class': 'ast-node', 'id': 'node-10'})], 'node-11': [('g', {'class': 'ast-node', 'id': 'node-11'})], 'node-12': [('g', {'class': 'ast-node', 'id': 'node-12'})], 'node-13': [('g', {'class': 'ast-node', 'id': 'node-13'})], 'node-14': [('g', {'class': 'ast-node', 'id': 'node-14'})], 'node-15': [('g', {'class': 'ast-node', 'id': 'node-15'})], 'node-16': [('g', {'class': 'ast-node', 'id': 'node-16'})], 'node-17': [('g', {'class': 'ast-node', 'id': 'node-17'})], 'node-18': [('g', {'class': 'ast-node', 'id': 'node-18'})], 'node-19': [('g', {'class': 'ast-node', 'id': 'node-19'})], 'node-20': [('g', {'class': 'ast-node', 'id': 'node-20'})], 'node-21': [('g', {'class': 'ast-node', 'id': 'node-21'})], 'node-22': [('g', {'class': 'ast-node', 'id': 'node-22'})], 'node-23': [('g', {'class': 'ast-node', 'id': 'node-23'})], 'node-24': [('g', {'class': 'ast-node', 'id': 'node-24'})], 'node-25': [('g', {'class': 'ast-node', 'id': 'node-25'})], 'node-26': [('g', {'class': 'ast-node', 'id': 'node-26'})], 'node-27': [('g', {'class': 'ast-node', 'id': 'node-27'})], 'node-28': [('g', {'class': 'ast-node', 'id': 'node-28'})], 'node-29': [('g', {'class': 'ast-node', 'id': 'node-29'})], 'node-30': [('g', {'class': 'ast-node', 'id': 'node-30'})], 'node-31': [('g', {'class': 'ast-node', 'id': 'node-31'})], 'node-32': [('g', {'class': 'ast-node', 'id': 'node-32'})], 'node-33': [('g', {'class': 'ast-node', 'id': 'node-33'})], 'node-34': [('g', {'class': 'ast-node', 'id': 'node-34'})], 'node-35': [('g', {'class': 'ast-node', 'id': 'node-35'})], 'node-36': [('g', {'class': 'ast-node', 'id': 'node-36'})], 'node-37': [('g', {'class': 'ast-node', 'id': 'node-37'})], 'node-38': [('g', {'class': 'ast-node', 'id': 'node-38'})], 'node-39': [('g', {'class': 'ast-node', 'id': 'node-39'})], 'node-40': [('g', {'class': 'ast-node', 'id': 'node-40'})], 'node-41': [('g', {'class': 'ast-node', 'id': 'node-41'})], 'node-42': [('g', {'class': 'ast-node', 'id': 'node-42'})], 'node-43': [('g', {'class': 'ast-node', 'id': 'node-43'})], 'node-44': [('g', {'class': 'ast-node', 'id': 'node-44'})], 'node-45': [('g', {'class': 'ast-node', 'id': 'node-45'})]}
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.353s
+
+FAILED (failures=3)

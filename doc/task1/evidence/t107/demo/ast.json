@@ -1,0 +1,274 @@
+{
+  "type": "Program",
+  "line": 2,
+  "col": 1,
+  "body": [
+    {
+      "type": "VarDecl",
+      "line": 2,
+      "col": 1,
+      "name": "n"
+    },
+    {
+      "type": "VarDecl",
+      "line": 3,
+      "col": 1,
+      "name": "i",
+      "init": {
+        "type": "Number",
+        "line": 3,
+        "col": 9,
+        "value": "1"
+      }
+    },
+    {
+      "type": "VarDecl",
+      "line": 4,
+      "col": 1,
+      "name": "sum",
+      "init": {
+        "type": "Number",
+        "line": 4,
+        "col": 11,
+        "value": "0"
+      }
+    },
+    {
+      "type": "VarDecl",
+      "line": 5,
+      "col": 1,
+      "name": "fact",
+      "init": {
+        "type": "Number",
+        "line": 5,
+        "col": 12,
+        "value": "1"
+      }
+    },
+    {
+      "type": "Read",
+      "line": 6,
+      "col": 1,
+      "target": "n"
+    },
+    {
+      "type": "While",
+      "line": 7,
+      "col": 1,
+      "cond": {
+        "type": "BinaryOp",
+        "line": 7,
+        "col": 8,
+        "op": "<=",
+        "left": {
+          "type": "Identifier",
+          "line": 7,
+          "col": 8,
+          "name": "i"
+        },
+        "right": {
+          "type": "Identifier",
+          "line": 7,
+          "col": 13,
+          "name": "n"
+        }
+      },
+      "body": {
+        "type": "Block",
+        "line": 7,
+        "col": 16,
+        "body": [
+          {
+            "type": "Assign",
+            "line": 8,
+            "col": 5,
+            "target": "sum",
+            "value": {
+              "type": "BinaryOp",
+              "line": 8,
+              "col": 11,
+              "op": "+",
+              "left": {
+                "type": "Identifier",
+                "line": 8,
+                "col": 11,
+                "name": "sum"
+              },
+              "right": {
+                "type": "Identifier",
+                "line": 8,
+                "col": 17,
+                "name": "i"
+              }
+            }
+          },
+          {
+            "type": "Assign",
+            "line": 9,
+            "col": 5,
+            "target": "fact",
+            "value": {
+              "type": "BinaryOp",
+              "line": 9,
+              "col": 12,
+              "op": "*",
+              "left": {
+                "type": "Identifier",
+                "line": 9,
+                "col": 12,
+                "name": "fact"
+              },
+              "right": {
+                "type": "Identifier",
+                "line": 9,
+                "col": 19,
+                "name": "i"
+              }
+            }
+          },
+          {
+            "type": "Assign",
+            "line": 10,
+            "col": 5,
+            "target": "i",
+            "value": {
+              "type": "BinaryOp",
+              "line": 10,
+              "col": 9,
+              "op": "+",
+              "left": {
+                "type": "Identifier",
+                "line": 10,
+                "col": 9,
+                "name": "i"
+              },
+              "right": {
+                "type": "Number",
+                "line": 10,
+                "col": 13,
+                "value": "1"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Write",
+      "line": 12,
+      "col": 1,
+      "value": {
+        "type": "Identifier",
+        "line": 12,
+        "col": 7,
+        "name": "sum"
+      }
+    },
+    {
+      "type": "Write",
+      "line": 13,
+      "col": 1,
+      "value": {
+        "type": "Identifier",
+        "line": 13,
+        "col": 7,
+        "name": "fact"
+      }
+    },
+    {
+      "type": "If",
+      "line": 14,
+      "col": 1,
+      "cond": {
+        "type": "BinaryOp",
+        "line": 14,
+        "col": 5,
+        "op": "==",
+        "left": {
+          "type": "BinaryOp",
+          "line": 14,
+          "col": 5,
+          "op": "-",
+          "left": {
+            "type": "Identifier",
+            "line": 14,
+            "col": 5,
+            "name": "n"
+          },
+          "right": {
+            "type": "BinaryOp",
+            "line": 14,
+            "col": 9,
+            "op": "*",
+            "left": {
+              "type": "BinaryOp",
+              "line": 14,
+              "col": 9,
+              "op": "/",
+              "left": {
+                "type": "Identifier",
+                "line": 14,
+                "col": 9,
+                "name": "n"
+              },
+              "right": {
+                "type": "Number",
+                "line": 14,
+                "col": 13,
+                "value": "2"
+              }
+            },
+            "right": {
+              "type": "Number",
+              "line": 14,
+              "col": 17,
+              "value": "2"
+            }
+          }
+        },
+        "right": {
+          "type": "Number",
+          "line": 14,
+          "col": 22,
+          "value": "0"
+        }
+      },
+      "then": {
+        "type": "Block",
+        "line": 14,
+        "col": 25,
+        "body": [
+          {
+            "type": "Write",
+            "line": 15,
+            "col": 5,
+            "value": {
+              "type": "Number",
+              "line": 15,
+              "col": 11,
+              "value": "0"
+            }
+          }
+        ]
+      },
+      "else": {
+        "type": "Block",
+        "line": 16,
+        "col": 8,
+        "body": [
+          {
+            "type": "Write",
+            "line": 17,
+            "col": 5,
+            "value": {
+              "type": "Number",
+              "line": 17,
+              "col": 11,
+              "value": "1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -73,7 +73,7 @@ def main():
     ap.add_argument('--text', action='store_true')
     args = ap.parse_args()
     try:
-        with Path(args.source).open(encoding='utf-8', newline='') as source:
+        with Path(args.source).open(encoding='utf-8-sig', newline='') as source:
             tokens, errors = tokenize(source.read())
         output = tokens_text(tokens) if args.text else json_text(dict(tokens=tokens, errors=errors))
         if args.output:

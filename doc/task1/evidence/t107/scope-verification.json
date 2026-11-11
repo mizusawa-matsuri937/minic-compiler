@@ -1,0 +1,24 @@
+{
+  "baseline_commit": "e05c7eee280f5d8eb94e24ae781d113d91f0f4b1",
+  "original_untracked_files": 53,
+  "original_untracked_sha256_unchanged": true,
+  "original_tests_rules_examples_spec_unchanged": true,
+  "demo_static_svg_byte_identity": true,
+  "related_test_method_counts": {
+    "ac05": 4,
+    "ac06": 5,
+    "ac14": 5,
+    "ac18": 6,
+    "ac20": 12
+  },
+  "tracked_changed_files": [
+    "README.md",
+    "ccgen/templates/lexer_template.py",
+    "doc/handoffs/README.md",
+    "doc/task1/checklist.md",
+    "doc/task1/design.md",
+    "doc/task1/tasks.md",
+    "minic/__main__.py",
+    "minic/astviz.py"
+  ]
+}

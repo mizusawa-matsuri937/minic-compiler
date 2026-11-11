@@ -2,7 +2,7 @@
 
 编译原理期末项目：语言无关的词法/规范 LR(1) 分析器生成器，以及使用生成物的 mini-C 编译器。仅依赖 Python 标准库，后端调用 clang。
 
-当前状态（2026-11-11）：T1-01 至 T1-06 已实现，审查发现 RV01～RV11 已修复。Python 3.11.15 下 **67 个测试通过（新增 26 个）、0 失败、0 错误、0 跳过**；真实 clang 演示退出 0，输出 `15 / 120 / 1`。修前反例、修后结果和独立验证见[修复汇总](doc/review/fix-summary.md)。实施 AC 仍为 **21/22**：AC18 自动检查和 Safari 技术复核通过，用户人工离线目视尚未完成、未勾选。
+当前状态（2026-11-11）：T1-01 至 T1-06 已实现，RV01～RV11 已修复；T1-07 的 BOM 兼容和 AST 定位/缩放已实现。Python 3.11.15 全量 **71 个测试通过，0 失败、0 错误、0 跳过**。实施 AC 为 **22/24**：AC18 待用户人工离线目视，AC24 自动结构检查通过但浏览器几何实测受策略阻碍、未执行，T1-07 保持部分完成。见 [checklist](doc/task1/checklist.md) 和 [T1-07 交接](doc/handoffs/2026-11-11-task1-t107-impl-to-review.md)。
 
 ## 运行
 
@@ -37,7 +37,9 @@ python3 -m minic examples/demo.mc --frontend build/minic --out out/demo --stop-a
 
 编译前会统一检查输入源文件、所选 `lexer.py` / `parser.py` 与阶段产物的路径关系；冲突时在清理或写入前退出 2，保留原文件。源文件主名与固定阶段产物重名时，后端主名自动追加 `.program`：例如 `tokens.json.mc` 生成 `tokens.json.program.ll`、`.opt.ll`、`.s` 和可执行文件 `tokens.json.program`，原 `tokens.json` 仍是记号数据。普通文件名和旧产物清理方式保持原用法。
 
-更新本项目后，请重新运行 `ccgen` 更新已有独立分析器。集成驱动直接加载当前生成源码；独立与集成读取均保留 CR/LF，仅 LF 增加行号。记号文本表转义控制字符和反斜杠，JSON 保留原词素。
+更新本项目后，请重新运行 `ccgen` 更新已有独立分析器。集成驱动直接加载当前生成源码；独立与集成入口均忽略文件开头的一个 UTF-8 BOM，保留 CR/LF，仅 LF 增加行号；源程序中间的非法 BOM 仍报 L001。记号文本表转义控制字符和反斜杠，JSON 保留原词素。
+
+AST 页面新增“适应宽度 / 原始大小”按钮，默认原始大小并定位到根结点，字体重排后沿用当前模式。实现保持静态 SVG、自包含和确定性；三状态浏览器几何结果尚待实测。
 
 ## 产物与算法
 
@@ -68,11 +70,11 @@ python3 -m unittest discover -s tests -k ac03 -v
 
 ## 文档与接手
 
-- [最新交接：T1-07 计划，交给实现](doc/handoffs/2026-11-11-task1-t107-plan-to-impl.md)；依据是[验收评审结论](doc/handoffs/2026-11-11-task1-acceptance-review.md)；上一份为 [RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
+- [最新交接：T1-07 实现与待验收事项](doc/handoffs/2026-11-11-task1-t107-impl-to-review.md)；依据是[验收评审结论](doc/handoffs/2026-11-11-task1-acceptance-review.md)；上一份为 [RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
 - [协作约定](AGENTS.md)与[项目配置](doc/project-config.md)
 - [spec](doc/task1/spec.md)、[design](doc/task1/design.md)、[tasks](doc/task1/tasks.md)、[checklist](doc/task1/checklist.md)
 
-本轮不改 spec 的规则或 AC；必要实施调整追加到 design，tasks/checklist 只补充验证事实。计划文档的原始“未实施”状态、项目配置的历史环境信息由计划维护者接手更新。Python 3.14 的 41 项结果属于上一轮记录，本轮未复验该版本。
+本轮未改 spec 的规则或 AC；实施与验证限制记录在 design 第 14 节。spec 和项目配置中计划时点的状态保留为历史记录，当前进度以 tasks、checklist 和最新交接为准。T1-07 未复验 Python 3.14。
 
 ## 限制
 

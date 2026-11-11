@@ -1,6 +1,6 @@
 # mini-C 编译器生成器与编译器成品 AC 完成情况
 
-状态（2026-11-10）：AC00、AC01–AC17、AC19–AC22 已通过；AC18 自动化通过、人工目视未执行，未勾选。2026-11-11 新增 AC23、AC24（评审发现 CR01、CR02），未执行。全部测试 41 个通过，无失败、错误或跳过。
+状态（2026-11-11，T1-07）：AC00、AC01–AC17、AC19–AC23 已通过；AC18 自动化通过、用户人工目视未执行；AC24 结构自动检查通过、浏览器几何实测未执行，两项均未勾选。全量 71 个测试通过，无失败、错误或跳过，退出码 0；下文保留历次验证记录。
 
 所有命令块的工作目录是 `/Users/aqua_night/codex_project/编译原理/minic-compiler`，shell 为 zsh，每个块可以单独复制执行。已验证的单项命令显式选择 Python 3.11.15；标“计划，未执行”的手工复核命令未运行，不作为已完成证据。测试方法名含 AC 编号，所以 `-k acNN` 只运行该 AC 的用例；测试自己在临时目录中生成分析器，不依赖 `build/`。
 
@@ -18,6 +18,8 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 scri
 本轮实施复核（2026-11-10）：重新运行结构检查，29 条规则、23 项 AC、7 个阶段对应完整，退出码 0；当前只保留 AC18 未勾选。证据：[AC00.log](evidence/AC00.log)。当前实施授权来自用户本轮指令，旧“仅规划”记录是历史快照。
 
 计划扩充复核（2026-11-11，AI 检查）：按评审发现 CR01、CR02 新增 R30、R31、AC23、AC24 和 T1-07 后，Claude 重新运行同一条命令，输出为 31 条规则、25 项 AC、25 个 checklist 小节、8 个任务阶段，末行“结构检查通过”，退出码 0；已勾选项不含 AC18、AC23、AC24。用户尚未人工审阅这次扩充。
+
+T1-07 本轮授权为实现 CR01、CR02；已复核 AC00 的 31 条规则、25 项 AC、8 个阶段，结构检查退出 0。spec 规则与预期不变，既有人工未验收项不代勾；最终文档结构检查见 [plan-check.log](evidence/t107/plan-check.log)。
 
 ## AC01 生成分析器且结果确定
 
@@ -84,6 +86,9 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 ```
 
 复核观测：测试 `ok`；手工命令输出 16 行记号，第 2 行为 `(7, integer)`、`IDENT`、`1:5`。实际结果/日期/证据：2026-11-10，单项 2 个测试 OK（0.030s），退出码 0，无失败、错误或跳过；[AC05 完整日志](evidence/AC05.log)。
+
+T1-07 复核（2026-11-11）：AC05 的记号序列、优先级及 CR/LF 保留相关用例已随全量 71 项回归重新通过，0 失败/错误/跳过，退出码 0；见 [本轮全量证据](evidence/t107/full-regression.json)。
+
 ## AC06 词法错误
 
 - [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：编译 `tests/fixtures/lex_error.mc`，断言退出码、两条诊断和产物文件。
@@ -100,6 +105,9 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 ```
 
 复核观测：测试 `ok`；手工命令在标准错误打印 1:11 和 2:7 两条 `词法错误[L001]`，退出码 1，目录中只有 `tokens.txt`、`tokens.json`。实际结果/日期/证据：2026-11-10，单项 1 个测试 OK（0.081s），退出码 0，无失败、错误或跳过；[AC06 完整日志](evidence/AC06.log)。
+
+T1-07 复核（2026-11-11）：AC06 的词法诊断及错误产物相关用例已随全量 71 项回归重新通过，0 失败/错误/跳过，退出码 0；见 [本轮全量证据](evidence/t107/full-regression.json)。
+
 ## AC07 LR(1) 分析表与产生式编号
 
 - [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：读取生成的 `parser_tables.json`，断言产生式、FIRST 集和冲突列表。
@@ -218,6 +226,9 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 ```
 
 复核观测：测试 `ok`；手工命令打印完整 IR，末行计数为 4。实际结果/日期/证据：2026-11-10，单项 1 个测试 OK（0.102s），退出码 0，无失败、错误或跳过；[AC14 完整日志](evidence/AC14.log)。
+
+T1-07 复核（2026-11-11）：AC14 的 IR 与 HTML 确定性相关用例已随全量 71 项回归重新通过，0 失败/错误/跳过，退出码 0；见 [本轮全量证据](evidence/t107/full-regression.json)。
+
 ## AC15 优化、机器码与运行结果
 
 - [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：完整编译演示程序（`-O0` 与 `-O2`），运行可执行文件并比较输出。需要 clang；测试被跳过时此项不能勾选。
@@ -278,6 +289,8 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 
 复核观测：测试 `ok`；`ls` 列出 `ast.json`、`ast.txt`、`ast.html`、`ast.dot` 和两个记号文件；浏览器断网时仍能显示以 `Program` 为根的树，结点不重叠，连线旁有字段名。实际结果/日期/证据：2026-11-10，单项 2 个测试 OK（0.087s），退出码 0，无失败、错误或跳过；[AC18 完整日志](evidence/AC18.log)。人工检查：未执行，留给用户，不能勾选。布局坐标无重叠的机器断言不替代目视验收。
 
+T1-07 复核（2026-11-11）：AC18 自动部分已随全量 71 项回归重新通过，退出码 0，见 [本轮全量证据](evidence/t107/full-regression.json)；本轮未完成浏览器目视或几何实测，用户人工目视仍留空，保持未勾选。
+
 ## AC19 生成器构造报告
 
 - [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：自动化测试核对 `report.html` 的九节内容、与表文件一致的数字和自包含；建议人工打开浏览一遍。
@@ -310,6 +323,9 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && python3 -m c
 ```
 
 复核观测：测试 `ok`；手工命令打印“独立运行结果一致”。实际结果/日期/证据：2026-11-10，单项 2 个测试 OK（0.179s），退出码 0，无失败、错误或跳过；[AC20 完整日志](evidence/AC20.log)。
+
+T1-07 复核（2026-11-11）：AC20 的独立运行与集成产物一致性相关用例已随全量 71 项回归重新通过，0 失败/错误/跳过，退出码 0；见 [本轮全量证据](evidence/t107/full-regression.json)。
+
 ## AC21 全量测试与标准库依赖
 
 - [x] 已验证（2026-11-10）：阶段自动检查通过，退出码 0。方法：运行全部测试；其中 `ac21` 用例扫描所有 `.py` 文件的 import，并确认没有依赖清单文件。
@@ -343,39 +359,41 @@ cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && echo 5 | bas
 
 ## AC23 源文件开头的 BOM
 
-- [ ] 未执行。方法：测试在临时目录用 `write_bytes` 写出 spec 中 (a)(b) 两个源文件；对 (a) 编译并用独立 `lexer.py` 处理后比较 `tokens.json`，对 (b) 断言诊断。
+- [x] 已验证（2026-11-11）：3 个 AC23 测试通过。源文件均由 `write_bytes` 在临时目录中写出；独立入口以 Python `-I` 在仓库外运行，比较两入口产物并断言诊断。
 
 ```bash
-# 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh；Python 3.11.15
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests -k ac23 -v
+# 已验证 2026-11-11；shell zsh；Python 3.11.15；与 AC24 自动部分共用此命令
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests -k ac23 -k ac24 -v
 ```
 
-```bash
-# 计划，未执行；手工复核情形 (a)。会写入 build/minic、out/bom，并在系统临时目录下新建一个源文件
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && printf '\xef\xbb\xbfint a = 1;\nwrite(a);\n' > /tmp/minic-bom.mc && /Users/aqua_night/.local/bin/python3.11 -m minic /tmp/minic-bom.mc --frontend build/minic --out out/bom --stop-after ast ; echo "退出码 $?" ; head -2 out/bom/tokens.txt
-```
-
-复核观测：测试 `ok`；手工命令没有诊断，退出码 0，`tokens.txt` 第一行为 `(1, -)`、`int`、`1:1`。实际结果/日期/证据：未执行。
+实际结果：共 4 tests / 0.355s，`OK`，退出码 0，0 失败、错误、跳过。AC23 情形 (a) 两入口均退出 0、标准错误为空，首记号为 `int`、1:1，共 10 个记号，`tokens.json` 逐字节一致且编译产生 `Program` AST；情形 (b) 两入口均退出 1，恰有一条 2:1 的 L001，只保留记号产物。附加边界：连续两个开头 BOM 只忽略第一个，第二个仍在 1:1 报唯一 L001。见 [定向日志](evidence/t107/targeted.log)、[实际命令和退出码](evidence/t107/targeted.json)、[断言实现](../../tests/test_review_cr.py)。修前对应失败见 [before.log](evidence/t107/before.log)。
 
 ## AC24 AST 页面的定位与缩放
 
-- [ ] 未执行。方法：自动化测试核对页面结构（`ast-tree` 容器、`ast-fit` 与 `ast-actual` 按钮及其文字、自包含、结点个数、两次生成一致）；另用真实浏览器在 1280 像素宽的窗口中实测三种状态下的几何数值。两部分都完成才能勾选。实测可由实现方借助浏览器自动化完成，须写明浏览器及版本，并注明不是用户的人工目视。
+- [ ] 部分通过（2026-11-11）：自动结构测试通过；真实浏览器的三状态几何实测未执行，未勾选。这不是用户的人工目视。
 
 ```bash
-# 计划，未执行；工作目录 /Users/aqua_night/codex_project/编译原理/minic-compiler；shell zsh；Python 3.11.15
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests -k ac24 -v
+# 已验证 2026-11-11；shell zsh；Python 3.11.15；与 AC23 共用此命令
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests -k ac23 -k ac24 -v
 ```
 
-```bash
-# 计划，未执行；浏览器实测的准备。会写入 build/minic 和 out/demo_ast，并用 macOS 默认浏览器打开
-cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m ccgen --lex rules/minic.lex --grammar rules/minic.grammar --out build/minic && /Users/aqua_night/.local/bin/python3.11 -m minic examples/demo.mc --frontend build/minic --out out/demo_ast --stop-after ast && open out/demo_ast/ast.html
-```
+自动部分结果：1 个 AC24 测试（包含在上面的 4 tests / 0.355s 内），退出码 0；容器与两按钮的 id、文字、默认 `aria-pressed`、自包含、46 个 AST 结点及两次 HTML 逐字节一致均通过，见 [定向日志](evidence/t107/targeted.log)。
 
-复核观测：测试 `ok`。浏览器中刚打开就能看到 `Program` 结点；点“适应宽度”后整棵树在一屏宽度内、没有横向滚动条；点“原始大小”后文字恢复原大小，`Program` 在容器水平正中（误差不超过 2 像素）。记录三种状态下根结点矩形与容器的左右边界、容器的 `scrollWidth` 与 `clientWidth`。实际结果/日期/证据：未执行。浏览器实测：未执行。
+浏览器尝试：ChatGPT 内置浏览器，已设置 1280×900 视口；加载本地 `file://` demo 页面被 URL 安全策略拒绝（只允许 HTTP/HTTPS），之后已恢复默认视口。未加载页面、未执行脚本，浏览器内核版本未取得；刚打开、点“适应宽度”、点“原始大小”的根矩形、容器边界、`scrollWidth`、`clientWidth` 均未取得，不能声明浏览器验收通过。详见 [browser-attempt.md](evidence/t107/browser-attempt.md)、[生成命令与退出码](evidence/t107/browser-prepare.json)。
+
+待复核页面：[demo/ast.html](evidence/t107/demo/ast.html)。在宽 1280 像素的真实浏览器中离线打开后，记录浏览器及版本和三状态的几何数据，按 spec AC24 判定通过后再勾选；用户人工目视另外归入 AC18。
 
 ## 当前汇总
 
-计划 AC：1/1（AC00）；实施 AC：21/24（2026-11-11 新增的 AC23、AC24 未执行）。T1-07 会改动源文件的读取方式和 `ast.html`，AC05、AC06、AC14、AC18、AC20 的既有结果在 T1-07 完成后须随全量回归重新确认。AC18 人工检查未执行；只勾选实际通过的自动化 AC，clang 用例跳过不算通过。
+计划 AC：1/1（AC00）；实施 AC：22/24。T1-07 实现和自动检查完成；AC23 已通过，AC24 浏览器实测未执行、AC18 用户人工检查未执行，两项未勾选，T1-07 阶段仍为部分完成。AC05、AC06、AC14、AC18 自动部分及 AC20 已随全量回归重新确认。
+
+T1-07 全量实测（2026-11-11）：Python 3.11.15、Apple clang 21.0.0，71 tests / 25.202s，`OK`，0 失败、0 错误、0 跳过，退出码 0，见 [full-regression.json](evidence/t107/full-regression.json)。
+
+```bash
+# 已验证 2026-11-11；shell zsh；需要 clang 在 PATH 中；PIPE_FAIL 保留测试进程失败状态
+setopt PIPE_FAIL
+cd "/Users/aqua_night/codex_project/编译原理/minic-compiler" && /Users/aqua_night/.local/bin/python3.11 -m unittest discover -s tests 2>&1 | tail -4
+```
 
 2026-11-11 修复轮补充实测（保留上文 2026-11-10 历史结果及全部复选状态）：RV01～RV11 的修前失败与修后通过见 [修复汇总](../review/fix-summary.md)。D 逐项运行 AC02、AC05、AC06、AC10、AC13～AC22 的 14 组筛选及全部新增回归（26 tests），均退出 0、无失败/错误/跳过；随后 Python 3.11.15 全量 **67 tests / 21.386s，0 失败、0 错误、0 跳过，退出 0**，见 [full-regression.json](../review/fixes/evidence/D/full-regression.json)。源码在定向和全量验证前后摘要一致；真实 Apple clang 21.0.0 后端实际执行。
 

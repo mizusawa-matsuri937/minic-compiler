@@ -74,7 +74,7 @@ def compile_source(args):
     # Historical cleanup spellings may alias a current output on a case-insensitive
     # filesystem. They are not distinct stage outputs, but still protect all inputs.
     validate_outputs(cleanup, inputs, distinct=False)
-    with source.open(encoding='utf-8', newline='') as stream:
+    with source.open(encoding='utf-8-sig', newline='') as stream:
         text = stream.read()
     lexer, parser = frontend.load(args.frontend)
     out.mkdir(parents=True, exist_ok=True)

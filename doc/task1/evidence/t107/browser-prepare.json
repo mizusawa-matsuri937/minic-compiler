@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "ccgen",
+        "--lex",
+        "rules/minic.lex",
+        "--grammar",
+        "rules/minic.grammar",
+        "--out",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic-t107-2d5pnrhz/frontend"
+      ],
+      "exit_code": 0,
+      "stdout": "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic-t107-2d5pnrhz/frontend/lexer.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic-t107-2d5pnrhz/frontend/parser.py\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic-t107-2d5pnrhz/frontend/lexer_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic-t107-2d5pnrhz/frontend/parser_tables.json\n/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic-t107-2d5pnrhz/frontend/report.html\n记号 27；NFA 177；DFA 48；最小 DFA 44；产生式 38；LR(1) 状态 264；已消解冲突 2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/aqua_night/.local/bin/python3.11",
+        "-m",
+        "minic",
+        "examples/demo.mc",
+        "--frontend",
+        "/var/folders/g0/3p79xvf13v3f5ygyy64xm3zh0000gn/T/minic-t107-2d5pnrhz/frontend",
+        "--out",
+        "/Users/aqua_night/codex_project/编译原理/minic-compiler/doc/task1/evidence/t107/demo",
+        "--stop-after",
+        "ast"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "html_sha256": "e0d5956d89e727a73cd0341dbbc3747ecaf2fdb221fc2f0612edede993c0cdfb"
+}

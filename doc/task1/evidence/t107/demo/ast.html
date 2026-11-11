@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><title>AST 树形图</title><style>body{font-family:monospace;margin:24px;background:#f8fafc;color:#152d49}.tree{overflow:auto;background:white;border:1px solid #cbd5e1}.tree svg{display:block;margin:0 auto}.toolbar{display:flex;gap:8px;margin-bottom:12px}button{font:inherit;padding:6px 12px;border:1px solid #cbd5e1;border-radius:5px;cursor:pointer}button[aria-pressed="true"]{background:#152d49;color:white}text{text-anchor:middle;font-size:14px;fill:#152d49}rect{fill:#eef4fb;stroke:#2563eb}.edge-label{font-size:12px;paint-order:stroke;stroke:white;stroke-width:4px;stroke-linejoin:round}</style></head><body><h1>AST · Program</h1><div class="toolbar" role="group" aria-label="树形图显示方式"><button type="button" id="ast-fit" aria-pressed="false">适应宽度</button><button type="button" id="ast-actual" aria-pressed="true">原始大小</button></div><div class="tree" id="ast-tree"><svg xmlns="http://www.w3.org/2000/svg" width="3504" height="710" viewBox="0 0 3504 710" role="img" aria-label="AST">
+<line data-source="0" data-target="1" x1="1752.0" y1="66" x2="77.0" y2="130" stroke="#64748b"/>
+<text x="914.5" y="92.0" class="edge-label">body[0]</text>
+<line data-source="0" data-target="2" x1="1752.0" y1="66" x2="215.0" y2="130" stroke="#64748b"/>
+<text x="983.5" y="92.0" class="edge-label">body[1]</text>
+<line data-source="2" data-target="3" x1="215.0" y1="166" x2="215.0" y2="230" stroke="#64748b"/>
+<text x="215.0" y="192.0" class="edge-label">init</text>
+<line data-source="0" data-target="4" x1="1752.0" y1="66" x2="363.0" y2="130" stroke="#64748b"/>
+<text x="1057.5" y="92.0" class="edge-label">body[2]</text>
+<line data-source="4" data-target="5" x1="363.0" y1="166" x2="363.0" y2="230" stroke="#64748b"/>
+<text x="363.0" y="192.0" class="edge-label">init</text>
+<line data-source="0" data-target="6" x1="1752.0" y1="66" x2="526.0" y2="130" stroke="#64748b"/>
+<text x="1139.0" y="92.0" class="edge-label">body[3]</text>
+<line data-source="6" data-target="7" x1="526.0" y1="166" x2="526.0" y2="230" stroke="#64748b"/>
+<text x="526.0" y="192.0" class="edge-label">init</text>
+<line data-source="0" data-target="8" x1="1752.0" y1="66" x2="677.0" y2="130" stroke="#64748b"/>
+<text x="1214.5" y="92.0" class="edge-label">body[4]</text>
+<line data-source="0" data-target="9" x1="1752.0" y1="66" x2="1424.0" y2="130" stroke="#64748b"/>
+<text x="1588.0" y="92.0" class="edge-label">body[5]</text>
+<line data-source="9" data-target="10" x1="1424.0" y1="166" x2="912.0" y2="230" stroke="#64748b"/>
+<text x="1168.0" y="192.0" class="edge-label">cond</text>
+<line data-source="10" data-target="11" x1="912.0" y1="266" x2="828.0" y2="330" stroke="#64748b"/>
+<text x="870.0" y="292.0" class="edge-label">left</text>
+<line data-source="10" data-target="12" x1="912.0" y1="266" x2="996.0" y2="330" stroke="#64748b"/>
+<text x="954.0" y="292.0" class="edge-label">right</text>
+<line data-source="9" data-target="13" x1="1424.0" y1="166" x2="1592.0" y2="230" stroke="#64748b"/>
+<text x="1508.0" y="192.0" class="edge-label">body</text>
+<line data-source="13" data-target="14" x1="1592.0" y1="266" x2="1258.0" y2="330" stroke="#64748b"/>
+<text x="1425.0" y="292.0" class="edge-label">body[0]</text>
+<line data-source="14" data-target="15" x1="1258.0" y1="366" x2="1258.0" y2="430" stroke="#64748b"/>
+<text x="1258.0" y="392.0" class="edge-label">value</text>
+<line data-source="15" data-target="16" x1="1258.0" y1="466" x2="1174.0" y2="530" stroke="#64748b"/>
+<text x="1216.0" y="492.0" class="edge-label">left</text>
+<line data-source="15" data-target="17" x1="1258.0" y1="466" x2="1352.0" y2="530" stroke="#64748b"/>
+<text x="1305.0" y="492.0" class="edge-label">right</text>
+<line data-source="13" data-target="18" x1="1592.0" y1="266" x2="1619.0" y2="330" stroke="#64748b"/>
+<text x="1605.5" y="292.0" class="edge-label">body[1]</text>
+<line data-source="18" data-target="19" x1="1619.0" y1="366" x2="1619.0" y2="430" stroke="#64748b"/>
+<text x="1619.0" y="392.0" class="edge-label">value</text>
+<line data-source="19" data-target="20" x1="1619.0" y1="466" x2="1535.0" y2="530" stroke="#64748b"/>
+<text x="1577.0" y="492.0" class="edge-label">left</text>
+<line data-source="19" data-target="21" x1="1619.0" y1="466" x2="1718.0" y2="530" stroke="#64748b"/>
+<text x="1668.5" y="492.0" class="edge-label">right</text>
+<line data-source="13" data-target="22" x1="1592.0" y1="266" x2="1953.0" y2="330" stroke="#64748b"/>
+<text x="1772.5" y="292.0" class="edge-label">body[2]</text>
+<line data-source="22" data-target="23" x1="1953.0" y1="366" x2="1953.0" y2="430" stroke="#64748b"/>
+<text x="1953.0" y="392.0" class="edge-label">value</text>
+<line data-source="23" data-target="24" x1="1953.0" y1="466" x2="1886.0" y2="530" stroke="#64748b"/>
+<text x="1919.5" y="492.0" class="edge-label">left</text>
+<line data-source="23" data-target="25" x1="1953.0" y1="466" x2="2037.0" y2="530" stroke="#64748b"/>
+<text x="1995.0" y="492.0" class="edge-label">right</text>
+<line data-source="0" data-target="26" x1="1752.0" y1="66" x2="2198.0" y2="130" stroke="#64748b"/>
+<text x="1975.0" y="92.0" class="edge-label">body[6]</text>
+<line data-source="26" data-target="27" x1="2198.0" y1="166" x2="2198.0" y2="230" stroke="#64748b"/>
+<text x="2198.0" y="192.0" class="edge-label">value</text>
+<line data-source="0" data-target="28" x1="1752.0" y1="66" x2="2391.0" y2="130" stroke="#64748b"/>
+<text x="2071.5" y="92.0" class="edge-label">body[7]</text>
+<line data-source="28" data-target="29" x1="2391.0" y1="166" x2="2391.0" y2="230" stroke="#64748b"/>
+<text x="2391.0" y="192.0" class="edge-label">value</text>
+<line data-source="0" data-target="30" x1="1752.0" y1="66" x2="2993.0" y2="130" stroke="#64748b"/>
+<text x="2372.5" y="92.0" class="edge-label">body[8]</text>
+<line data-source="30" data-target="31" x1="2993.0" y1="166" x2="2859.0" y2="230" stroke="#64748b"/>
+<text x="2926.0" y="192.0" class="edge-label">cond</text>
+<line data-source="31" data-target="32" x1="2859.0" y1="266" x2="2792.0" y2="330" stroke="#64748b"/>
+<text x="2825.5" y="292.0" class="edge-label">left</text>
+<line data-source="32" data-target="33" x1="2792.0" y1="366" x2="2574.0" y2="430" stroke="#64748b"/>
+<text x="2683.0" y="392.0" class="edge-label">left</text>
+<line data-source="32" data-target="34" x1="2792.0" y1="366" x2="2876.0" y2="430" stroke="#64748b"/>
+<text x="2834.0" y="392.0" class="edge-label">right</text>
+<line data-source="34" data-target="35" x1="2876.0" y1="466" x2="2809.0" y2="530" stroke="#64748b"/>
+<text x="2842.5" y="492.0" class="edge-label">left</text>
+<line data-source="35" data-target="36" x1="2809.0" y1="566" x2="2742.0" y2="630" stroke="#64748b"/>
+<text x="2775.5" y="592.0" class="edge-label">left</text>
+<line data-source="35" data-target="37" x1="2809.0" y1="566" x2="2893.0" y2="630" stroke="#64748b"/>
+<text x="2851.0" y="592.0" class="edge-label">right</text>
+<line data-source="34" data-target="38" x1="2876.0" y1="466" x2="3027.0" y2="530" stroke="#64748b"/>
+<text x="2951.5" y="492.0" class="edge-label">right</text>
+<line data-source="31" data-target="39" x1="2859.0" y1="266" x2="3161.0" y2="330" stroke="#64748b"/>
+<text x="3010.0" y="292.0" class="edge-label">right</text>
+<line data-source="30" data-target="40" x1="2993.0" y1="166" x2="3295.0" y2="230" stroke="#64748b"/>
+<text x="3144.0" y="192.0" class="edge-label">then</text>
+<line data-source="40" data-target="41" x1="3295.0" y1="266" x2="3295.0" y2="330" stroke="#64748b"/>
+<text x="3295.0" y="292.0" class="edge-label">body[0]</text>
+<line data-source="41" data-target="42" x1="3295.0" y1="366" x2="3295.0" y2="430" stroke="#64748b"/>
+<text x="3295.0" y="392.0" class="edge-label">value</text>
+<line data-source="30" data-target="43" x1="2993.0" y1="166" x2="3429.0" y2="230" stroke="#64748b"/>
+<text x="3211.0" y="192.0" class="edge-label">else</text>
+<line data-source="43" data-target="44" x1="3429.0" y1="266" x2="3429.0" y2="330" stroke="#64748b"/>
+<text x="3429.0" y="292.0" class="edge-label">body[0]</text>
+<line data-source="44" data-target="45" x1="3429.0" y1="366" x2="3429.0" y2="430" stroke="#64748b"/>
+<text x="3429.0" y="392.0" class="edge-label">value</text>
+<g class="ast-node" id="node-0"><rect x="1697.0" y="30" width="110" height="36" rx="7"/><text x="1752.0" y="53">Program</text></g>
+<g class="ast-node" id="node-1"><rect x="20.0" y="130" width="114" height="36" rx="7"/><text x="77.0" y="153">VarDecl n</text></g>
+<g class="ast-node" id="node-2"><rect x="158.0" y="130" width="114" height="36" rx="7"/><text x="215.0" y="153">VarDecl i</text></g>
+<g class="ast-node" id="node-3"><rect x="160.0" y="230" width="110" height="36" rx="7"/><text x="215.0" y="253">Number 1</text></g>
+<g class="ast-node" id="node-4"><rect x="296.0" y="130" width="134" height="36" rx="7"/><text x="363.0" y="153">VarDecl sum</text></g>
+<g class="ast-node" id="node-5"><rect x="308.0" y="230" width="110" height="36" rx="7"/><text x="363.0" y="253">Number 0</text></g>
+<g class="ast-node" id="node-6"><rect x="454.0" y="130" width="144" height="36" rx="7"/><text x="526.0" y="153">VarDecl fact</text></g>
+<g class="ast-node" id="node-7"><rect x="471.0" y="230" width="110" height="36" rx="7"/><text x="526.0" y="253">Number 1</text></g>
+<g class="ast-node" id="node-8"><rect x="622.0" y="130" width="110" height="36" rx="7"/><text x="677.0" y="153">Read n</text></g>
+<g class="ast-node" id="node-9"><rect x="1369.0" y="130" width="110" height="36" rx="7"/><text x="1424.0" y="153">While</text></g>
+<g class="ast-node" id="node-10"><rect x="845.0" y="230" width="134" height="36" rx="7"/><text x="912.0" y="253">BinaryOp &lt;=</text></g>
+<g class="ast-node" id="node-11"><rect x="756.0" y="330" width="144" height="36" rx="7"/><text x="828.0" y="353">Identifier i</text></g>
+<g class="ast-node" id="node-12"><rect x="924.0" y="330" width="144" height="36" rx="7"/><text x="996.0" y="353">Identifier n</text></g>
+<g class="ast-node" id="node-13"><rect x="1537.0" y="230" width="110" height="36" rx="7"/><text x="1592.0" y="253">Block</text></g>
+<g class="ast-node" id="node-14"><rect x="1196.0" y="330" width="124" height="36" rx="7"/><text x="1258.0" y="353">Assign sum</text></g>
+<g class="ast-node" id="node-15"><rect x="1196.0" y="430" width="124" height="36" rx="7"/><text x="1258.0" y="453">BinaryOp +</text></g>
+<g class="ast-node" id="node-16"><rect x="1092.0" y="530" width="164" height="36" rx="7"/><text x="1174.0" y="553">Identifier sum</text></g>
+<g class="ast-node" id="node-17"><rect x="1280.0" y="530" width="144" height="36" rx="7"/><text x="1352.0" y="553">Identifier i</text></g>
+<g class="ast-node" id="node-18"><rect x="1552.0" y="330" width="134" height="36" rx="7"/><text x="1619.0" y="353">Assign fact</text></g>
+<g class="ast-node" id="node-19"><rect x="1557.0" y="430" width="124" height="36" rx="7"/><text x="1619.0" y="453">BinaryOp *</text></g>
+<g class="ast-node" id="node-20"><rect x="1448.0" y="530" width="174" height="36" rx="7"/><text x="1535.0" y="553">Identifier fact</text></g>
+<g class="ast-node" id="node-21"><rect x="1646.0" y="530" width="144" height="36" rx="7"/><text x="1718.0" y="553">Identifier i</text></g>
+<g class="ast-node" id="node-22"><rect x="1898.0" y="330" width="110" height="36" rx="7"/><text x="1953.0" y="353">Assign i</text></g>
+<g class="ast-node" id="node-23"><rect x="1891.0" y="430" width="124" height="36" rx="7"/><text x="1953.0" y="453">BinaryOp +</text></g>
+<g class="ast-node" id="node-24"><rect x="1814.0" y="530" width="144" height="36" rx="7"/><text x="1886.0" y="553">Identifier i</text></g>
+<g class="ast-node" id="node-25"><rect x="1982.0" y="530" width="110" height="36" rx="7"/><text x="2037.0" y="553">Number 1</text></g>
+<g class="ast-node" id="node-26"><rect x="2143.0" y="130" width="110" height="36" rx="7"/><text x="2198.0" y="153">Write</text></g>
+<g class="ast-node" id="node-27"><rect x="2116.0" y="230" width="164" height="36" rx="7"/><text x="2198.0" y="253">Identifier sum</text></g>
+<g class="ast-node" id="node-28"><rect x="2336.0" y="130" width="110" height="36" rx="7"/><text x="2391.0" y="153">Write</text></g>
+<g class="ast-node" id="node-29"><rect x="2304.0" y="230" width="174" height="36" rx="7"/><text x="2391.0" y="253">Identifier fact</text></g>
+<g class="ast-node" id="node-30"><rect x="2938.0" y="130" width="110" height="36" rx="7"/><text x="2993.0" y="153">If</text></g>
+<g class="ast-node" id="node-31"><rect x="2792.0" y="230" width="134" height="36" rx="7"/><text x="2859.0" y="253">BinaryOp ==</text></g>
+<g class="ast-node" id="node-32"><rect x="2730.0" y="330" width="124" height="36" rx="7"/><text x="2792.0" y="353">BinaryOp -</text></g>
+<g class="ast-node" id="node-33"><rect x="2502.0" y="430" width="144" height="36" rx="7"/><text x="2574.0" y="453">Identifier n</text></g>
+<g class="ast-node" id="node-34"><rect x="2814.0" y="430" width="124" height="36" rx="7"/><text x="2876.0" y="453">BinaryOp *</text></g>
+<g class="ast-node" id="node-35"><rect x="2747.0" y="530" width="124" height="36" rx="7"/><text x="2809.0" y="553">BinaryOp /</text></g>
+<g class="ast-node" id="node-36"><rect x="2670.0" y="630" width="144" height="36" rx="7"/><text x="2742.0" y="653">Identifier n</text></g>
+<g class="ast-node" id="node-37"><rect x="2838.0" y="630" width="110" height="36" rx="7"/><text x="2893.0" y="653">Number 2</text></g>
+<g class="ast-node" id="node-38"><rect x="2972.0" y="530" width="110" height="36" rx="7"/><text x="3027.0" y="553">Number 2</text></g>
+<g class="ast-node" id="node-39"><rect x="3106.0" y="330" width="110" height="36" rx="7"/><text x="3161.0" y="353">Number 0</text></g>
+<g class="ast-node" id="node-40"><rect x="3240.0" y="230" width="110" height="36" rx="7"/><text x="3295.0" y="253">Block</text></g>
+<g class="ast-node" id="node-41"><rect x="3240.0" y="330" width="110" height="36" rx="7"/><text x="3295.0" y="353">Write</text></g>
+<g class="ast-node" id="node-42"><rect x="3240.0" y="430" width="110" height="36" rx="7"/><text x="3295.0" y="453">Number 0</text></g>
+<g class="ast-node" id="node-43"><rect x="3374.0" y="230" width="110" height="36" rx="7"/><text x="3429.0" y="253">Block</text></g>
+<g class="ast-node" id="node-44"><rect x="3374.0" y="330" width="110" height="36" rx="7"/><text x="3429.0" y="353">Write</text></g>
+<g class="ast-node" id="node-45"><rect x="3374.0" y="430" width="110" height="36" rx="7"/><text x="3429.0" y="453">Number 1</text></g>
+</svg></div>
+<script>
+(() => {
+  const svg = document.querySelector('svg');
+  const container = document.getElementById('ast-tree');
+  const fit = document.getElementById('ast-fit'), actual = document.getElementById('ast-actual');
+  let mode = 'actual';
+  function applyView() {
+    const natural = svg.viewBox.baseVal;
+    const width = mode === 'fit' ? container.clientWidth : natural.width;
+    svg.setAttribute('width', width);
+    svg.setAttribute('height', natural.height * width / natural.width);
+    if (mode === 'fit') {
+      container.scrollLeft = 0;
+    } else {
+      const root = svg.querySelector('.ast-node rect');
+      const center = Number(root.getAttribute('x')) + Number(root.getAttribute('width')) / 2;
+      container.scrollLeft = Math.max(0, Math.min(center - container.clientWidth / 2,
+                                                container.scrollWidth - container.clientWidth));
+    }
+    fit.setAttribute('aria-pressed', String(mode === 'fit'));
+    actual.setAttribute('aria-pressed', String(mode === 'actual'));
+  }
+  fit.addEventListener('click', () => { mode = 'fit'; applyView(); });
+  actual.addEventListener('click', () => { mode = 'actual'; applyView(); });
+  function reflow() {
+    const nodes = Array.from(svg.querySelectorAll('.ast-node'), group => {
+      const text = group.querySelector('text'), rect = group.querySelector('rect');
+      text.setAttribute('x', 0); text.setAttribute('y', 0);
+      const box = text.getBBox();
+      return {text, rect, box, width: Math.max(110, box.width + 24),
+              height: Math.max(36, box.height + 16), children: [], depth: 0};
+    });
+    const edges = Array.from(svg.querySelectorAll('line'), line => {
+      const source = Number(line.dataset.source), target = Number(line.dataset.target);
+      const text = line.nextElementSibling;
+      text.setAttribute('x', 0); text.setAttribute('y', 0);
+      const box = text.getBBox();
+      nodes[source].children.push(target);
+      // A midpoint label has half the separation of the child centers.
+      nodes[target].width = Math.max(nodes[target].width, box.width * 2 + 24);
+      return {line, text, box, source, target};
+    });
+    const heights = [];
+    for (const node of nodes) {
+      heights[node.depth] = Math.max(heights[node.depth] || 0, node.height);
+      for (const child of node.children) nodes[child].depth = node.depth + 1;
+    }
+    const gap = edges.reduce((value, edge) => Math.max(value, edge.box.height + 32), 64);
+    const rows = [30];
+    for (let depth = 1; depth < heights.length; depth++)
+      rows[depth] = rows[depth - 1] + heights[depth - 1] + gap;
+    for (let i = nodes.length - 1; i >= 0; i--) {
+      const node = nodes[i];
+      node.occupied = node.children.reduce((sum, child) => sum + nodes[child].span, 0)
+                      + Math.max(0, node.children.length - 1) * 24;
+      node.span = Math.max(node.width, node.occupied);
+    }
+    nodes[0].left = 20;
+    for (const node of nodes) {
+      node.x = node.left + node.span / 2;
+      node.y = rows[node.depth];
+      let cursor = node.left + (node.span - node.occupied) / 2;
+      for (const child of node.children) {
+        nodes[child].left = cursor;
+        cursor += nodes[child].span + 24;
+      }
+      node.rect.setAttribute('x', node.x - node.width / 2);
+      node.rect.setAttribute('y', node.y);
+      node.rect.setAttribute('width', node.width);
+      node.rect.setAttribute('height', node.height);
+      node.text.setAttribute('x', node.x - node.box.x - node.box.width / 2);
+      node.text.setAttribute('y', node.y + node.height / 2 - node.box.y - node.box.height / 2);
+    }
+    for (const edge of edges) {
+      const a = nodes[edge.source], b = nodes[edge.target];
+      const top = a.y + a.height, bottom = b.y;
+      edge.line.setAttribute('x1', a.x); edge.line.setAttribute('y1', top);
+      edge.line.setAttribute('x2', b.x); edge.line.setAttribute('y2', bottom);
+      edge.text.setAttribute('x', (a.x + b.x) / 2 - edge.box.x - edge.box.width / 2);
+      edge.text.setAttribute('y', (top + bottom) / 2 - edge.box.y - edge.box.height / 2);
+    }
+    const width = nodes[0].span + 40;
+    const height = rows[rows.length - 1] + heights[heights.length - 1] + 30;
+    svg.setAttribute('width', width); svg.setAttribute('height', height);
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.dataset.layout = 'measured';
+    applyView();
+  }
+  reflow();
+  if (document.fonts) document.fonts.ready.then(reflow);
+})();
+</script>
+</body></html>
