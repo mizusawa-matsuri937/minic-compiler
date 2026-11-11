@@ -1,6 +1,6 @@
 # mini-C 编译器生成器与编译器成品 规格
 
-状态：计划于 2026-11-10 完成，规则与 AC 此后未改。实现已完成并于 2026-11-11 评审：AC01–AC17、AC19–AC22 通过，AC18 待用户人工目视。同日按评审发现 CR01、CR02 新增 R30、R31 与 AC23、AC24；T1-07 已实现并经评审，AC23、AC24 通过。设计见 [design](design.md)，阶段见 [tasks](tasks.md)，验证状态见 [checklist](checklist.md)。
+状态：计划于 2026-11-10 完成，规则与 AC 此后未改。实现已完成并于 2026-11-11 评审：AC01–AC22 通过，AC18 已于同日由用户确认人工离线目视。同日按评审发现 CR01、CR02 新增 R30、R31 与 AC23、AC24；T1-07 已实现并经评审，AC23、AC24 通过。设计见 [design](design.md)，阶段见 [tasks](tasks.md)，验证状态见 [checklist](checklist.md)。
 
 ## 目标
 

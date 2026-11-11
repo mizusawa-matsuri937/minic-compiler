@@ -1,6 +1,6 @@
 # mini-C 编译器生成器与编译器成品 执行任务
 
-状态：T1-00 至 T1-06 编码与阶段自动检查已完成（2026-11-10）；AC18 人工目视验收另计。T1-07 已完成（2026-11-11）：实现方完成实现和自动检查，评审者 Claude 补做 AC24 的浏览器实测后勾选。规则与验收见 [spec](spec.md)，实现方法见 [design](design.md)，逐项复核见 [checklist](checklist.md)。
+状态：T1-00 至 T1-06 编码与阶段自动检查已完成（2026-11-10）；AC18 人工目视已于 2026-11-11 根据用户本会话反馈登记通过。T1-07 已完成（2026-11-11）：实现方完成实现和自动检查，评审者 Claude 补做 AC24 的浏览器实测后勾选。规则与验收见 [spec](spec.md)，实现方法见 [design](design.md)，逐项复核见 [checklist](checklist.md)。
 
 所有命令的工作目录是 `/Users/aqua_night/codex_project/编译原理/minic-compiler`，shell 为 zsh，各阶段实测使用 Python 3.11.15（通过 PATH 选择）；默认 `python3` 3.14.6 另有完整回归日志。以下代码块可独立复核，显式设置当前机器已存在的 3.11 路径；原始执行环境也记录在日志中。各阶段按顺序进行，后一阶段依赖前一阶段的产物。
 
@@ -125,3 +125,5 @@
 cd "/Users/aqua_night/codex_project/编译原理/minic-compiler"
 PYTHONDONTWRITEBYTECODE=1 /Users/aqua_night/.local/bin/python3.11 -B -m unittest discover -s tests -v
 ```
+
+人工验收收尾（2026-11-11）：用户确认离线刷新、Program 可见、两按钮效果和滚动检查均正常，AC18 已勾选，实施 AC 24/24。原文与范围见 [人工验收交接](../handoffs/2026-11-11-task1-human-acceptance.md)；本轮仅改文档，业务回归沿用已有结果。

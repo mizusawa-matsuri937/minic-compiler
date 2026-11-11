@@ -2,7 +2,7 @@
 
 编译原理期末项目：语言无关的词法/规范 LR(1) 分析器生成器，以及使用生成物的 mini-C 编译器。仅依赖 Python 标准库，后端调用 clang。
 
-当前状态（2026-11-11）：T1-01 至 T1-06 已实现，RV01～RV11 已修复；T1-07 的 BOM 兼容和 AST 定位/缩放已实现。Python 3.11.15 全量 **71 个测试通过，0 失败、0 错误、0 跳过**。实施 AC 为 **23/24**：T1-07 已经评审，AC24 的浏览器实测由评审者在 Chromium 152 中补做并通过；只剩 AC18 待用户人工离线目视。见 [checklist](doc/task1/checklist.md) 和 [T1-07 评审](doc/handoffs/2026-11-11-task1-t107-review.md)。
+当前状态（2026-11-11）：T1-01 至 T1-06 已实现，RV01～RV11 已修复；T1-07 的 BOM 兼容和 AST 定位/缩放已实现。Python 3.11.15 全量 **71 个测试通过，0 失败、0 错误、0 跳过**。实施 AC 为 **24/24**：AC24 的数值实测已经评审通过，用户于同日确认 AC18 人工离线目视及两个按钮的效果。见 [checklist](doc/task1/checklist.md) 和 [人工验收交接](doc/handoffs/2026-11-11-task1-human-acceptance.md)。
 
 ## 运行
 
@@ -70,7 +70,7 @@ python3 -m unittest discover -s tests -k ac03 -v
 
 ## 文档与接手
 
-- [最新交接：T1-07 评审结论](doc/handoffs/2026-11-11-task1-t107-review.md)；评审对象是 [T1-07 实现交接](doc/handoffs/2026-11-11-task1-t107-impl-to-review.md)，更早的依据是[验收评审结论](doc/handoffs/2026-11-11-task1-acceptance-review.md)；上一份为 [RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
+- [最新交接：用户人工验收完成](doc/handoffs/2026-11-11-task1-human-acceptance.md)；[T1-07 评审结论](doc/handoffs/2026-11-11-task1-t107-review.md)；评审对象是 [T1-07 实现交接](doc/handoffs/2026-11-11-task1-t107-impl-to-review.md)，更早的依据是[验收评审结论](doc/handoffs/2026-11-11-task1-acceptance-review.md)；上一份为 [RV01～RV11 修复与验收](doc/handoffs/2026-11-11-task1-fixes-to-review.md)
 - [协作约定](AGENTS.md)与[项目配置](doc/project-config.md)
 - [spec](doc/task1/spec.md)、[design](doc/task1/design.md)、[tasks](doc/task1/tasks.md)、[checklist](doc/task1/checklist.md)
 
@@ -78,6 +78,6 @@ python3 -m unittest discover -s tests -k ac03 -v
 
 ## 限制
 
-只支持约定的 mini-C 文法与 `//` 注释；没有函数、数组、逻辑运算或一元负号。语法错误只报告第一个，词法和语义错误收集后一起报告。不检查除零、除法溢出或无效 read 输入等运行时错误；LLVM `sdiv` 对 `INT_MIN / -1` 不定义结果。未验证其他操作系统或答辩机器。AST 的浏览器人工检查尚未执行。
+只支持约定的 mini-C 文法与 `//` 注释；没有函数、数组、逻辑运算或一元负号。语法错误只报告第一个，词法和语义错误收集后一起报告。不检查除零、除法溢出或无效 read 输入等运行时错误；LLVM `sdiv` 对 `INT_MIN / -1` 不定义结果。未验证其他操作系统或答辩机器。AST 的用户人工离线检查已通过；用户未提供浏览器名称与版本。
 
 项目只交付代码成品，不包含《程序设计文档》和答辩 PPT；原始要求 `../作业要求/6749484.pdf` 保持只读。
