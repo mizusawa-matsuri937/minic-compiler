@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-11",
+  "by": "Claude（评审者）；浏览器自动化实测，不是用户的人工目视",
+  "browser": "Claude 桌面应用内置浏览器，Chromium 152.0.7977.167",
+  "viewport": [1280, 900],
+  "url": "http://127.0.0.1:8765/demo.html（本机回环地址；内置浏览器不能打开 file:// 页面）",
+  "page_sha256": "e0d5956d89e727a73cd0341dbbc3747ecaf2fdb221fc2f0612edede993c0cdfb",
+  "page_same_as": "doc/task1/evidence/t107/demo/ast.html（逐字节相同）",
+  "network_requests": "每次打开只有对 demo.html 本身的一个请求，没有其他请求",
+  "demo": {
+    "initial": {
+      "container": {"left": 24, "right": 1256, "visL": 25, "visR": 1255, "clientWidth": 1230, "scrollWidth": 3321, "scrollLeft": 1045.5},
+      "root": {"left": 585.01171875, "right": 695.01171875, "top": 146.9140625, "bottom": 182.9140625, "label": "Program"},
+      "rootInView": true,
+      "centerErr": 0.01171875,
+      "svg": {"width": "3321.0234375", "height": "696", "viewBox": "0 0 3321.0234375 696", "layout": "measured"},
+      "nodes": 46,
+      "pressed": {"ast-fit": "false", "ast-actual": "true"},
+      "pageScrollWidth": 1280
+    },
+    "fit": {
+      "container": {"left": 24, "right": 1256, "visL": 25, "visR": 1255, "clientWidth": 1230, "scrollWidth": 1230, "scrollLeft": 0},
+      "root": {"left": 619.6299438476562, "right": 660.3700561523438, "top": 128.02499389648438, "bottom": 141.35809326171875, "label": "Program"},
+      "rootInView": true,
+      "svg": {"width": "1230", "height": "257.7759585594614", "viewBox": "0 0 3321.0234375 696"},
+      "nodes": 46,
+      "minLeft": 32.41329574584961,
+      "maxRight": 1247.586669921875,
+      "allInWidth": true,
+      "pressed": {"ast-fit": "true", "ast-actual": "false"}
+    },
+    "actual": {
+      "container": {"left": 24, "right": 1256, "visL": 25, "visR": 1255, "clientWidth": 1230, "scrollWidth": 3321, "scrollLeft": 1045.5},
+      "root": {"left": 585.01171875, "right": 695.01171875, "top": 146.9140625, "bottom": 182.9140625, "label": "Program"},
+      "rootInView": true,
+      "centerErr": 0.01171875,
+      "svg": {"width": "3321.0234375", "height": "696", "viewBox": "0 0 3321.0234375 696"},
+      "pressed": {"ast-fit": "false", "ast-actual": "true"}
+    },
+    "real_click_recheck": {
+      "note": "用浏览器的鼠标点击（不是脚本调用 click）重做一遍",
+      "after_fit": {"scrollWidth": 1230, "clientWidth": 1230, "scrollLeft": 0, "ast-fit": "true"},
+      "after_actual": {"scrollWidth": 3321, "clientWidth": 1230, "scrollLeft": 1045.5, "centerErr": 0.01171875, "ast-actual": "true"}
+    }
+  },
+  "small_tree": {
+    "source": "int a = 1; write(a);（5 个结点，树宽 314.3125 像素，比容器窄）",
+    "initial": {"clientWidth": 1230, "scrollWidth": 1230, "scrollLeft": 0, "root": [585, 695, 146.9140625, 182.9140625], "centerErr": 0, "svgWidth": 314.3125, "containerHeight": 298},
+    "fit": {"clientWidth": 1230, "scrollWidth": 1230, "scrollLeft": 0, "root": [424.7686462402344, 855.2313232421875, 234.31297302246094, 375.1916809082031], "svgWidth": 1230, "containerHeight": 1160.3359375, "allInWidth": true},
+    "actual": {"clientWidth": 1230, "scrollWidth": 1230, "scrollLeft": 0, "root": [585, 695, 146.9140625, 182.9140625], "centerErr": 0, "svgWidth": 314.3125}
+  }
+}
